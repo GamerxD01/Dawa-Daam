@@ -1,3 +1,6 @@
+import { search, type Index } from './search';
+import type { SearchResult } from './types';
+
 // Whole-prescription input: split a typed/pasted (or Gemma-read printed) prescription into medicine lines.
 // Dosage instructions are REMOVED before matching, never interpreted: "1-0-1 x 5 days after food" is the
 // doctor's instruction, not part of the medicine's name, and the app never comments on it.
@@ -27,4 +30,24 @@ export function splitPrescription(text: string): string[] {
     .map(cleanRxLine)
     .filter((l) => /[a-zऀ-ॿ]{3,}/i.test(l))
     .slice(0, 20);
+}
+
+const MEDICINE_PREFIX = /^(?:tab|tabs|tablet|cap|caps|capsule|syp|syr|syrup|inj|injection|susp|oint|drops?)\b/i;
+
+export interface RxRow {
+  line: string;
+  result: SearchResult;
+}
+
+/**
+ * Match every line. From a photo, lines that match nothing are usually the doctor's name, address or advice,
+ * so they are skipped, unless they start like a medicine ("Tab.", "Cap."): those are kept so the patient
+ * sees "not in our list" instead of the medicine silently vanishing.
+ */
+export function prescriptionRows(text: string, index: Index, fromPhoto = false): { rows: RxRow[]; ignored: number } {
+  const all = splitPrescription(text).map((line) => ({ line, result: search(index, line) }));
+  const keep = fromPhoto
+    ? all.filter((r) => (r.result.kind !== 'none' && r.result.kind !== 'empty') || MEDICINE_PREFIX.test(r.line))
+    : all;
+  return { rows: keep, ignored: all.length - keep.length };
 }

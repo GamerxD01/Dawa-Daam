@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import raw from '../generated/drugs.json';
-import { cleanRxLine, splitPrescription } from './rx';
+import { cleanRxLine, prescriptionRows, splitPrescription } from './rx';
 import { buildIndex, search } from './search';
 import type { DrugData } from './types';
 
@@ -34,5 +34,32 @@ describe('whole prescription', () => {
       return r.kind === 'match' && r.hit.type === 'brand' ? r.hit.brand.name : r.kind;
     });
     expect(kinds).toEqual(['Telma H', 'Glycomet GP 1', 'Pan D', 'Rosuvas 10']);
+  });
+
+  const label = (r: ReturnType<typeof prescriptionRows>['rows'][number]) =>
+    r.result.kind === 'match' && r.result.hit.type === 'brand' ? r.result.hit.brand.name : `${r.result.kind}:${r.line}`;
+
+  // Text as Gemma might return it for docs/samples/sample-printed-prescription.jpg, read row by row…
+  it('photo of a printed prescription, read row by row', () => {
+    const lines = [
+      'Dr. Sample Physician', 'MBBS, MD (General Medicine) · Reg. No. TEST-00000', 'Demo Clinic', 'Test Road, Sample City',
+      'Patient: Test Patient Age/Sex: 58/M', 'Date: 21/10/2026', 'Diagnosis: Hypertension, Type 2 Diabetes, Acidity',
+      'Medicine Dose Duration',
+      '1. Tab. Telma H 40 1-0-0 x 30 days', '2. Tab. Glycomet GP 1 1-0-1 after food x 30 days',
+      '3. Cap. Pan D 1-0-0 before breakfast x 15 days', '4. Tab. Rosuvas 10 0-0-1 x 30 days',
+      '5. Tab. Shelcal 500 0-1-0 x 30 days', '6. Tab. Cardace 2.5 0-0-1 x 30 days',
+      'Advice: Low salt diet. Walk 30 minutes daily. Review after 1 month with reports.', 'Signature',
+    ];
+    const { rows, ignored } = prescriptionRows(lines.join('\n'), index, true);
+    expect(rows.map(label)).toEqual(['Telma H', 'Glycomet GP 1', 'Pan D', 'Rosuvas 10', 'Shelcal 500', 'none:Tab. Cardace 2.5']);
+    expect(ignored).toBeGreaterThan(5);
+  });
+
+  // …or column by column (all names first, then the doses)
+  it('photo of a printed prescription, read column by column', () => {
+    const lines = ['Medicine', '1. Tab. Telma H 40', '2. Tab. Glycomet GP 1', '3. Cap. Pan D', '4. Tab. Rosuvas 10',
+      '5. Tab. Shelcal 500', '6. Tab. Cardace 2.5', 'Dose', '1-0-0', '1-0-1 after food', '1-0-0 before breakfast', '0-0-1', 'x 30 days'];
+    const { rows } = prescriptionRows(lines.join('\n'), index, true);
+    expect(rows.map(label)).toEqual(['Telma H', 'Glycomet GP 1', 'Pan D', 'Rosuvas 10', 'Shelcal 500', 'none:Tab. Cardace 2.5']);
   });
 });

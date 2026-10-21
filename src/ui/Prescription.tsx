@@ -1,18 +1,15 @@
 import { useEffect, useState } from 'preact/hooks';
 import { saving } from '../match/equivalence';
-import { splitPrescription } from '../match/rx';
+import { prescriptionRows, splitPrescription, type RxRow } from '../match/rx';
 import { search, type Index } from '../match/search';
-import type { Hit, SearchResult } from '../match/types';
+import type { Hit } from '../match/types';
 import { compositionText, rupees } from '../format';
 import { gemmaAvailable, gemmaUrl, readLines } from '../photo';
 import { hitId } from '../store';
 import type { Ctx } from './ctx';
 import { Voice } from './Voice';
 
-interface Row {
-  line: string;
-  result: SearchResult;
-}
+type Row = RxRow;
 
 /** Whole prescription at once: typed, pasted, spoken, or read off a PRINTED prescription by Gemma. */
 export function Prescription({ ctx, index, list, onAdd, onDone }: {
@@ -36,10 +33,8 @@ export function Prescription({ ctx, index, list, onAdd, onDone }: {
   }, []);
 
   const check = (src = text, fromPhoto = false) => {
-    const all = splitPrescription(src).map((line) => ({ line, result: search(index, line) }));
-    // From a photo, lines that match nothing are usually the doctor's name, address or advice: skip them.
-    const keep = fromPhoto ? all.filter((r) => r.result.kind !== 'none' && r.result.kind !== 'empty') : all;
-    setIgnored(all.length - keep.length);
+    const { rows: keep, ignored: skipped } = prescriptionRows(src, index, fromPhoto);
+    setIgnored(skipped);
     setRows(keep);
   };
 
