@@ -16,7 +16,7 @@ export function Photo({ ctx, index, onFound, onPrescriptionPhoto }: {
   /** a printed or handwritten prescription photo: handled on the whole-prescription screen */
   onPrescriptionPhoto: (file: File, mode: 'printed' | 'handwritten') => void;
 }) {
-  const [state, setState] = useState<'idle' | 'menu' | 'hw-consent' | 'busy' | 'confirm' | 'failed'>('idle');
+  const [state, setState] = useState<'idle' | 'menu' | 'busy' | 'confirm' | 'failed'>('idle');
   const [seen, setSeen] = useState<string[]>([]);
   const [candidate, setCandidate] = useState<Hit | null>(null);
   const [health, setHealth] = useState<BridgeHealth>({ ok: false, handwriting: false });
@@ -52,8 +52,8 @@ export function Photo({ ctx, index, onFound, onPrescriptionPhoto }: {
 
   return (
     <div class="photo">
-      <button class="tile photo-btn" aria-expanded={state === 'menu' || state === 'hw-consent'}
-        onClick={() => setState(state === 'menu' || state === 'hw-consent' ? 'idle' : 'menu')} disabled={state === 'busy'}>
+      <button class="tile photo-btn" aria-expanded={state === 'menu'}
+        onClick={() => setState(state === 'menu' ? 'idle' : 'menu')} disabled={state === 'busy'}>
         <span class="tile-icon" aria-hidden="true">📷</span>{state === 'busy' ? t.photoReading : t.tilePhotoMenu}
       </button>
       {state === 'menu' && (
@@ -61,39 +61,24 @@ export function Photo({ ctx, index, onFound, onPrescriptionPhoto }: {
           <h2 class="card-title">{t.photoWhat}</h2>
           <label class="choice">
             <span class="choice-title">💊 {t.photoStrip}</span>
-            <span class="choice-sub">{t.photoStripSub}</span>
             <input type="file" accept="image/*" capture="environment" hidden
               onChange={(e) => onFile((e.target as HTMLInputElement).files?.[0])} />
           </label>
           <label class="choice">
             <span class="choice-title">📄 {t.photoPrinted}</span>
-            <span class="choice-sub">{t.photoPrintedSub}</span>
             <input type="file" accept="image/*" capture="environment" hidden
               onChange={(e) => { const f = (e.target as HTMLInputElement).files?.[0]; if (f) { setState('idle'); onPrescriptionPhoto(f, 'printed'); } }} />
           </label>
           {health.handwriting ? (
-            <button class="choice" onClick={() => setState('hw-consent')}>
+            <label class="choice">
               <span class="choice-title">✍️ {t.photoHandwritten}</span>
-              <span class="choice-sub">{t.photoHandwrittenSub}</span>
-            </button>
+              <input type="file" accept="image/*" capture="environment" hidden
+                onChange={(e) => { const f = (e.target as HTMLInputElement).files?.[0]; if (f) { setState('idle'); onPrescriptionPhoto(f, 'handwritten'); } }} />
+            </label>
           ) : (
             <p class="muted small">✍️ {t.rxHandwriting}</p>
           )}
           <button class="choice ghost" onClick={() => setState('idle')}>{t.cancel}</button>
-        </div>
-      )}
-      {state === 'hw-consent' && (
-        <div class="consent">
-          <b>{t.hwConsentTitle}</b>
-          <p class="small">{t.hwConsent}</p>
-          <div class="row">
-            <label class="big primary as-button">
-              {t.hwContinue}
-              <input type="file" accept="image/*" capture="environment" hidden
-                onChange={(e) => { const f = (e.target as HTMLInputElement).files?.[0]; if (f) { setState('idle'); onPrescriptionPhoto(f, 'handwritten'); } }} />
-            </label>
-            <button class="big secondary" onClick={() => setState('menu')}>{t.back}</button>
-          </div>
         </div>
       )}
       {state === 'confirm' && candidate && (
@@ -110,7 +95,6 @@ export function Photo({ ctx, index, onFound, onPrescriptionPhoto }: {
       {canFallback && (offer || state === 'failed') && (
         <div class="consent">
           <b>{t.fallbackTitle}</b>
-          <p class="small">{t.fallbackBody}</p>
           <div class="row">
             <button class="big primary" onClick={() => onFile(file ?? undefined, 'gemini')}>{t.fallbackGo}</button>
             <button class="big secondary" onClick={() => { setOffer(false); setState('idle'); }}>{t.cancel}</button>

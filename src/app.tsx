@@ -19,7 +19,7 @@ const index = buildIndex(data);
 const molecules = new Map(data.molecules.map((m) => [m.name, m]));
 const byId = new Map(index.entries.map((e) => [hitId({ ...e.hit, score: 1 } as Hit), { ...e.hit, score: 1 } as Hit]));
 
-type View = 'search' | 'list' | 'sheet' | 'rx' | 'rx-hw' | 'kendra';
+type View = 'search' | 'list' | 'sheet' | 'rx' | 'kendra';
 
 export function App() {
   const [lang, setLang] = useState<Lang>(() => load<Lang>('lang', 'hi'));
@@ -79,9 +79,8 @@ export function App() {
       <main>
         {view === 'kendra' ? (
           <Kendras ctx={ctx} onBack={() => setView('search')} />
-        ) : view === 'rx' || view === 'rx-hw' ? (
-          <Prescription key={rxPhoto ? rxPhoto.file.name + rxPhoto.file.lastModified : view} ctx={ctx} index={index} list={list}
-            startHandwritten={view === 'rx-hw'} initialPhoto={rxPhoto}
+        ) : view === 'rx' ? (
+          <Prescription key={rxPhoto ? rxPhoto.file.name + rxPhoto.file.lastModified : view} ctx={ctx} index={index} list={list} initialPhoto={rxPhoto}
             onAdd={(hits) => setList((l) => [...l, ...hits.map(hitId).filter((id) => !l.includes(id))])}
             onDone={() => setView('list')} onBack={() => setView('search')} />
         ) : view === 'list' ? (

@@ -13,12 +13,11 @@ type Row = RxRow;
 
 /**
  * Whole prescription at once: typed, pasted, spoken, read off a PRINTED prescription by Gemma (local),
- * or, opt-in beta, read off a HANDWRITTEN one by Google Gemini (cloud, only with the user's consent).
+ * or (beta, only if the bridge owner enabled it) read off a HANDWRITTEN one by Google Gemini.
  * Handwriting can be misread, so its lines are never added in bulk: each medicine needs its own tap.
  */
-export function Prescription({ ctx, index, list, onAdd, onDone, onBack, startHandwritten = false, initialPhoto }: {
+export function Prescription({ ctx, index, list, onAdd, onDone, onBack, initialPhoto }: {
   ctx: Ctx;
-  startHandwritten?: boolean;
   /** a photo chosen from the home screen's Photo menu */
   initialPhoto?: { file: File; mode: 'printed' | 'handwritten' } | null;
   index: Index;
@@ -34,7 +33,6 @@ export function Prescription({ ctx, index, list, onAdd, onDone, onBack, startHan
   const [health, setHealth] = useState<BridgeHealth>({ ok: false, handwriting: false });
   const [reading, setReading] = useState(false);
   const [handwritten, setHandwritten] = useState(false);
-  const [consent, setConsent] = useState(startHandwritten);
   const [source, setSource] = useState<'typed' | 'printed' | 'handwritten'>('typed');
   const [hwFailed, setHwFailed] = useState(false);
   const [lastPrinted, setLastPrinted] = useState<File | null>(null);
@@ -58,7 +56,6 @@ export function Prescription({ ctx, index, list, onAdd, onDone, onBack, startHan
     setReading(true);
     setHandwritten(false);
     setHwFailed(false);
-    setConsent(false);
     try {
       const lines = await readLines(file, mode === 'handwritten' ? 1600 : 1400, mode);
       const joined = lines.join('\n');
@@ -97,22 +94,11 @@ export function Prescription({ ctx, index, list, onAdd, onDone, onBack, startHan
         </label>
       )}
       {health.handwriting ? (
-        consent ? (
-          <div class="consent">
-            <b>{t.hwConsentTitle}</b>
-            <p class="small">{t.hwConsent}</p>
-            <div class="row">
-              <label class="big primary as-button">
-                {t.hwContinue}
-                <input type="file" accept="image/*" capture="environment" hidden disabled={reading}
-                  onChange={(e) => onPhoto((e.target as HTMLInputElement).files?.[0], 'handwritten')} />
-              </label>
-              <button class="big secondary" onClick={() => setConsent(false)}>{t.cancel}</button>
-            </div>
-          </div>
-        ) : (
-          <button class="big secondary" onClick={() => setConsent(true)} disabled={reading}>✍️ {t.hwButton}</button>
-        )
+        <label class="big secondary as-button">
+          ✍️ {reading ? t.photoReading : t.hwButton}
+          <input type="file" accept="image/*" capture="environment" hidden disabled={reading}
+            onChange={(e) => onPhoto((e.target as HTMLInputElement).files?.[0], 'handwritten')} />
+        </label>
       ) : (
         <p class="muted small">✍️ {t.rxHandwriting}</p>
       )}
@@ -121,7 +107,6 @@ export function Prescription({ ctx, index, list, onAdd, onDone, onBack, startHan
       {handwritten && health.handwriting && lastPrinted ? (
         <div class="consent">
           <b>{t.fallbackTitleRx}</b>
-          <p class="small">{t.fallbackBody}</p>
           <div class="row">
             <button class="big primary" onClick={() => { const f = lastPrinted; setLastPrinted(null); onPhoto(f, 'gemini'); }}>{t.fallbackGo}</button>
             <button class="big secondary" onClick={() => setHandwritten(false)}>{t.cancel}</button>
