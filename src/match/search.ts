@@ -112,7 +112,11 @@ export function search(index: Index, input: string): SearchResult {
     return { kind: 'none', reason: 'unknown', near: ok.filter((s) => s.score >= 0.45).slice(0, 3).map((s) => toHit(s.entry, s.score)) };
   }
 
-  const close = ok.filter((s) => s.score >= Math.max(THRESHOLD_SUGGEST, top.score - GAP));
+  // A brand and the Jan Aushadhi group that is its exact equivalent are one answer, not two rivals.
+  const brandGroups = new Set(ok.filter((s) => s.entry.hit.type === 'brand' && s.entry.hit.group).map((s) =>
+    s.entry.hit.type === 'brand' ? s.entry.hit.group!.key : ''));
+  const isShadow = (s: Scored) => s.entry.hit.type === 'generic' && brandGroups.has(s.entry.hit.group.key) && s.score < top.score;
+  const close = ok.filter((s) => s.score >= Math.max(THRESHOLD_SUGGEST, top.score - GAP) && !isShadow(s));
 
   // Same molecule(s), only the strength differs, and the user gave no strength → ask which strength.
   if (!q.numbers.length && close.length > 1) {
