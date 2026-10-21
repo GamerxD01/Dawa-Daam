@@ -85,4 +85,14 @@ describe('whole prescription', () => {
     expect(rows.map((r) => (r.result.kind === 'match' && r.result.hit.type === 'brand' ? r.result.hit.brand.name : r.result.kind)))
       .toEqual(['Telma H', 'Pan D', 'Dolo 650', 'Montair LC', 'Shelcal 500']);
   });
+
+  // docs/samples/sample-prescription-2-*.jpg: six medicines, all in our data
+  it('sample prescription 2: all six medicines match', () => {
+    const lines = ['Dr. Demo Physician', 'Diagnosis: Type 2 Diabetes, Hypertension, Neuropathy, Allergic rhinitis',
+      '1. Tab. Galvus Met 50/500 1-0-1 after food x 30 days', '2. Tab. Telma AM 1-0-0 x 30 days', '3. Cap. Lyrica 75 0-0-1 x 14 days',
+      '4. Tab. Rozavel 10 0-0-1 x 30 days', '5. Tab. Montair LC 0-0-1 x 10 days', '6. Tab. Pantocid 40 1-0-0 before breakfast x 15 days',
+      'Advice: Check sugar fasting and PP. Review after 2 weeks.'];
+    const { rows } = prescriptionRows(lines.join('\n'), index, true);
+    expect(rows.map(label)).toEqual(['Galvus Met 50/500', 'Telma AM', 'Lyrica 75', 'Rozavel 10', 'Montair LC', 'Pantocid 40']);
+  });
 });
