@@ -16,6 +16,10 @@ const MAX_BODY = 6 * 1024 * 1024;
 // Optional, off by default: handwritten prescriptions via Google Gemini (cloud). Only if the laptop owner sets a key.
 const GEMINI_KEY = process.env.GEMINI_API_KEY ?? '';
 const GEMINI_MODEL = process.env.GEMINI_MODEL ?? 'gemini-3.6-flash';
+// Tried in order when a model is overloaded (503/429) or unavailable (404). Override with GEMINI_MODELS=a,b,c
+const GEMINI_MODELS = (process.env.GEMINI_MODELS ?? `${GEMINI_MODEL},gemini-2.5-flash,gemini-2.5-flash-lite`)
+  .split(',').map((m) => m.trim()).filter(Boolean);
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 export const READ_PROMPT =
   'You transcribe printed text from a photo of a medicine strip, a medicine box or a printed prescription. ' +
@@ -71,25 +75,41 @@ export async function readStripWithGemini(imageBase64) {
 }
 
 async function readWithGemini(imageBase64, prompt, field = 'lines') {
-  if (!GEMINI_KEY) throw Object.assign(new Error('handwriting reading is not enabled (no GEMINI_API_KEY)'), { status: 501 });
-  const r = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json', 'x-goog-api-key': GEMINI_KEY },
-    body: JSON.stringify({
-      contents: [{ parts: [{ text: prompt }, { inline_data: { mime_type: 'image/jpeg', data: imageBase64 } }] }],
-      generationConfig: {
-        temperature: 0,
-        responseMimeType: 'application/json',
-        responseSchema: { type: 'OBJECT', properties: { [field]: { type: 'ARRAY', items: { type: 'STRING' } } }, required: [field] },
-      },
-    }),
+  if (!GEMINI_KEY) throw Object.assign(new Error('Gemini is not enabled (no GEMINI_API_KEY)'), { status: 501 });
+  const body = JSON.stringify({
+    contents: [{ parts: [{ text: prompt }, { inline_data: { mime_type: 'image/jpeg', data: imageBase64 } }] }],
+    generationConfig: {
+      temperature: 0,
+      responseMimeType: 'application/json',
+      responseSchema: { type: 'OBJECT', properties: { [field]: { type: 'ARRAY', items: { type: 'STRING' } } }, required: [field] },
+    },
   });
-  if (!r.ok) throw new Error(`gemini ${r.status}: ${(await r.text()).slice(0, 300)}`);
-  const j = await r.json();
-  const text = j.candidates?.[0]?.content?.parts?.map((p) => p.text ?? '').join('') ?? '{}';
-  const out = JSON.parse(text);
-  const items = out[field];
-  return (Array.isArray(items) ? items : []).map(String).map((l) => l.trim()).filter(Boolean).slice(0, 30);
+  let lastError = '';
+  for (const model of GEMINI_MODELS) {
+    for (let attempt = 0; attempt < 3; attempt++) {
+      const r = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'x-goog-api-key': GEMINI_KEY },
+        body,
+      });
+      if (r.ok) {
+        const j = await r.json();
+        const text = j.candidates?.[0]?.content?.parts?.map((p) => p.text ?? '').join('') ?? '{}';
+        const items = JSON.parse(text)[field];
+        if (model !== GEMINI_MODELS[0] || attempt > 0) console.log(`[gemini] answered by ${model} (attempt ${attempt + 1})`);
+        return (Array.isArray(items) ? items : []).map(String).map((l) => l.trim()).filter(Boolean).slice(0, 30);
+      }
+      lastError = `gemini ${model} ${r.status}: ${(await r.text()).slice(0, 200)}`;
+      if (r.status === 503 || r.status === 429 || r.status >= 500) {
+        console.log(`[gemini] ${model} busy (${r.status}), ${attempt < 2 ? 'retrying' : 'trying next model'}…`);
+        if (attempt < 2) await sleep(1000 * (attempt + 1));
+        continue;
+      }
+      if (r.status === 404) break; // model not available on this key: try the next one
+      throw new Error(lastError); // bad key / bad request: no point retrying
+    }
+  }
+  throw Object.assign(new Error(lastError || 'all Gemini models busy'), { status: 503 });
 }
 
 export async function readStrip(imageBase64) {
@@ -183,6 +203,6 @@ const server = createServer(async (req, res) => {
 if (process.argv[1] && import.meta.url.endsWith(process.argv[1].split(/[\\/]/).pop())) {
   server.listen(PORT, () => {
     console.log(`Gemma bridge on http://localhost:${PORT} → ${OLLAMA} (${MODEL})`);
-    console.log(GEMINI_KEY ? `Handwriting (beta): on, via ${GEMINI_MODEL}` : 'Handwriting (beta): off (set GEMINI_API_KEY to enable)');
+    console.log(GEMINI_KEY ? `Gemini (fallback + handwriting): on, models ${GEMINI_MODELS.join(' → ')}` : 'Gemini (fallback + handwriting): off (set GEMINI_API_KEY to enable)');
   });
 }
