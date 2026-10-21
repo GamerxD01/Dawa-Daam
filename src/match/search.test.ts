@@ -96,7 +96,7 @@ describe('search: exact answers', () => {
     ['augmentin', 'Augmentin Duo 625'],
     ['taxim o', 'Taxim-O 200'],
     ['allegra 120', 'Allegra 120'],
-    ['alegra', 'Allegra 120'],
+    ['alegra 120', 'Allegra 120'],
     ['ciplox 500', 'Ciplox 500'],
     ['zerodol p', 'Zerodol P'],
     ['shelcal', 'Shelcal 500'],
@@ -157,6 +157,11 @@ describe('search: asks instead of guessing', () => {
     const r = search(index, 'pantop');
     expect(r.kind === 'didyoumean' || r.kind === 'strength').toBe(true);
     expect(listed(r)).toContain('JA 212');
+  });
+  it('a misspelt brand with two strengths asks which one', () => {
+    const r = search(index, 'alegra');
+    expect(r.kind).toBe('strength');
+    expect(listed(r)).toEqual(['Allegra 120', 'Allegra 180']);
   });
   it('montair alone is not silently Montair LC', () => {
     const r = search(index, 'montair');
