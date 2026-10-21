@@ -7,6 +7,9 @@ const NOISE = new Set([
   'tab', 'tabs', 'tablet', 'tablets', 'cap', 'caps', 'capsule', 'capsules', 'strip', 'of',
   'mg', 'mcg', 'ml', 'ip', 'bp', 'usp', 'film', 'coated', 'syp', 'syrup', 'inj', 'oral',
   'the', 'and', 'x', 'pcs',
+  // words printed on strips that describe the release form or salt, not which medicine it is
+  'gastro', 'resistant', 'prolonged', 'release', 'released', 'sustained', 'extended', 'enteric',
+  'modified', 'controlled', 'delayed', 'hydrochloride', 'hcl', 'sodium', 'each', 'contains', 'eq',
 ]);
 
 /** Lower-case, unify digits and separators, split letter↔digit runs ("dolo650" → "dolo 650"). */
