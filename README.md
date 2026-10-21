@@ -73,7 +73,7 @@ Across all **63 curated brands**, the **median saving is 80%** (range 43–96%).
 | ➕ Pill identifier by imprint | ❌ **Deliberately not built.** There is no reliable open Indian imprint database, and a wrong pill ID is dangerous |
 | Never generate drug information with a language model | ✅ Models only **read text** and **pick from our list**. Every fact shown comes from data we ship |
 | OCR on handwriting is hard: keep typing as the path that always works | ✅ Typing always works. Handwriting is an opt-in beta with extra safeguards |
-| Curate 200 drugs well | ✅ **206 hand-checked rows** (143 Jan Aushadhi products + 63 brands), each brand with a source and date |
+| Curate 200 drugs well | ✅ **212 hand-checked rows** (149 Jan Aushadhi products + 63 brands), each brand with a source and date |
 | Cheap phone, bad signal | ✅ **≈33 KB gzipped** app with the data inside; **works in aeroplane mode**; no web fonts; 48 px+ tap targets |
 | Open source, honest commits | ✅ Apache-2.0, CONTRIBUTING.md, small commits from the build window, CI on every push |
 
@@ -199,7 +199,7 @@ docs/                  DATA.md · GEMMA.md · screenshots · sample printed pres
 ## Limits, honestly
 
 - **Prices are indicative MRPs**, captured by hand on 20–21 Oct 2026. Prices change and pharmacies discount.
-- **Coverage:** 63 brands so far. Molecule search covers all 143 Jan Aushadhi products in the dataset; anything else gets "not in our list yet" and a link to request it.
+- **Coverage:** 63 brands so far. Molecule search covers all 149 Jan Aushadhi products in the dataset; anything else gets "not in our list yet" and a link to request it.
 - **"Same molecule & strength" is not a medical judgement.** Bioequivalence and the decision to switch belong to the doctor and pharmacist.
 - **Gemma misreads** (see the table above), so the patient always confirms. Handwriting is only an opt-in Gemini beta and can be wrong.
 - **Kendra finder** depends on OpenStreetMap coverage, which volunteers build and is incomplete; it needs internet.
