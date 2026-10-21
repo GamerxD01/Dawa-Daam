@@ -43,9 +43,20 @@ Run on real strip photos with:
 npm run gemma:eval -- path/to/photos   # optional expected.csv: file,brand,strength
 ```
 
-| Photo | Seconds | Brand read | Strength read | Notes |
+Six of our own strip photos (phone camera, ordinary light, some with pen marks), Gemma 4 E2B on an RTX 3050 4 GB, 21 Oct 2026:
+
+| Strip | Seconds | Brand read | Strength read | What happened in the app |
 |---|---|---|---|---|
-| _to be filled from our own strip photos during the hackathon_ | | | | |
+| Nutricion-5G (nutraceutical) | 38.6* | ✗ | – | Read only ingredient/storage text → no candidates → "not in our list". Correct: it isn't a medicine |
+| Panced-DSR (pantoprazole 40 + domperidone 30) | 13.4 | ✓ | ✗ | Brand read; strength missed in the lines returned |
+| Giorax-25 (hydroxyzine 25) | 10.3 | ✓ | ✓ | We only carry hydroxyzine 10 mg → "we have 10 mg, not 25" |
+| ?PRET-8 (name covered by pen) | 10.3 | – | – | Read "DPRET-8 DP" → no candidates → asks the user to type |
+| Garyfex-180 (fexofenadine 180) | 9.2 | ✗ | ✓ | Gemma read **"Ganytex-180"**; our fuzzy matcher still offered **Garyfex 180** (score 0.76 → "did you mean"), so the patient confirms ₹175 → ₹37.40 |
+| Lactopen (lactic acid bacillus) | 7.3 | ✓ | – | Composition lines matched Jan Aushadhi 196 |
+
+\* first call includes loading the model onto the GPU; warm calls took 7–13 s.
+
+**Brand read correctly: 3/5 · strength read correctly: 2/5** (photos with an expected value). Gemma alone is not reliable enough to trust, which is exactly why its output is only a hint to our matcher and the patient always confirms. In every case the app either found the right product or said it couldn't. It never showed a wrong medicine. These exact Gemma outputs are kept as regression tests in `src/photo.test.ts`.
 
 ## What it gets wrong (honestly)
 
