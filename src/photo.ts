@@ -21,16 +21,27 @@ export function gemmaUrl(): string | null {
   return location.hostname.endsWith('github.io') ? null : './gemma';
 }
 
-export async function gemmaAvailable(url: string): Promise<boolean> {
+export interface BridgeHealth {
+  ok: boolean;
+  /** handwritten prescriptions enabled on this bridge (Gemini key set by the laptop owner) */
+  handwriting: boolean;
+}
+
+export async function bridgeHealth(url: string): Promise<BridgeHealth> {
   try {
     const ctl = new AbortController();
     const timer = setTimeout(() => ctl.abort(), 2500);
     const r = await fetch(`${url}/health`, { signal: ctl.signal });
     clearTimeout(timer);
-    return r.ok;
+    const j = r.ok ? await r.json().catch(() => ({})) : {};
+    return { ok: r.ok, handwriting: Boolean(r.ok && j.handwriting) };
   } catch {
-    return false;
+    return { ok: false, handwriting: false };
   }
+}
+
+export async function gemmaAvailable(url: string): Promise<boolean> {
+  return (await bridgeHealth(url)).ok;
 }
 
 /** Downscale to ≤1024 px and JPEG-encode: smaller upload on a weak connection, faster on a small GPU. */
@@ -63,11 +74,11 @@ export function candidatesFromLines(lines: string[], index: Index, limit = 5): H
 }
 
 /** Gemma job 1 only: the printed text, line by line. */
-export async function readLines(file: File, maxSide = 1024): Promise<string[]> {
+export async function readLines(file: File, maxSide = 1024, mode: 'printed' | 'handwritten' = 'printed'): Promise<string[]> {
   const url = gemmaUrl();
   if (!url) throw new Error('no gemma server');
   const image = await toJpegBase64(file, maxSide);
-  const read = await fetch(`${url}/read`, {
+  const read = await fetch(`${url}/${mode === 'handwritten' ? 'read-handwritten' : 'read'}`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ image }),
