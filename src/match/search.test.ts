@@ -53,6 +53,12 @@ describe('data integrity', () => {
   });
 });
 
+describe('every curated brand is found by its own name', () => {
+  it.each(data.brands.map((b) => [b.name] as const))('%s', (name) => {
+    expect(matched(search(index, name))).toBe(name);
+  });
+});
+
 // The bad-input suite: what real people type at a chemist counter.
 describe('search: exact answers', () => {
   it.each([
