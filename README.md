@@ -44,8 +44,10 @@ npm run build      # production build in dist/
 
 ```bash
 ollama pull gemma4:e2b
-npm run gemma      # bridge on http://localhost:8000; the dev server proxies /gemma to it
+npm run demo       # starts the Gemma bridge + the app and prints the address for your phone
 ```
+
+(Or run them separately: `npm run gemma` for the bridge on :8000, and `npm run dev`, which proxies `/gemma` to it.)
 
 The 📷 button appears only when the bridge is reachable. Typing always works without it.
 
