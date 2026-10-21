@@ -15,7 +15,7 @@ const MODEL = process.env.GEMMA_MODEL ?? 'gemma4:e2b';
 const MAX_BODY = 6 * 1024 * 1024;
 
 export const READ_PROMPT =
-  'You transcribe printed text from a photo of a medicine strip or box. ' +
+  'You transcribe printed text from a photo of a medicine strip, a medicine box or a printed prescription. ' +
   'Return every line of printed text exactly as printed, top to bottom: brand name, composition, strength. ' +
   'Do not add, correct, translate, explain or guess anything. If nothing is readable, return an empty list.';
 

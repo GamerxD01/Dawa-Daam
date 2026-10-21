@@ -62,10 +62,11 @@ export function candidatesFromLines(lines: string[], index: Index, limit = 5): H
   return [...pool.values()].sort((a, b) => b.score - a.score).slice(0, limit);
 }
 
-export async function readStrip(file: File, index: Index): Promise<{ lines: string[]; hit: Hit | null }> {
+/** Gemma job 1 only: the printed text, line by line. */
+export async function readLines(file: File, maxSide = 1024): Promise<string[]> {
   const url = gemmaUrl();
   if (!url) throw new Error('no gemma server');
-  const image = await toJpegBase64(file);
+  const image = await toJpegBase64(file, maxSide);
   const read = await fetch(`${url}/read`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -73,6 +74,13 @@ export async function readStrip(file: File, index: Index): Promise<{ lines: stri
   });
   if (!read.ok) throw new Error(`read failed ${read.status}`);
   const { lines } = (await read.json()) as { lines: string[] };
+  return lines ?? [];
+}
+
+export async function readStrip(file: File, index: Index): Promise<{ lines: string[]; hit: Hit | null }> {
+  const url = gemmaUrl();
+  if (!url) throw new Error('no gemma server');
+  const lines = await readLines(file);
   const candidates = candidatesFromLines(lines ?? [], index);
   if (!candidates.length) return { lines, hit: null };
 
