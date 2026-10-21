@@ -16,13 +16,16 @@ type Row = RxRow;
  * or, opt-in beta, read off a HANDWRITTEN one by Google Gemini (cloud, only with the user's consent).
  * Handwriting can be misread, so its lines are never added in bulk: each medicine needs its own tap.
  */
-export function Prescription({ ctx, index, list, onAdd, onDone, startHandwritten = false }: {
+export function Prescription({ ctx, index, list, onAdd, onDone, onBack, startHandwritten = false, initialPhoto }: {
   ctx: Ctx;
   startHandwritten?: boolean;
+  /** a photo chosen from the home screen's Photo menu */
+  initialPhoto?: { file: File; mode: 'printed' | 'handwritten' } | null;
   index: Index;
   list: string[];
   onAdd: (hits: Hit[]) => void;
   onDone: () => void;
+  onBack: () => void;
 }) {
   const { t } = ctx;
   const [text, setText] = useState('');
@@ -34,10 +37,12 @@ export function Prescription({ ctx, index, list, onAdd, onDone, startHandwritten
   const [consent, setConsent] = useState(startHandwritten);
   const [source, setSource] = useState<'typed' | 'printed' | 'handwritten'>('typed');
   const [hwFailed, setHwFailed] = useState(false);
+  const [lastPrinted, setLastPrinted] = useState<File | null>(null);
 
   useEffect(() => {
     const url = gemmaUrl();
     if (url) bridgeHealth(url).then(setHealth);
+    if (initialPhoto) onPhoto(initialPhoto.file, initialPhoto.mode);
   }, []);
 
   const check = (src = text, fromPhoto = false) => {
@@ -46,8 +51,9 @@ export function Prescription({ ctx, index, list, onAdd, onDone, startHandwritten
     setRows(keep);
   };
 
-  const onPhoto = async (file?: File, mode: 'printed' | 'handwritten' = 'printed') => {
+  const onPhoto = async (file?: File, mode: 'printed' | 'handwritten' | 'gemini' = 'printed') => {
     if (!file) return;
+    if (mode === 'printed') setLastPrinted(file);
     setReading(true);
     setHandwritten(false);
     setHwFailed(false);
@@ -55,7 +61,7 @@ export function Prescription({ ctx, index, list, onAdd, onDone, startHandwritten
     try {
       const lines = await readLines(file, mode === 'handwritten' ? 1600 : 1400, mode);
       const joined = lines.join('\n');
-      setSource(mode);
+      setSource(mode === 'handwritten' ? 'handwritten' : 'printed');
       setText(joined);
       check(joined, true);
       const nothing = !lines.length || splitPrescription(joined).every((l) => search(index, l).kind === 'none');
@@ -111,7 +117,16 @@ export function Prescription({ ctx, index, list, onAdd, onDone, startHandwritten
       )}
       <button class="big primary" onClick={() => check()} disabled={!text.trim()}>{t.rxCheck}</button>
 
-      {handwritten && <p class="warn">{t.rxHandwriting}</p>}
+      {handwritten && health.handwriting && lastPrinted ? (
+        <div class="consent">
+          <b>{t.fallbackTitleRx}</b>
+          <p class="small">{t.fallbackBody}</p>
+          <div class="row">
+            <button class="big primary" onClick={() => { const f = lastPrinted; setLastPrinted(null); onPhoto(f, 'gemini'); }}>{t.fallbackGo}</button>
+            <button class="big secondary" onClick={() => setHandwritten(false)}>{t.cancel}</button>
+          </div>
+        </div>
+      ) : handwritten && <p class="warn">{t.rxHandwriting}</p>}
       {hwFailed && <p class="warn">{t.hwFailed}</p>}
       {source === 'handwritten' && rows && <p class="warn">⚠ {t.hwWarn}</p>}
       {rows && (
@@ -126,7 +141,7 @@ export function Prescription({ ctx, index, list, onAdd, onDone, startHandwritten
         </>
       )}
       <p class="warn small">⚠ {t.rxNotJudge}</p>
-      <button class="big secondary" onClick={onDone}>← {t.back}</button>
+      <button class="big secondary" onClick={onBack}>← {t.back}</button>
     </section>
   );
 }
