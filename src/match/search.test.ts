@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import raw from '../generated/drugs.json';
 import { buildIndex, search } from './search';
-import { compositionKey, equivalentGroup, groupGenerics, saving } from './equivalence';
+import { compositionKey, equivalentGroup, groupGenerics, sameSaltOtherForm, saving } from './equivalence';
 import { nameSimilarity, normalise, parseQuery, phonetic } from './text';
 import type { DrugData, Hit, SearchResult } from './types';
 
@@ -35,10 +35,15 @@ describe('text helpers', () => {
 
 describe('data integrity', () => {
   const groups = groupGenerics(data.generics);
-  it.each(data.brands.map((b) => [b.name, b] as const))('%s maps to its expected Jan Aushadhi code', (_n, b) => {
+  it.each(data.brands.filter((b) => b.expectedJa !== null).map((b) => [b.name, b] as const))('%s maps to its expected Jan Aushadhi code', (_n, b) => {
     const g = equivalentGroup(b, groups);
     expect(g, `${b.name} has no equivalent group (${compositionKey(b.comp, b.form)})`).not.toBeNull();
     expect(g!.items.map((i) => i.code)).toContain(b.expectedJa);
+  });
+  it('a brand sold only in another form is never an exact match, but the same salt is found', () => {
+    const cyclomune = data.brands.find((b) => b.name === 'Cyclomune 50')!;
+    expect(equivalentGroup(cyclomune, groups)).toBeNull();
+    expect(sameSaltOtherForm(cyclomune, groups)!.items[0].code).toBe(850);
   });
   it('picks the cheapest of duplicate Jan Aushadhi listings', () => {
     const thyronorm = data.brands.find((b) => b.name === 'Thyronorm 50')!;

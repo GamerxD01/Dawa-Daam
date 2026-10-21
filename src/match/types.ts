@@ -62,7 +62,7 @@ export interface GenericGroup {
 }
 
 export type Hit =
-  | { type: 'brand'; brand: Brand; group: GenericGroup | null; score: number }
+  | { type: 'brand'; brand: Brand; group: GenericGroup | null; otherForm?: GenericGroup | null; score: number }
   | { type: 'generic'; group: GenericGroup; brands: Brand[]; score: number };
 
 export type SearchResult =

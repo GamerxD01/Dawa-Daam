@@ -32,6 +32,22 @@ export function equivalentGroup(brand: Brand, groups: Map<string, GenericGroup>)
   return groups.get(compositionKey(brand.comp, brand.form)) ?? null;
 }
 
+const ORAL_SOLID = new Set<Form>(['tablet', 'capsule']);
+
+/**
+ * Not an exact match, but worth telling the patient: same molecules, strengths and release, sold by
+ * Jan Aushadhi as the other oral solid form (a capsule instead of a tablet). Shown as information only.
+ */
+export function sameSaltOtherForm(brand: Brand, groups: Map<string, GenericGroup>): GenericGroup | null {
+  if (!ORAL_SOLID.has(brand.form)) return null;
+  for (const other of ORAL_SOLID) {
+    if (other === brand.form) continue;
+    const g = groups.get(compositionKey(brand.comp, other));
+    if (g) return g;
+  }
+  return null;
+}
+
 export interface Saving {
   /** brand price for the brand's own pack */
   brandPrice: number;

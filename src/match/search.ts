@@ -1,4 +1,4 @@
-import { compositionKey, equivalentGroup, groupGenerics, moleculeSetKey } from './equivalence';
+import { compositionKey, equivalentGroup, groupGenerics, moleculeSetKey, sameSaltOtherForm } from './equivalence';
 import { nameSimilarity, parseQuery } from './text';
 import type { Brand, DrugData, GenericGroup, Hit, SearchResult } from './types';
 
@@ -41,7 +41,7 @@ export function buildIndex(data: DrugData): Index {
   for (const b of data.brands) {
     const names = [b.name, ...b.aliases].map(parseQuery);
     entries.push({
-      hit: { type: 'brand', brand: b, group: equivalentGroup(b, groups) },
+      hit: { type: 'brand', brand: b, group: equivalentGroup(b, groups), otherForm: equivalentGroup(b, groups) ? null : sameSaltOtherForm(b, groups) },
       keys: uniq(names.map((n) => n.name)),
       numbers: new Set([...names.flatMap((n) => n.numbers), ...compNumbers(b.comp)]),
       label: b.name,
