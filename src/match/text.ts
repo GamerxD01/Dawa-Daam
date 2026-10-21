@@ -10,6 +10,8 @@ const NOISE = new Set([
   // words printed on strips that describe the release form or salt, not which medicine it is
   'gastro', 'resistant', 'prolonged', 'release', 'released', 'sustained', 'extended', 'enteric',
   'modified', 'controlled', 'delayed', 'hydrochloride', 'hcl', 'sodium', 'each', 'contains', 'eq',
+  // prescription table headers
+  'medicine', 'medicines', 'dose', 'dosage', 'duration', 'qty', 'quantity',
 ]);
 
 /** Lower-case, unify digits and separators, split letter↔digit runs ("dolo650" → "dolo 650"). */
@@ -34,7 +36,9 @@ export function parseQuery(input: string): ParsedQuery {
   const words = normalise(input).split(' ').filter(Boolean);
   const numbers: number[] = [];
   const name: string[] = [];
-  for (const w of words) {
+  for (const raw of words) {
+    const w = raw.replace(/^\.+|\.+$/g, ''); // "Tab." → "tab"
+    if (!w) continue;
     if (/^\d+(\.\d+)?$/.test(w)) numbers.push(Number(w));
     else if (/^\d+k$/.test(w)) numbers.push(Number(w.slice(0, -1)) * 1000);
     else if (w === '.' ) continue;
