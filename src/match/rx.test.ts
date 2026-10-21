@@ -69,4 +69,20 @@ describe('whole prescription', () => {
     const names = r.kind === 'didyoumean' ? r.hits.map((h) => (h.type === 'brand' ? h.brand.name : h.group.key)) : [];
     expect(names).toEqual(expect.arrayContaining(['Pan 40', 'Pan D']));
   });
+
+  // Exactly what Gemini returned for the real handwritten prescription we demo
+  it('real handwritten prescription: cyclosporine is found, unknown brands are not invented', () => {
+    const { rows } = prescriptionRows(['Cap Cyclomune 50mg', 'Tab [?]', 'Tab Nypid 10', 'Cap Moyren'].join('\n'), index, true);
+    const r0 = rows[0].result;
+    expect(r0.kind === 'match' && r0.hit.type === 'brand' && r0.hit.brand.name).toBe('Cyclomune 50');
+    expect(r0.kind === 'match' && r0.hit.type === 'brand' && r0.hit.otherForm?.items[0].code).toBe(850);
+    expect(rows.slice(1).map((r) => r.result.kind)).toEqual(['none', 'none', 'none']);
+  });
+
+  // A handwritten demo prescription made only of medicines we carry
+  it('demo handwritten prescription: every line matches', () => {
+    const { rows } = prescriptionRows(['Tab Telma H 40', 'Cap Pan D', 'Tab Dolo 650', 'Tab Montair LC', 'Tab Shelcal 500'].join('\n'), index, true);
+    expect(rows.map((r) => (r.result.kind === 'match' && r.result.hit.type === 'brand' ? r.result.hit.brand.name : r.result.kind)))
+      .toEqual(['Telma H', 'Pan D', 'Dolo 650', 'Montair LC', 'Shelcal 500']);
+  });
 });
