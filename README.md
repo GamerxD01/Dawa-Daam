@@ -19,7 +19,9 @@ Built for the patient at the chemist counter: Hindi first, one hand, a cheap And
 | ✍️ **Tolerates bad input** | misspellings (`lirika`, `rozuvas`, `alegra`), half-read words (`pantop`), missing strengths, `DOLO-650 TAB`, Devanagari digits (`६५०`) |
 | 💰 **The saving is the headline** | brand price → Jan Aushadhi price at the **same pack size**, plus per-tablet prices |
 | 🛑 **Never guesses** | ambiguous input → "Did you mean?"; no strength → "Which strength?"; strength we don't have → "We have Amaryl 1, not 2" |
-| 🧾 **Whole prescription** | add several medicines, see the total saving |
+| 🧾 **Whole prescription at once** | type, paste or photograph a **printed** prescription; dosage like `1-0-1 x 5 days` is stripped (never interpreted) and every line is matched, with a total saving |
+| 🎤 **Voice** | say "Dolo six fifty" and it searches `dolo 650` (phone's built-in speech recognition, Indian English) |
+| 📍 **Nearest Jan Aushadhi Kendra** | your location → [OpenStreetMap](https://www.openstreetmap.org) (Overpass) → Kendras within 15 km on a map, with directions; Google Maps fallback |
 | 🖨 **Counter sheet** | bilingual printable / PDF / WhatsApp sheet to hand to the doctor or chemist |
 | 📷 **Photo of a strip (optional)** | Gemma 4 running on your own laptop reads the printed name; you confirm |
 | 📴 **Offline** | the whole app and data (~23 KB gzipped) are cached by a service worker |
@@ -36,7 +38,7 @@ git clone https://github.com/GamerxD01/Dawa-Daam.git
 cd Dawa-Daam
 npm install
 npm run dev        # http://localhost:5173 — on your phone use http://<laptop-ip>:5173
-npm test           # 119 tests, including the bad-input suite
+npm test           # 142 tests, including the bad-input suite
 npm run build      # production build in dist/
 ```
 
@@ -97,6 +99,9 @@ public/sw.js         offline service worker
 - **Indicative prices.** Brand MRPs were captured by hand from public pharmacy listings on the date shown on each card; Jan Aushadhi prices come from the PMBI product list. Prices change.
 - **Coverage.** 37 brands are curated so far. Molecule search covers all 141 Jan Aushadhi products in the dataset. Anything else gets an honest "not in our list yet".
 - **Salts** (e.g. metoprolol succinate vs tartrate) are not distinguished in the Jan Aushadhi list; noted per row where it matters.
+- **Handwritten prescriptions** are not read (the app says so and asks the user to type). The app never judges whether a medicine or dose is right; only a doctor or pharmacist can.
+- **Kendra finder** depends on OpenStreetMap coverage, which is volunteer-built and incomplete; it needs internet (the rest of the app doesn't).
+- **No pill identifier by imprint:** there is no reliable open Indian imprint database, and a wrong pill ID is dangerous.
 - **Rows marked unverified** (e.g. a release type not stated on the source page) show a warning on the card.
 
 ## Contributing
@@ -107,6 +112,7 @@ Adding a medicine is one CSV row with a source link. See [CONTRIBUTING.md](CONTR
 
 - **Data:** [Pradhan Mantri Bhartiya Janaushadhi Pariyojana (PMBI)](https://janaushadhi.gov.in) product list and MRPs. Brand MRPs: public listings on [Truemeds](https://truemeds.in), [PharmEasy](https://pharmeasy.in) and [1mg](https://www.1mg.com) (URL and date per row in `data/src/brands.csv`).
 - **Model:** [Gemma 4](https://ai.google.dev/gemma) by Google DeepMind (Apache-2.0), served with [Ollama](https://ollama.com) (MIT).
+- **Maps:** © [OpenStreetMap](https://www.openstreetmap.org/copyright) contributors (ODbL), queried through the [Overpass API](https://overpass-api.de); map drawn with [Leaflet](https://leafletjs.com) (BSD-2-Clause).
 - **Libraries:** [Preact](https://preactjs.com) (MIT), [Vite](https://vite.dev) (MIT), [Vitest](https://vitest.dev) (MIT), [TypeScript](https://www.typescriptlang.org) (Apache-2.0). UI screenshots and tests use [Playwright](https://playwright.dev) (Apache-2.0).
 - **Fonts:** none downloaded. The system's Devanagari fonts (Noto Sans Devanagari on Android) keep it light and offline.
 - **AI assistance:** code and docs were written with help from Claude (Anthropic) during the hackathon window. Gemma 4 is the model inside the product.
