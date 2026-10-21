@@ -13,6 +13,9 @@ const PORT = Number(process.env.PORT ?? 8000);
 const OLLAMA = (process.env.OLLAMA_URL ?? 'http://localhost:11434').replace(/\/$/, '');
 const MODEL = process.env.GEMMA_MODEL ?? 'gemma4:e2b';
 const MAX_BODY = 6 * 1024 * 1024;
+// Optional, off by default: handwritten prescriptions via Google Gemini (cloud). Only if the laptop owner sets a key.
+const GEMINI_KEY = process.env.GEMINI_API_KEY ?? '';
+const GEMINI_MODEL = process.env.GEMINI_MODEL ?? 'gemini-3.6-flash';
 
 export const READ_PROMPT =
   'You transcribe printed text from a photo of a medicine strip, a medicine box or a printed prescription. ' +
@@ -41,6 +44,33 @@ async function ollamaChat(messages, format) {
   if (!r.ok) throw new Error(`ollama ${r.status}: ${await r.text()}`);
   const j = await r.json();
   return JSON.parse(j.message?.content ?? '{}');
+}
+
+export const HANDWRITING_PROMPT =
+  'This is a photo of a doctor\'s handwritten prescription. Transcribe each written line exactly as written, top to bottom, ' +
+  'especially medicine names and strengths. Do not correct spellings, do not expand abbreviations, do not add any medicine ' +
+  'that is not clearly written. If a word is unclear, write [?] in its place instead of guessing. Do not give any advice.';
+
+/** Handwriting only, via Gemini. Same contract as readStrip: lines of text, never drug facts. */
+export async function readHandwritten(imageBase64) {
+  if (!GEMINI_KEY) throw Object.assign(new Error('handwriting reading is not enabled (no GEMINI_API_KEY)'), { status: 501 });
+  const r = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'x-goog-api-key': GEMINI_KEY },
+    body: JSON.stringify({
+      contents: [{ parts: [{ text: HANDWRITING_PROMPT }, { inline_data: { mime_type: 'image/jpeg', data: imageBase64 } }] }],
+      generationConfig: {
+        temperature: 0,
+        responseMimeType: 'application/json',
+        responseSchema: { type: 'OBJECT', properties: { lines: { type: 'ARRAY', items: { type: 'STRING' } } }, required: ['lines'] },
+      },
+    }),
+  });
+  if (!r.ok) throw new Error(`gemini ${r.status}: ${(await r.text()).slice(0, 300)}`);
+  const j = await r.json();
+  const text = j.candidates?.[0]?.content?.parts?.map((p) => p.text ?? '').join('') ?? '{}';
+  const out = JSON.parse(text);
+  return (Array.isArray(out.lines) ? out.lines : []).map(String).map((l) => l.trim()).filter(Boolean).slice(0, 30);
 }
 
 export async function readStrip(imageBase64) {
@@ -91,7 +121,7 @@ const server = createServer(async (req, res) => {
     if (req.method === 'GET' && path === '/health') {
       const tags = await (await fetch(`${OLLAMA}/api/tags`)).json();
       const ok = (tags.models ?? []).some((m) => m.name === MODEL || m.model === MODEL);
-      return send(res, ok ? 200 : 503, { ok, model: MODEL, hint: ok ? undefined : `run: ollama pull ${MODEL}` });
+      return send(res, ok ? 200 : 503, { ok, model: MODEL, handwriting: Boolean(GEMINI_KEY), hint: ok ? undefined : `run: ollama pull ${MODEL}` });
     }
     if (req.method === 'POST' && path === '/read') {
       const { image } = await body(req);
@@ -100,6 +130,14 @@ const server = createServer(async (req, res) => {
       const lines = await readStrip(image);
       console.log(`[read] ${lines.length} lines in ${Date.now() - t0} ms: ${lines.slice(0, 3).join(' | ')}`);
       return send(res, 200, { lines });
+    }
+    if (req.method === 'POST' && path === '/read-handwritten') {
+      const { image } = await body(req);
+      if (typeof image !== 'string' || image.length < 100) return send(res, 400, { error: 'image (base64 JPEG) required' });
+      const t0 = Date.now();
+      const lines = await readHandwritten(image);
+      console.log(`[handwritten] ${lines.length} lines in ${Date.now() - t0} ms via ${GEMINI_MODEL}`);
+      return send(res, 200, { lines, model: GEMINI_MODEL });
     }
     if (req.method === 'POST' && path === '/pick') {
       const { lines, candidates } = await body(req);
@@ -116,5 +154,8 @@ const server = createServer(async (req, res) => {
 });
 
 if (process.argv[1] && import.meta.url.endsWith(process.argv[1].split(/[\\/]/).pop())) {
-  server.listen(PORT, () => console.log(`Gemma bridge on http://localhost:${PORT} → ${OLLAMA} (${MODEL})`));
+  server.listen(PORT, () => {
+    console.log(`Gemma bridge on http://localhost:${PORT} → ${OLLAMA} (${MODEL})`);
+    console.log(GEMINI_KEY ? `Handwriting (beta): on, via ${GEMINI_MODEL}` : 'Handwriting (beta): off (set GEMINI_API_KEY to enable)');
+  });
 }
