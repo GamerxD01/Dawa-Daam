@@ -3,6 +3,7 @@ import raw from './generated/drugs.json';
 import { strings, type Lang } from './i18n';
 import { buildIndex, search } from './match/search';
 import type { DrugData, Hit } from './match/types';
+import { bridgeHealth, gemmaUrl } from './photo';
 import { hitId, load, save } from './store';
 import { Basket, lineFor } from './ui/Basket';
 import { Choices } from './ui/Choices';
@@ -19,7 +20,7 @@ const index = buildIndex(data);
 const molecules = new Map(data.molecules.map((m) => [m.name, m]));
 const byId = new Map(index.entries.map((e) => [hitId({ ...e.hit, score: 1 } as Hit), { ...e.hit, score: 1 } as Hit]));
 
-type View = 'search' | 'list' | 'sheet' | 'rx' | 'kendra';
+type View = 'search' | 'list' | 'sheet' | 'rx' | 'rx-hw' | 'kendra';
 
 export function App() {
   const [lang, setLang] = useState<Lang>(() => load<Lang>('lang', 'hi'));
@@ -29,6 +30,11 @@ export function App() {
   const [list, setList] = useState<string[]>(() => load<string[]>('list', []).filter((id) => byId.has(id)));
   const [online, setOnline] = useState(typeof navigator === 'undefined' ? true : navigator.onLine);
   const input = useRef<HTMLInputElement>(null);
+  const [handwriting, setHandwriting] = useState(false);
+  useEffect(() => {
+    const url = gemmaUrl();
+    if (url) bridgeHealth(url).then((h) => setHandwriting(h.handwriting));
+  }, []);
 
   useEffect(() => save('lang', lang), [lang]);
   useEffect(() => save('list', list), [list]);
@@ -78,8 +84,8 @@ export function App() {
       <main>
         {view === 'kendra' ? (
           <Kendras ctx={ctx} onBack={() => setView('search')} />
-        ) : view === 'rx' ? (
-          <Prescription ctx={ctx} index={index} list={list}
+        ) : view === 'rx' || view === 'rx-hw' ? (
+          <Prescription key={view} ctx={ctx} index={index} list={list} startHandwritten={view === 'rx-hw'}
             onAdd={(hits) => setList((l) => [...l, ...hits.map(hitId).filter((id) => !l.includes(id))])}
             onDone={() => setView('list')} />
         ) : view === 'list' ? (
@@ -112,6 +118,9 @@ export function App() {
               <Voice ctx={ctx} compact onText={(s) => { setQuery(s); setPicked(null); }} />
               <Photo ctx={ctx} index={index} onFound={(h) => { setPicked(h); setQuery(h.type === 'brand' ? h.brand.name : ''); }} />
               <button class="tile" onClick={() => setView('rx')}><span class="tile-icon" aria-hidden="true">📝</span>{t.tileRx}</button>
+              {handwriting && (
+                <button class="tile" onClick={() => setView('rx-hw')}><span class="tile-icon" aria-hidden="true">✍️</span>{t.tileHandwritten}</button>
+              )}
               <button class="tile" onClick={() => setView('kendra')}><span class="tile-icon" aria-hidden="true">📍</span>{t.tileKendra}</button>
             </div>
 

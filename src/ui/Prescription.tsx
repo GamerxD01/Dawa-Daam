@@ -16,8 +16,9 @@ type Row = RxRow;
  * or, opt-in beta, read off a HANDWRITTEN one by Google Gemini (cloud, only with the user's consent).
  * Handwriting can be misread, so its lines are never added in bulk: each medicine needs its own tap.
  */
-export function Prescription({ ctx, index, list, onAdd, onDone }: {
+export function Prescription({ ctx, index, list, onAdd, onDone, startHandwritten = false }: {
   ctx: Ctx;
+  startHandwritten?: boolean;
   index: Index;
   list: string[];
   onAdd: (hits: Hit[]) => void;
@@ -30,7 +31,7 @@ export function Prescription({ ctx, index, list, onAdd, onDone }: {
   const [health, setHealth] = useState<BridgeHealth>({ ok: false, handwriting: false });
   const [reading, setReading] = useState(false);
   const [handwritten, setHandwritten] = useState(false);
-  const [consent, setConsent] = useState(false);
+  const [consent, setConsent] = useState(startHandwritten);
   const [source, setSource] = useState<'typed' | 'printed' | 'handwritten'>('typed');
   const [hwFailed, setHwFailed] = useState(false);
 
