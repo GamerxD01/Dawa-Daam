@@ -67,6 +67,8 @@ function send(res, code, body) {
     'Access-Control-Allow-Origin': '*',
     'Access-Control-Allow-Headers': 'Content-Type',
     'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+    // lets the public GitHub Pages site call this bridge on the user's own laptop (Chrome local-network access)
+    'Access-Control-Allow-Private-Network': 'true',
   });
   res.end(JSON.stringify(body));
 }
