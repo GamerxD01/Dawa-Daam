@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'preact/hooks';
 import type { Index } from '../match/search';
 import type { Hit } from '../match/types';
-import { gemmaAvailable, gemmaUrl, readStrip } from '../photo';
+import { bridgeHealth, gemmaUrl, readStrip, type BridgeHealth } from '../photo';
 import type { Ctx } from './ctx';
 
 /**
@@ -13,19 +13,27 @@ export function Photo({ ctx, index, onFound }: { ctx: Ctx; index: Index; onFound
   const [state, setState] = useState<'idle' | 'busy' | 'confirm' | 'failed'>('idle');
   const [seen, setSeen] = useState<string[]>([]);
   const [candidate, setCandidate] = useState<Hit | null>(null);
-  const [available, setAvailable] = useState(false);
+  const [health, setHealth] = useState<BridgeHealth>({ ok: false, handwriting: false });
+  const [file, setFile] = useState<File | null>(null);
+  const [reader, setReader] = useState<'printed' | 'gemini'>('printed');
+  const [offer, setOffer] = useState(false);
   const { t } = ctx;
   useEffect(() => {
     const url = gemmaUrl();
-    if (url) gemmaAvailable(url).then(setAvailable);
+    if (url) bridgeHealth(url).then(setHealth);
   }, []);
-  if (!available) return null;
+  if (!health.ok) return null;
+  // Gemini fallback is offered only if the bridge owner enabled it, and only after Gemma tried first.
+  const canFallback = health.handwriting && reader === 'printed' && file !== null;
 
-  const onFile = async (file: File | undefined) => {
-    if (!file) return;
+  const onFile = async (f: File | undefined, mode: 'printed' | 'gemini' = 'printed') => {
+    if (!f) return;
+    setFile(f);
+    setReader(mode);
+    setOffer(false);
     setState('busy');
     try {
-      const r = await readStrip(file, index);
+      const r = await readStrip(f, index, mode);
       setSeen(r.lines);
       if (r.hit) {
         setCandidate(r.hit);
@@ -45,16 +53,26 @@ export function Photo({ ctx, index, onFound }: { ctx: Ctx; index: Index; onFound
       </label>
       {state === 'confirm' && candidate && (
         <div class="card confirm">
-          <p class="muted small">{t.photoSeen}: “{seen.slice(0, 4).join(' · ')}”</p>
+          <p class="muted small">{reader === 'gemini' ? t.readByGemini : t.readByGemma} · {t.photoSeen}: “{seen.slice(0, 4).join(' · ')}”</p>
           <h2 class="card-title">{t.photoConfirm}</h2>
           <p class="choice-title">{candidate.type === 'brand' ? candidate.brand.name : candidate.group.items[0].name}</p>
           <div class="row">
             <button class="big primary" onClick={() => { onFound(candidate); setState('idle'); }}>{t.yes}</button>
-            <button class="big secondary" onClick={() => setState('idle')}>{t.noType}</button>
+            <button class="big secondary" onClick={() => (canFallback ? setOffer(true) : setState('idle'))}>{t.noType}</button>
           </div>
         </div>
       )}
-      {state === 'failed' && (
+      {canFallback && (offer || state === 'failed') && (
+        <div class="consent">
+          <b>{t.fallbackTitle}</b>
+          <p class="small">{t.fallbackBody}</p>
+          <div class="row">
+            <button class="big primary" onClick={() => onFile(file ?? undefined, 'gemini')}>{t.fallbackGo}</button>
+            <button class="big secondary" onClick={() => { setOffer(false); setState('idle'); }}>{t.cancel}</button>
+          </div>
+        </div>
+      )}
+      {state === 'failed' && !canFallback && (
         <p class="warn">
           {t.photoFailed}
           {seen.length > 0 && <span class="muted small"> ({t.photoSeen}: “{seen.slice(0, 3).join(' · ')}”)</span>}

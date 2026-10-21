@@ -74,11 +74,15 @@ export function candidatesFromLines(lines: string[], index: Index, limit = 5): H
 }
 
 /** Gemma job 1 only: the printed text, line by line. */
-export async function readLines(file: File, maxSide = 1024, mode: 'printed' | 'handwritten' = 'printed'): Promise<string[]> {
+/** printed = local Gemma · gemini = cloud fallback for strips · handwritten = cloud, handwriting prompt */
+export type ReadMode = 'printed' | 'gemini' | 'handwritten';
+const ENDPOINT: Record<ReadMode, string> = { printed: 'read', gemini: 'read-gemini', handwritten: 'read-handwritten' };
+
+export async function readLines(file: File, maxSide = 1024, mode: ReadMode = 'printed'): Promise<string[]> {
   const url = gemmaUrl();
   if (!url) throw new Error('no gemma server');
   const image = await toJpegBase64(file, maxSide);
-  const read = await fetch(`${url}/${mode === 'handwritten' ? 'read-handwritten' : 'read'}`, {
+  const read = await fetch(`${url}/${ENDPOINT[mode]}`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ image }),
@@ -88,10 +92,11 @@ export async function readLines(file: File, maxSide = 1024, mode: 'printed' | 'h
   return lines ?? [];
 }
 
-export async function readStrip(file: File, index: Index): Promise<{ lines: string[]; hit: Hit | null }> {
+export async function readStrip(file: File, index: Index, mode: 'printed' | 'gemini' = 'printed'): Promise<{ lines: string[]; hit: Hit | null }> {
   const url = gemmaUrl();
   if (!url) throw new Error('no gemma server');
-  const lines = await readLines(file);
+  // Whichever model read the text, the local Gemma still makes the pick from OUR candidates.
+  const lines = await readLines(file, 1024, mode);
   const candidates = candidatesFromLines(lines ?? [], index);
   if (!candidates.length) return { lines, hit: null };
 
