@@ -45,7 +45,8 @@ export function Prescription({ ctx, index, list, onAdd, onDone, onBack, startHan
     if (initialPhoto) onPhoto(initialPhoto.file, initialPhoto.mode);
   }, []);
 
-  const check = (src = text, fromPhoto = false) => {
+  // After a photo, keep skipping non-medicine lines even when the patient edits the text and checks again.
+  const check = (src = text, fromPhoto = source !== 'typed') => {
     const { rows: keep, ignored: skipped } = prescriptionRows(src, index, fromPhoto);
     setIgnored(skipped);
     setRows(keep);
@@ -85,7 +86,7 @@ export function Prescription({ ctx, index, list, onAdd, onDone, onBack, startHan
         rows={5}
         value={text}
         placeholder={'Dolo 650 1-0-1\nPan 40 before breakfast\nTelma H 40'}
-        onInput={(e) => setText((e.target as HTMLTextAreaElement).value)}
+        onInput={(e) => { const v = (e.target as HTMLTextAreaElement).value; setText(v); if (!v.trim()) setSource('typed'); }}
       />
       <Voice ctx={ctx} onText={(s) => { const next = text ? `${text}\n${s}` : s; setText(next); check(next); }} />
       {health.ok && (
@@ -182,7 +183,7 @@ function RxRow({ row, ctx, list, onAdd }: { row: Row; ctx: Ctx; list: string[]; 
   }
   const msg = r.kind === 'none' && r.reason === 'strength-unavailable'
     ? t.strengthNotFound(r.name ?? '', r.requested?.join(' / ') ?? '')
-    : t.notFound;
+    : row.line.includes('[?]') ? t.hwTypeIt : t.notFound;
   return (
     <li class="rx-row no">
       <div class="rx-line">“{row.line}”</div>
