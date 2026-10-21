@@ -47,9 +47,13 @@ async function ollamaChat(messages, format) {
 }
 
 export const HANDWRITING_PROMPT =
-  'This is a photo of a doctor\'s handwritten prescription. Transcribe each written line exactly as written, top to bottom, ' +
-  'especially medicine names and strengths. Do not correct spellings, do not expand abbreviations, do not add any medicine ' +
-  'that is not clearly written. If a word is unclear, write [?] in its place instead of guessing. Do not give any advice.';
+  'This is a photo of a doctor\'s handwritten prescription. List ONLY the medicines that are prescribed, one item per medicine, ' +
+  'each as written: the form if written (Tab, Cap, Syp, Inj), the medicine name and its strength (e.g. "Cap Cyclomune 50mg", ' +
+  '"Tab Nypid 10"). If the strength is written on the next line, join it to that medicine. ' +
+  'Do NOT include the patient\'s name, age, sex, date, diagnosis, doctor or clinic details, advice, or dosage timings ' +
+  '(1-0-1, morning, night, after food, सुबह, शाम, number of days). ' +
+  'Copy spellings exactly as written: do not correct them, do not expand abbreviations, and never add a medicine that is not clearly written. ' +
+  'If a word is unreadable, write [?] in its place instead of guessing. Do not give any advice.';
 
 export const GEMINI_STRIP_PROMPT =
   'You transcribe printed text from a photo of a medicine strip, box or printed prescription. Return every line of printed ' +
@@ -58,7 +62,7 @@ export const GEMINI_STRIP_PROMPT =
 
 /** Handwriting, via Gemini. Same contract as readStrip: lines of text, never drug facts. */
 export async function readHandwritten(imageBase64) {
-  return readWithGemini(imageBase64, HANDWRITING_PROMPT);
+  return readWithGemini(imageBase64, HANDWRITING_PROMPT, 'medicines');
 }
 
 /** Fallback for strips/boxes when the local Gemma read found nothing we can match. */
@@ -66,7 +70,7 @@ export async function readStripWithGemini(imageBase64) {
   return readWithGemini(imageBase64, GEMINI_STRIP_PROMPT);
 }
 
-async function readWithGemini(imageBase64, prompt) {
+async function readWithGemini(imageBase64, prompt, field = 'lines') {
   if (!GEMINI_KEY) throw Object.assign(new Error('handwriting reading is not enabled (no GEMINI_API_KEY)'), { status: 501 });
   const r = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent`, {
     method: 'POST',
@@ -76,7 +80,7 @@ async function readWithGemini(imageBase64, prompt) {
       generationConfig: {
         temperature: 0,
         responseMimeType: 'application/json',
-        responseSchema: { type: 'OBJECT', properties: { lines: { type: 'ARRAY', items: { type: 'STRING' } } }, required: ['lines'] },
+        responseSchema: { type: 'OBJECT', properties: { [field]: { type: 'ARRAY', items: { type: 'STRING' } } }, required: [field] },
       },
     }),
   });
@@ -84,7 +88,8 @@ async function readWithGemini(imageBase64, prompt) {
   const j = await r.json();
   const text = j.candidates?.[0]?.content?.parts?.map((p) => p.text ?? '').join('') ?? '{}';
   const out = JSON.parse(text);
-  return (Array.isArray(out.lines) ? out.lines : []).map(String).map((l) => l.trim()).filter(Boolean).slice(0, 30);
+  const items = out[field];
+  return (Array.isArray(items) ? items : []).map(String).map((l) => l.trim()).filter(Boolean).slice(0, 30);
 }
 
 export async function readStrip(imageBase64) {
