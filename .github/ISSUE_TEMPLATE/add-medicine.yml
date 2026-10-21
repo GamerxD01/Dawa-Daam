@@ -1,0 +1,29 @@
+name: Add a medicine
+description: Ask us to add a brand or Jan Aushadhi medicine
+title: "data: add <brand name>"
+labels: [data, good first issue]
+body:
+  - type: input
+    id: brand
+    attributes:
+      label: Brand name and strength (as printed)
+      placeholder: e.g. Telma 80
+    validations:
+      required: true
+  - type: input
+    id: composition
+    attributes:
+      label: Composition printed on the strip/box
+      placeholder: e.g. Telmisartan Tablets IP 80 mg
+  - type: input
+    id: mrp
+    attributes:
+      label: MRP and pack size (if you know it)
+      placeholder: e.g. ₹190.50 for 15 tablets
+  - type: textarea
+    id: photo
+    attributes:
+      label: Photo of the strip or box (drag it here)
+  - type: markdown
+    attributes:
+      value: "Please do not share prescriptions or anything with a patient's name."
