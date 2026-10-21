@@ -51,14 +51,28 @@ export const HANDWRITING_PROMPT =
   'especially medicine names and strengths. Do not correct spellings, do not expand abbreviations, do not add any medicine ' +
   'that is not clearly written. If a word is unclear, write [?] in its place instead of guessing. Do not give any advice.';
 
-/** Handwriting only, via Gemini. Same contract as readStrip: lines of text, never drug facts. */
+export const GEMINI_STRIP_PROMPT =
+  'You transcribe printed text from a photo of a medicine strip, box or printed prescription. Return every line of printed ' +
+  'text exactly as printed, top to bottom: brand name, composition, strength. Do not add, correct, translate, explain or guess. ' +
+  'If a word is unreadable, write [?] in its place.';
+
+/** Handwriting, via Gemini. Same contract as readStrip: lines of text, never drug facts. */
 export async function readHandwritten(imageBase64) {
+  return readWithGemini(imageBase64, HANDWRITING_PROMPT);
+}
+
+/** Fallback for strips/boxes when the local Gemma read found nothing we can match. */
+export async function readStripWithGemini(imageBase64) {
+  return readWithGemini(imageBase64, GEMINI_STRIP_PROMPT);
+}
+
+async function readWithGemini(imageBase64, prompt) {
   if (!GEMINI_KEY) throw Object.assign(new Error('handwriting reading is not enabled (no GEMINI_API_KEY)'), { status: 501 });
   const r = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', 'x-goog-api-key': GEMINI_KEY },
     body: JSON.stringify({
-      contents: [{ parts: [{ text: HANDWRITING_PROMPT }, { inline_data: { mime_type: 'image/jpeg', data: imageBase64 } }] }],
+      contents: [{ parts: [{ text: prompt }, { inline_data: { mime_type: 'image/jpeg', data: imageBase64 } }] }],
       generationConfig: {
         temperature: 0,
         responseMimeType: 'application/json',
@@ -137,6 +151,14 @@ const server = createServer(async (req, res) => {
       const t0 = Date.now();
       const lines = await readHandwritten(image);
       console.log(`[handwritten] ${lines.length} lines in ${Date.now() - t0} ms via ${GEMINI_MODEL}`);
+      return send(res, 200, { lines, model: GEMINI_MODEL });
+    }
+    if (req.method === 'POST' && path === '/read-gemini') {
+      const { image } = await body(req);
+      if (typeof image !== 'string' || image.length < 100) return send(res, 400, { error: 'image (base64 JPEG) required' });
+      const t0 = Date.now();
+      const lines = await readStripWithGemini(image);
+      console.log(`[gemini fallback] ${lines.length} lines in ${Date.now() - t0} ms: ${lines.slice(0, 3).join(' | ')}`);
       return send(res, 200, { lines, model: GEMINI_MODEL });
     }
     if (req.method === 'POST' && path === '/pick') {
