@@ -42,6 +42,7 @@ ja_code,name,composition,form,pack_qty,mrp_inr
 145,Metformin Hydrochloride Tablets IP 500mg,metformin:500mg,tablet,10,6.60
 147,Pioglitazone Tablets IP 30mg,pioglitazone:30mg,tablet,10,13.20
 178,Albendazole 400mg and Ivermectin 6mg Tablets,albendazole:400mg|ivermectin:6mg,tablet,1,6.60
+196,Lactic Acid Bacillus Tablets 60 Million spores,lactic acid bacillus:60mspores,tablet,10,7.70
 186,Domperidone Tablets IP 10 mg,domperidone:10mg,tablet,10,4.40
 191,Famotidine Tablets IP 20 mg,famotidine:20mg,tablet,14,3.00
 192,Famotidine Tablets IP 40 mg,famotidine:40mg,tablet,14,4.84
@@ -124,6 +125,7 @@ ja_code,name,composition,form,pack_qty,mrp_inr
 832,Chlorthalidone Tablets IP 12.5mg,chlorthalidone:12.5mg,tablet,10,14.30
 837,Cilnidipine Tablets IP 20mg,cilnidipine:20mg,tablet,10,19.80
 888,Febuxostat Tablets 40mg,febuxostat:40mg,tablet,10,20.00
+915,Hydroxyzine Hydrochloride Tablets IP 10mg,hydroxyzine:10mg,tablet,10,7.70
 901,Gabapentin Capsules IP 300mg,gabapentin:300mg,capsule,10,27.50
 904,Metformin Hydrochloride 500mg (Prolonged release) and Glimepiride 1mg Tablets IP,metformin:500mg:MR|glimepiride:1mg,tablet,10,17.60
 960,Metformin Sustained Release Tablets IP 850mg,metformin:850mg:MR,tablet,10,19.80

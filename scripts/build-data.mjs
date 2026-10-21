@@ -62,7 +62,7 @@ function parseComposition(s, where) {
     const [mRaw, strength, rel = 'IR'] = part.split(':').map((x) => x.trim());
     const m = canon.get((mRaw || '').toLowerCase());
     if (!m) fail(where, `unknown molecule "${mRaw}" (add it to molecules.csv)`);
-    const sm = /^(\d+(?:\.\d+)?)(mg|mcg|g|iu)(?:\/(\d+(?:\.\d+)?)ml)?$/i.exec(strength || '');
+    const sm = /^(\d+(?:\.\d+)?)(mg|mcg|g|iu|mspores)(?:\/(\d+(?:\.\d+)?)ml)?$/i.exec(strength || '');
     if (!sm) fail(where, `bad strength "${strength}" for ${mRaw}`);
     if (!RELEASES.has(rel)) fail(where, `bad release "${rel}" (use IR, MR or GR)`);
     return {
@@ -104,7 +104,7 @@ const generics = parseCsv(readFileSync(src('janaushadhi.csv'), 'utf8')).map((r, 
 const brands = parseCsv(readFileSync(src('brands.csv'), 'utf8')).map((r, i) => {
   const where = `brands.csv row ${i + 2} (${r.brand})`;
   if (!FORMS.has(r.form)) fail(where, `unknown form "${r.form}"`);
-  if (!/^https?:\/\//.test(r.source_url)) fail(where, 'every brand price needs a source_url');
+  if (!/^(https?:\/\/|strip:)/.test(r.source_url)) fail(where, 'every brand price needs a source_url (a URL, or strip:<what is printed>)');
   if (!/^\d{4}-\d{2}-\d{2}$/.test(r.captured_on)) fail(where, 'captured_on must be YYYY-MM-DD');
   if (!['y', 'n'].includes(r.verified)) fail(where, 'verified must be y or n');
   return {
