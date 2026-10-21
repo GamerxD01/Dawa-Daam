@@ -39,7 +39,8 @@ for (const f of photos) {
   const secs = ((Date.now() - t0) / 1000).toFixed(1);
   const all = norm(lines.join(' '));
   const exp = expected.get(f);
-  const brandOk = exp?.brand ? all.includes(norm(exp.brand.replace(/\d+/g, ''))) : null;
+  const letters = (x) => norm(x).replace(/\d/g, '');
+  const brandOk = exp?.brand ? letters(lines.join(' ')).includes(letters(exp.brand)) : null;
   const strengthOk = exp?.strength ? all.includes(norm(exp.strength)) : null;
   rows.push({ f, secs, lines, brandOk, strengthOk, error });
   console.log(`${f}  ${secs}s  brand:${fmt(brandOk)} strength:${fmt(strengthOk)}  ${error || lines.slice(0, 4).join(' | ')}`);
