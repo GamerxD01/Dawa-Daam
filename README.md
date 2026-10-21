@@ -1,35 +1,135 @@
+<div align="center">
+
 # DawaDaam · दवा दाम
 
-**Same medicine. Jan Aushadhi price.** Type (or photograph) the brand name on a prescription or strip and see, in one big number, what the identical Jan Aushadhi generic costs: same molecule, same strength, same form.
+### Same medicine. Jan Aushadhi price.
 
-> **Pan 40** (15 tablets) **~~₹192.80~~ → ₹18.15** · you save ₹174.65 (91%)
-> **Lyrica 75** (14 capsules) **~~₹841.87~~ → ₹30.80** · you save ₹811.07 (96%)
+**Type, say or photograph the medicine on your prescription, and see what the identical Jan Aushadhi generic costs, before you pay.**
 
-Built for the patient at the chemist counter: Hindi first, one hand, a cheap Android phone, **no internet needed**.
+[![CI](https://github.com/GamerxD01/Dawa-Daam/actions/workflows/ci.yml/badge.svg)](https://github.com/GamerxD01/Dawa-Daam/actions/workflows/ci.yml)
+[![Live](https://img.shields.io/badge/live-gamerxd01.github.io%2FDawa--Daam-0f5132)](https://gamerxd01.github.io/Dawa-Daam/)
+[![Licence: Apache-2.0](https://img.shields.io/badge/licence-Apache--2.0-blue)](LICENSE)
+![Works offline](https://img.shields.io/badge/works-offline-0f5132)
+![Hindi + English](https://img.shields.io/badge/हिंदी-%2B%20English-f2b632)
+![Gemma 4](https://img.shields.io/badge/Gemma%204-runs%20locally-4285F4)
 
-> ⚠️ **Price and molecule information only, not medical advice.** DawaDaam never tells anyone to switch medicines. Ask your doctor or pharmacist before changing any medicine.
+**[▶ Open the app](https://gamerxd01.github.io/Dawa-Daam/)** · [How it works](#how-it-works) · [Gemma 4](#gemma-4-on-our-own-laptop) · [Run it yourself](#run-it-yourself) · [Data](#data) · [Contribute](CONTRIBUTING.md)
 
-<p align="center"><img src="docs/screenshots/result.png" width="260" alt="Lyrica 75: ₹841.87 → ₹30.80"> <img src="docs/screenshots/strength.png" width="260" alt="Strength chooser"> <img src="docs/screenshots/sheet.png" width="260" alt="Printable counter sheet"></p>
+<img src="docs/screenshots/result.png" width="230" alt="Lyrica 75: ₹841.87 → ₹30.80, 96% saving">&nbsp;
+<img src="docs/screenshots/prescription.png" width="230" alt="A whole prescription checked line by line">&nbsp;
+<img src="docs/screenshots/sheet.png" width="230" alt="Printable sheet to hand across the counter">
+
+</div>
+
+> [!IMPORTANT]
+> **Price and molecule information only, not medical advice.** DawaDaam never tells anyone to switch medicines and never comments on a dose. Always ask your doctor or pharmacist before changing any medicine. This line is on every screen of the app.
+
+---
+
+## The problem
+
+A patient is handed a prescription of brand names, takes it to a chemist, and pays what they are told. For most of those medicines, an **identical generic** (same molecule, same strength, same form) is sold at a **Jan Aushadhi Kendra** for a fraction of the price. The patient can't read the molecule off the prescription, and won't argue at the counter.
+
+**DawaDaam puts the saving in front of them, in Hindi, on a cheap phone, with no internet.**
+
+| Brand (pack) | Brand MRP | Jan Aushadhi, same pack | Saving |
+|---|---:|---:|---:|
+| Lyrica 75 (14 capsules) | ₹841.87 | **₹30.80** | **96%** |
+| Rosuvas 10 (15 tablets) | ₹375.00 | **₹18.70** | **95%** |
+| Galvus 50 (15 tablets) | ₹371.25 | **₹20.00** | **95%** |
+| Telma H (15 tablets) | ₹356.72 | **₹25.50** | **93%** |
+| Pan 40 (15 tablets) | ₹192.80 | **₹18.15** | **91%** |
+| Garyfex 180 (10 tablets) *(MRP read off our own strip)* | ₹175.00 | **₹37.40** | **79%** |
+
+Across all **63 curated brands**, the **median saving is 80%** (range 43–96%). We show small savings honestly too: Ecosprin 75 saves 43%.
 
 ## What it does
 
+<table>
+<tr>
+<td width="33%" valign="top"><img src="docs/screenshots/home.png" alt="Home screen in Hindi"><br><b>Hindi first, one hand.</b> One search box, four big tiles, the disclaimer always visible, and "my prescription" in the thumb zone.</td>
+<td width="33%" valign="top"><img src="docs/screenshots/strength.png" alt="Which strength?"><br><b>Never guesses.</b> No strength typed? "Which strength is on the strip?" Unclear? "Did you mean…?"</td>
+<td width="33%" valign="top"><img src="docs/screenshots/not-found.png" alt="We have Amaryl 1, not 2"><br><b>Says what it doesn't know.</b> "We have Amaryl 1, not 2", then shows the Jan Aushadhi 2 mg as information only.</td>
+</tr>
+<tr>
+<td valign="top"><img src="docs/screenshots/photo-menu.png" alt="What are you photographing?"><br><b>📷 Photo:</b> strip/box or printed prescription read by <b>Gemma 4 on our laptop</b>; handwritten (beta) by Gemini, only after consent.</td>
+<td valign="top"><img src="docs/screenshots/list.png" alt="My prescription with total saving"><br><b>Whole prescription:</b> paste, type, speak or photograph it. Dosage like <code>1-0-1 x 5 days</code> is stripped, never interpreted. You get a total saving.</td>
+<td valign="top"><img src="docs/screenshots/kendra.png" alt="Nearest Jan Aushadhi Kendra on a map"><br><b>📍 Nearest Kendra</b> from OpenStreetMap: distance, map, directions, opening hours. Linked from every result.</td>
+</tr>
+</table>
+
+### Against the problem statement
+
+| The brief asked for | DawaDaam |
+|---|---|
+| Enter a brand **or** a molecule → generic name, strength, indicative generic vs branded price | ✅ Both: `Pan 40` → Pantoprazole 40 mg GR, ₹192.80 → ₹18.15; `paracetamol 650` → Jan Aushadhi 511 plus the brands we know |
+| Make the saving the headline (`₹240 → ₹28`) | ✅ A 56 px number, at the patient's own pack size, with the per-tablet price underneath |
+| Tolerate misspellings, missing strengths, half-read words | ✅ `lirika`, `rozuvas`, `alegra`, `dolo650`, `DOLO-650 TAB`, `pantop`, `६५०`. Covered by 234 tests |
+| A clear disclaimer, and mean it | ✅ On every screen; the app never says "switch", "replace" or "use instead" |
+| ➕ Photograph the strip or box | ✅ Gemma 4 E2B, local. Measured on our own strips (below) |
+| ➕ Whole prescription with a total saving | ✅ Typed, pasted, spoken, or a photo of a **printed** prescription |
+| ➕ Nearest Jan Aushadhi Kendra | ✅ OpenStreetMap / Overpass, with a Google Maps fallback |
+| ➕ Printable sheet for the counter | ✅ Bilingual sheet: print, save as PDF, or share on WhatsApp |
+| ➕ Pill identifier by imprint | ❌ **Deliberately not built.** There is no reliable open Indian imprint database, and a wrong pill ID is dangerous |
+| Never generate drug information with a language model | ✅ Models only **read text** and **pick from our list**. Every fact shown comes from data we ship |
+| OCR on handwriting is hard: keep typing as the path that always works | ✅ Typing always works. Handwriting is an opt-in beta with extra safeguards |
+| Curate 200 drugs well | ✅ **206 hand-checked rows** (143 Jan Aushadhi products + 63 brands), each brand with a source and date |
+| Cheap phone, bad signal | ✅ **≈33 KB gzipped** app with the data inside; **works in aeroplane mode**; no web fonts; 48 px+ tap targets |
+| Open source, honest commits | ✅ Apache-2.0, CONTRIBUTING.md, small commits from the build window, CI on every push |
+
+## How it works
+
+```mermaid
+flowchart LR
+  A["Typed · spoken · photographed text"] --> B["Normalise<br/>dolo650 → dolo 650<br/>Tab. / 1-0-1 / after food removed"]
+  B --> C["Parse strengths<br/>650 · 50/500 · ६५० · 60k"]
+  C --> D["Candidates<br/>alias · prefix · Indian-spelling phonetics · trigrams"]
+  D --> E{"Decide"}
+  E -->|confident| F["Safety check:<br/>identical molecule + strength<br/>+ release + form"]
+  E -->|close call| G["Did you mean? / Which strength?"]
+  E -->|nothing safe| H["Not in our list<br/>(or: we have 1 mg, not 2)"]
+  F --> I["₹ brand → ₹ Jan Aushadhi<br/>at the patient's pack size"]
+```
+
+**The matcher is our own** (`src/match/`, no fuzzy-search library). It combines Damerau-Levenshtein distance, trigram overlap, prefix matching for half-read words, and a phonetic key tuned for Indian spellings (`ph/f`, `z/s`, `c/k`, `v/w`, `y/i`, doubled letters: `lirika` = `lyrica`, `rozuvas` = `rosuvas`).
+
+**Safety by design**, enforced in code and by tests:
+
+- A brand gets a Jan Aushadhi price **only** if every ingredient matches on **molecule, strength, unit and release type** (plain / SR-ER-PR / gastro-resistant), **and** the dosage form is the same. SR never matches plain, a combination never matches a single molecule, and 25 mg never matches 50 mg (`src/match/equivalence.ts`).
+- **Letter suffixes are different medicines.** `Pan` ≠ `Pan D`, `Telma` ≠ `Telma H`, `Montair` ≠ `Montair LC`. A suffix-less query asks instead of guessing.
+- **A strength we don't have is reported, not swapped.** "We have Amaryl 1, not 2."
+- **An unreadable word never gives a confident answer.** `Cap Pan [?] 40` asks "Pan 40 or Pan D?".
+- **Dosage instructions are removed, never interpreted.** The app has no opinion on `1-0-1`.
+- **Only lines with both prices count towards a total.** Nothing is estimated.
+
+## Gemma 4, on our own laptop
+
 | | |
 |---|---|
-| 🔎 **Search by brand or molecule** | `dolo`, `Pan 40`, `telma h`, `paracetamol 650`, `amoxyclav 625` |
-| ✍️ **Tolerates bad input** | misspellings (`lirika`, `rozuvas`, `alegra`), half-read words (`pantop`), missing strengths, `DOLO-650 TAB`, Devanagari digits (`६५०`) |
-| 💰 **The saving is the headline** | brand price → Jan Aushadhi price at the **same pack size**, plus per-tablet prices |
-| 🛑 **Never guesses** | ambiguous input → "Did you mean?"; no strength → "Which strength?"; strength we don't have → "We have Amaryl 1, not 2" |
-| 🧾 **Whole prescription at once** | type, paste or photograph a **printed** prescription; dosage like `1-0-1 x 5 days` is stripped (never interpreted) and every line is matched, with a total saving |
-| 🎤 **Voice** | say "Dolo six fifty" and it searches `dolo 650` (phone's built-in speech recognition, Indian English) |
-| 📍 **Nearest Jan Aushadhi Kendra** | your location → [OpenStreetMap](https://www.openstreetmap.org) (Overpass) → Kendras within 15 km on a map, with directions; Google Maps fallback |
-| 🖨 **Counter sheet** | bilingual printable / PDF / WhatsApp sheet to hand to the doctor or chemist |
-| 📷 **Photo of a strip (optional)** | Gemma 4 running on your own laptop reads the printed name; you confirm |
-| 📴 **Offline** | the whole app and data (~23 KB gzipped) are cached by a service worker |
-| 🇮🇳 **Hindi + English** | Hindi by default, "साल्ट" (salt) as chemists say it |
+| **Model** | **Gemma 4 E2B** (`gemma4:e2b`): open weights, Apache-2.0, image input |
+| **Where it runs** | Our laptop (Windows, **RTX 3050 4 GB**, `ollama ps` shows 100% GPU) via **Ollama**. Photos go from the phone to that laptop over local Wi-Fi and never leave it |
+| **What it is asked** | **Job 1:** *transcribe* the printed text on a strip, box or printed prescription (JSON, temperature 0). **Job 2:** *choose one id* from the candidate list **our** matcher built from that text, or `null`. Enforced with a JSON-schema `enum`, so it cannot return a product we didn't offer |
+| **What it is never asked** | Dosage, price, molecule, side effects, alternatives, or any free text shown to a patient |
+| **Why Gemma here** | Foil glare, curved strips and mixed fonts defeat plain OCR on brand names. A small vision model reads layout and noisy text, runs locally, and keeps prescription photos private |
 
-## Try it
+**Measured on six of our own strip photos** (phone camera, ordinary light, some with pen marks):
 
-**Live:** https://gamerxd01.github.io/Dawa-Daam/ (installable as an app; works in aeroplane mode after the first visit)
+| Strip | Time | Brand read | Strength read | What the app did |
+|---|---:|:---:|:---:|---|
+| Garyfex-180 (fexofenadine 180) | 9.2 s | ✗ *"Ganytex-180"* | ✓ | Our fuzzy matcher still offered **Garyfex 180** → patient confirms → ₹175 → ₹37.40 |
+| Giorax-25 (hydroxyzine 25) | 10.3 s | ✓ | ✓ | "We have hydroxyzine 10 mg, not 25" |
+| Panced-DSR (pantoprazole + domperidone) | 13.4 s | ✓ | ✗ | Composition line matched Jan Aushadhi 465 |
+| Lactopen (lactic acid bacillus) | 7.3 s | ✓ | – | Matched Jan Aushadhi 196 |
+| ?PRET-8 (name covered by pen) | 10.3 s | – | – | No candidates → asked to type |
+| Nutricion-5G (a nutraceutical) | 38.6 s\* | ✗ | – | No candidates → "not in our list". Correct: it isn't a medicine |
+
+\* includes loading the model onto the GPU; warm reads took 7–13 s. **Gemma alone read 3/5 brands and 2/5 strengths**, which is why its output is only a hint to our deterministic matcher, and the patient always confirms. **In no case did the app show a wrong medicine.** These exact Gemma outputs are kept as regression tests (`src/photo.test.ts`). Full details: [docs/GEMMA.md](docs/GEMMA.md).
+
+**Optional Gemini fallback (off by default).** If Gemma's read gives nothing we can match, or the patient says "not this", the app *offers* to re-read the same photo with Google Gemini (`gemini-3.6-flash`). The patient decides each time, because the photo goes online, and **Gemma still makes the final pick**. Handwritten prescriptions (beta) are read only by Gemini, after an explicit consent step: no "add all", every medicine confirmed individually, unclear words marked `[?]`. Without a Gemini key, none of this appears and the app is pure Gemma, fully local.
+
+## Run it yourself
+
+**Just use it:** open **https://gamerxd01.github.io/Dawa-Daam/**, then *Add to Home screen*. After the first visit it works with no signal.
 
 **Run locally** (Node 18+):
 
@@ -37,100 +137,93 @@ Built for the patient at the chemist counter: Hindi first, one hand, a cheap And
 git clone https://github.com/GamerxD01/Dawa-Daam.git
 cd Dawa-Daam
 npm install
-npm run dev        # http://localhost:5173 — on your phone use http://<laptop-ip>:5173
-npm test           # 233 tests, including the bad-input suite
-npm run build      # production build in dist/
+npm run dev          # http://localhost:5173 · phone on the same Wi-Fi: http://<laptop-ip>:5173
+npm test             # data build + 234 tests
+npm run build        # production build in dist/
 ```
 
-**Optional: photo reading with Gemma 4** (needs [Ollama](https://ollama.com)):
+**With photo reading (Gemma 4 on your machine):**
 
 ```bash
-ollama pull gemma4:e2b
-npm run demo       # starts the Gemma bridge + the app and prints the address for your phone
+ollama pull gemma4:e2b   # ~7 GB, once
+npm run demo             # starts the Gemma bridge + the app, prints the address for your phone
 ```
 
-**Optional, beta: handwritten prescriptions with Google Gemini.** Off unless you set a key on *your* bridge (get one free at [Google AI Studio](https://aistudio.google.com/apikey); never commit it):
+The 📷 tile appears only when the bridge answers; typing never depends on it. To use the live site with your laptop's Gemma, open `https://gamerxd01.github.io/Dawa-Daam/?gemma=http://localhost:8000` on that laptop (Chrome will ask to allow local access).
+
+**Optional: Gemini fallback + handwriting beta.** Off unless *you* set a key on *your* bridge ([get one at Google AI Studio](https://aistudio.google.com/apikey); never commit it):
 
 ```powershell
-$env:GEMINI_API_KEY = "your-key"   # PowerShell; on macOS/Linux: export GEMINI_API_KEY=your-key
+$env:GEMINI_API_KEY = "your-key"     # PowerShell  ·  macOS/Linux: export GEMINI_API_KEY=your-key
 npm run demo
 ```
 
-(Or run them separately: `npm run gemma` for the bridge on :8000, and `npm run dev`, which proxies `/gemma` to it.)
+**Measure Gemma on your own photos:** `npm run gemma:eval -- path/to/photos` (optional `expected.csv`: `file,brand,strength`).
 
-The 📷 button appears only when the bridge is reachable. Typing always works without it.
+## Data
 
-## How it works
+Everything is bundled in the repo and shipped inside the app.
 
-```
- typed text ──► normalise ──► parse strength ──► candidates ──► score ──► decide ──► safety check ──► price
-                (dolo650 →      (650, 50/500,     (alias,        (edit    (match /     (identical
-                 dolo 650)        ६५०, 60k)        prefix,        distance, did-you-     composition
-                                                   phonetic,      phonetic, mean /       + form, or
-                                                   trigram)       strength) strength /   no price)
-                                                                            none)
-```
+| File | Rows | What |
+|---|---:|---|
+| [`data/src/janaushadhi.csv`](data/src/janaushadhi.csv) | 143 | Jan Aushadhi products: PMBI drug code, MRP, pack, and a **structured composition** (molecule, strength and release type per ingredient) |
+| [`data/src/brands.csv`](data/src/brands.csv) | 63 | Curated brands: composition, pack, **listed MRP**, **source URL and date**, expected Jan Aushadhi code |
+| [`data/src/molecules.csv`](data/src/molecules.csv) | 84 | Canonical names, synonyms (`frusemide`, `amoxycillin`, `thyroxine`), Hindi names |
+| [`data/src/combo_aliases.csv`](data/src/combo_aliases.csv) | 9 | Combination nicknames (`amoxyclav`, `panto d`) |
 
-- **Data** (`data/src/*.csv` → `npm run data` → `src/generated/drugs.json`): 143 Jan Aushadhi products with structured compositions, 63 curated brands, 84 molecules with synonyms and Hindi names. The build fails on any unknown molecule, missing price or source. See [docs/DATA.md](docs/DATA.md).
-- **Matcher** (`src/match/`): our own, no fuzzy-search library. Damerau-Levenshtein, trigram overlap, prefix matching for half-read words, and a phonetic key tuned for Indian spellings (`ph/f`, `z/s`, `c/k`, `v/w`, `y/i`, doubled letters). Letter suffixes (`D`, `H`, `AM`, `LC`, `P`) are treated as different products, because they are.
-- **Safety equivalence** (`src/match/equivalence.ts`): a brand gets a Jan Aushadhi price **only** if every component matches on molecule, strength, unit and release type (IR / SR-ER-PR / gastro-resistant) **and** the dosage form is the same. SR never matches plain, a combination never matches a single molecule, 25 mg never matches 50 mg. Where Jan Aushadhi lists duplicates, the cheapest is shown.
-- **Prices**: generic price = cheapest Jan Aushadhi per-unit price × the brand's pack size, so the comparison is for the strip in the patient's hand. Only lines with both prices count towards a total. Nothing is estimated.
+`npm run data` validates everything and fails the build on an unknown molecule, a malformed strength, a missing price or a missing source. A test checks that **every brand maps to its expected Jan Aushadhi code** and that **every brand is found by its own name**. Rows we couldn't fully confirm are marked `verified=n` and show a "check the box" warning. Sources and cleaning decisions: [docs/DATA.md](docs/DATA.md).
 
-## Gemma 4 (Best Use of Gemma 4 track)
+## Built for the person with the cheap phone
 
-| | |
-|---|---|
-| **Model** | Gemma 4 **E2B** (`gemma4:e2b`), open weights, Apache-2.0 |
-| **Where it runs** | on our own laptop through Ollama (tested on an RTX 3050 4 GB, 100% GPU). Prescription photos never leave the user's machine |
-| **What it is asked** | **(1)** *Transcribe* the printed text on a strip/box, as JSON, temperature 0. **(2)** *Choose one id* from the candidate list our matcher built from that text, or `null`, enforced with a JSON-schema `enum` |
-| **What it is never asked** | dosage, price, molecule, side effects, alternatives, or any free text shown to the patient |
-| **Why Gemma here** | foil glare, curved strips and mixed fonts defeat plain OCR on brand names; a small vision model handles layout and noisy text and runs locally |
-| **What it gets wrong** | handwriting (we don't attempt it), heavy glare, confusing batch numbers with strength, occasional invented letters. So its output only feeds our deterministic matcher and the patient confirms |
-
-**Gemini as a fallback reader (optional).** If Gemma's read of a strip gives nothing we can match, or the patient says "not this", the app offers to re-read the same photo with Gemini. The patient decides each time, because the photo goes online. **Gemma (local) still makes the pick** from our candidate list, and the confirm screen says which model read the text.
-
-**Handwriting (optional beta): Google Gemini.** Gemma is not reliable on handwriting, and the brief warns that it's hard. So handwritten prescriptions can *optionally* be read by Gemini (`gemini-3.6-flash`), with the same contract as Gemma: transcribe only, unclear words become `[?]`, never drug facts. Extra guard rails:
-- an explicit consent step, because the photo goes to Google over the internet
-- no bulk "add all": each medicine needs its own tap
-- any line with an unclear word never gives a confident match; it asks the patient to pick (e.g. "Pan [?] 40" → Pan 40 or Pan D?)
-- a warning on every handwriting result to check each medicine against the prescription
-
-Measured results and prompts: [docs/GEMMA.md](docs/GEMMA.md). Bridge: [`server/gemma-bridge.mjs`](server/gemma-bridge.mjs). Evaluation script: [`server/eval.mjs`](server/eval.mjs).
+- **≈33 KB gzipped** for the whole app, including all the data. The map library loads only on the Kendra screen.
+- **Works offline:** a service worker precaches the app on the first visit. Tested by reloading in aeroplane mode.
+- **Hindi by default**, with "साल्ट" (salt) as chemists say it. One tap switches to English. No web fonts, because Android's built-in Devanagari font works offline.
+- **One hand:** 48 px+ targets, 22 px input, the main actions in the bottom thumb zone. Dark mode follows the phone.
+- **No account, no tracking.** The list lives on the phone. Location is used once, only when you ask for a Kendra.
 
 ## Project layout
 
 ```
-data/src/            curated CSVs (Jan Aushadhi, brands, molecules, combo nicknames)
-scripts/build-data   CSV → validated JSON
-src/match/           normalise · parse · phonetic · similarity · equivalence · search (+ tests)
-src/ui/              result card, choices, list, counter sheet, photo
-src/photo.ts         client side of the Gemma flow
-server/              Gemma bridge (zero dependencies) + evaluation script
-public/sw.js         offline service worker
+data/src/              curated CSVs: the single source of truth
+scripts/build-data.mjs CSV → validated src/generated/drugs.json
+scripts/demo.mjs       one-command local demo (Gemma bridge + app)
+src/match/             normalise · parse · phonetic · similarity · equivalence · search · prescription · voice (+ tests)
+src/ui/                result card, choices, prescription, photo, Kendra map, list, counter sheet
+src/kendra.ts          OpenStreetMap / Overpass lookup (+ tests)
+src/photo.ts           client side of the photo flow
+server/                zero-dependency Gemma bridge + evaluation script
+public/sw.js           offline service worker
+docs/                  DATA.md · GEMMA.md · screenshots · sample printed prescription
 ```
 
-## Limits we know about
+## Limits, honestly
 
-- **Indicative prices.** Brand MRPs were captured by hand from public pharmacy listings on the date shown on each card; Jan Aushadhi prices come from the PMBI product list. Prices change.
-- **Coverage.** 63 brands are curated so far (206 hand-checked rows in total). Molecule search covers all 143 Jan Aushadhi products in the dataset. Anything else gets an honest "not in our list yet".
-- **Salts** (e.g. metoprolol succinate vs tartrate) are not distinguished in the Jan Aushadhi list; noted per row where it matters.
-- **Handwritten prescriptions** are not read by default (the app says so and asks the user to type). The optional Gemini beta can misread handwriting; every result needs the patient's confirmation. The app never judges whether a medicine or dose is right; only a doctor or pharmacist can.
-- **Kendra finder** depends on OpenStreetMap coverage, which is volunteer-built and incomplete; it needs internet (the rest of the app doesn't).
-- **No pill identifier by imprint:** there is no reliable open Indian imprint database, and a wrong pill ID is dangerous.
-- **Rows marked unverified** (e.g. a release type not stated on the source page) show a warning on the card.
+- **Prices are indicative MRPs**, captured by hand on 20–21 Oct 2026. Prices change and pharmacies discount.
+- **Coverage:** 63 brands so far. Molecule search covers all 143 Jan Aushadhi products in the dataset; anything else gets "not in our list yet" and a link to request it.
+- **"Same molecule & strength" is not a medical judgement.** Bioequivalence and the decision to switch belong to the doctor and pharmacist.
+- **Gemma misreads** (see the table above), so the patient always confirms. Handwriting is only an opt-in Gemini beta and can be wrong.
+- **Kendra finder** depends on OpenStreetMap coverage, which volunteers build and is incomplete; it needs internet.
+- **Salts** (e.g. metoprolol succinate vs tartrate) aren't distinguished, because the PMBI list doesn't distinguish them.
+
+## Roadmap
+
+- Grow to 500+ brands with pharmacists through the [add-a-medicine issue form](https://github.com/GamerxD01/Dawa-Daam/issues/new?template=add-medicine.yml)
+- NPPA ceiling prices as a third reference price
+- Bundle the official Kendra list for offline lookups
+- More Indian languages (the UI strings are already separated in `src/i18n.ts`)
 
 ## Contributing
 
-Adding a medicine is one CSV row with a source link. See [CONTRIBUTING.md](CONTRIBUTING.md). Please read the [Code of Conduct](CODE_OF_CONDUCT.md).
+Adding a medicine is **one CSV row with a source link**, and no code. Read [CONTRIBUTING.md](CONTRIBUTING.md) for the data rules (no AI-generated rows, every price sourced, exact composition) and the [Code of Conduct](CODE_OF_CONDUCT.md).
 
 ## Credits
 
-- **Data:** [Pradhan Mantri Bhartiya Janaushadhi Pariyojana (PMBI)](https://janaushadhi.gov.in) product list and MRPs. Brand MRPs: public listings on [Truemeds](https://truemeds.in), [PharmEasy](https://pharmeasy.in) and [1mg](https://www.1mg.com) (URL and date per row in `data/src/brands.csv`).
-- **Model:** [Gemma 4](https://ai.google.dev/gemma) by Google DeepMind (Apache-2.0), served with [Ollama](https://ollama.com) (MIT). Optional handwriting beta: [Gemini API](https://ai.google.dev/gemini-api/docs) (Google, cloud; used only with the user's consent and the bridge owner's own key).
-- **Maps:** © [OpenStreetMap](https://www.openstreetmap.org/copyright) contributors (ODbL), queried through the [Overpass API](https://overpass-api.de); map drawn with [Leaflet](https://leafletjs.com) (BSD-2-Clause).
-- **Libraries:** [Preact](https://preactjs.com) (MIT), [Vite](https://vite.dev) (MIT), [Vitest](https://vitest.dev) (MIT), [TypeScript](https://www.typescriptlang.org) (Apache-2.0). UI screenshots and tests use [Playwright](https://playwright.dev) (Apache-2.0).
-- **Fonts:** none downloaded. The system's Devanagari fonts (Noto Sans Devanagari on Android) keep it light and offline.
-- **AI assistance:** code and docs were written with help from Claude (Anthropic) during the hackathon window. Gemma 4 is the model inside the product.
+- **Data:** [Pradhan Mantri Bhartiya Janaushadhi Pariyojana (PMBI)](https://janaushadhi.gov.in) product list and MRPs. Brand MRPs from public listings on [Truemeds](https://truemeds.in), [PharmEasy](https://pharmeasy.in) and [1mg](https://www.1mg.com) (URL and date on every row). Garyfex 180's MRP was read off a strip we photographed.
+- **Models:** [Gemma 4](https://ai.google.dev/gemma) by Google DeepMind (Apache-2.0), served with [Ollama](https://ollama.com) (MIT). Optional: [Gemini API](https://ai.google.dev/gemini-api/docs) (Google, cloud), only with the bridge owner's key and the user's consent.
+- **Maps:** © [OpenStreetMap](https://www.openstreetmap.org/copyright) contributors (ODbL), via the [Overpass API](https://overpass-api.de); drawn with [Leaflet](https://leafletjs.com) (BSD-2-Clause).
+- **Libraries:** [Preact](https://preactjs.com) (MIT), [Vite](https://vite.dev) (MIT), [Vitest](https://vitest.dev) (MIT), [TypeScript](https://www.typescriptlang.org) (Apache-2.0). Screenshots and UI checks with [Playwright](https://playwright.dev) (Apache-2.0).
+- **Speech:** the browser's built-in Web Speech API.
+- **AI assistance:** code and docs were written with help from Claude (Anthropic) during the hackathon build window. Gemma 4 is the model inside the product.
 
 ## Licence
 
