@@ -3,7 +3,6 @@ import raw from './generated/drugs.json';
 import { strings, type Lang } from './i18n';
 import { buildIndex, search } from './match/search';
 import type { DrugData, Hit } from './match/types';
-import { bridgeHealth, gemmaUrl } from './photo';
 import { hitId, load, save } from './store';
 import { Basket, lineFor } from './ui/Basket';
 import { Choices } from './ui/Choices';
@@ -30,11 +29,7 @@ export function App() {
   const [list, setList] = useState<string[]>(() => load<string[]>('list', []).filter((id) => byId.has(id)));
   const [online, setOnline] = useState(typeof navigator === 'undefined' ? true : navigator.onLine);
   const input = useRef<HTMLInputElement>(null);
-  const [handwriting, setHandwriting] = useState(false);
-  useEffect(() => {
-    const url = gemmaUrl();
-    if (url) bridgeHealth(url).then((h) => setHandwriting(h.handwriting));
-  }, []);
+  const [rxPhoto, setRxPhoto] = useState<{ file: File; mode: 'printed' | 'handwritten' } | null>(null);
 
   useEffect(() => save('lang', lang), [lang]);
   useEffect(() => save('list', list), [list]);
@@ -85,9 +80,10 @@ export function App() {
         {view === 'kendra' ? (
           <Kendras ctx={ctx} onBack={() => setView('search')} />
         ) : view === 'rx' || view === 'rx-hw' ? (
-          <Prescription key={view} ctx={ctx} index={index} list={list} startHandwritten={view === 'rx-hw'}
+          <Prescription key={rxPhoto ? rxPhoto.file.name + rxPhoto.file.lastModified : view} ctx={ctx} index={index} list={list}
+            startHandwritten={view === 'rx-hw'} initialPhoto={rxPhoto}
             onAdd={(hits) => setList((l) => [...l, ...hits.map(hitId).filter((id) => !l.includes(id))])}
-            onDone={() => setView('list')} />
+            onDone={() => setView('list')} onBack={() => setView('search')} />
         ) : view === 'list' ? (
           <Basket lines={lines} ctx={ctx} onRemove={toggle} onSheet={() => setView('sheet')} onBack={() => setView('search')} onKendra={() => setView('kendra')} />
         ) : (
@@ -116,11 +112,10 @@ export function App() {
 
             <div class="tools" role="group">
               <Voice ctx={ctx} compact onText={(s) => { setQuery(s); setPicked(null); }} />
-              <Photo ctx={ctx} index={index} onFound={(h) => { setPicked(h); setQuery(h.type === 'brand' ? h.brand.name : ''); }} />
-              <button class="tile" onClick={() => setView('rx')}><span class="tile-icon" aria-hidden="true">📝</span>{t.tileRx}</button>
-              {handwriting && (
-                <button class="tile" onClick={() => setView('rx-hw')}><span class="tile-icon" aria-hidden="true">✍️</span>{t.tileHandwritten}</button>
-              )}
+              <Photo ctx={ctx} index={index}
+                onFound={(h) => { setPicked(h); setQuery(h.type === 'brand' ? h.brand.name : ''); }}
+                onPrescriptionPhoto={(file, mode) => { setRxPhoto({ file, mode }); setView('rx'); }} />
+              <button class="tile" onClick={() => { setRxPhoto(null); setView('rx'); }}><span class="tile-icon" aria-hidden="true">📝</span>{t.tileRx}</button>
               <button class="tile" onClick={() => setView('kendra')}><span class="tile-icon" aria-hidden="true">📍</span>{t.tileKendra}</button>
             </div>
 
