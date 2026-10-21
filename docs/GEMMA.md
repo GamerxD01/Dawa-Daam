@@ -64,3 +64,15 @@ Six of our own strip photos (phone camera, ordinary light, some with pen marks),
 - **Glare on foil strips**, curved strips and tiny fonts: letters dropped or invented. That's why the read only feeds the matcher, which then needs a confident match.
 - **Numbers:** batch numbers, MRP and dates sit next to the strength. The matcher's strength check and the patient's confirmation catch mix-ups.
 - **Latency:** the first call after loading the model is slow (warm-up). Run one photo before a demo.
+
+## Handwriting: an optional second model (Gemini)
+
+Gemma 4 E2B is good enough for printed strips and printed prescriptions, but not for doctors' handwriting. With the organisers' go-ahead, handwritten prescriptions can optionally be read by **Gemini** (`gemini-3.6-flash`, cloud), **only** when the bridge owner sets `GEMINI_API_KEY` and the patient agrees to send the photo to Google.
+
+It follows the same contract (`POST /read-handwritten` → `{lines}`): transcribe exactly, mark unreadable words `[?]`, never add or explain anything. On top of the Gemma guard rails:
+
+- Lines containing `[?]` are never matched confidently. The app offers every plausible product (e.g. `Cap Pan [?] 40` → *Pan 40* or *Pan D*) and the patient picks from the paper.
+- There is no "add all" for handwriting; each medicine is a separate tap.
+- A warning sits on every handwriting result.
+
+Typing remains the path that always works.

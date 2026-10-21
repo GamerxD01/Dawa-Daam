@@ -49,6 +49,13 @@ ollama pull gemma4:e2b
 npm run demo       # starts the Gemma bridge + the app and prints the address for your phone
 ```
 
+**Optional, beta: handwritten prescriptions with Google Gemini.** Off unless you set a key on *your* bridge (get one free at [Google AI Studio](https://aistudio.google.com/apikey); never commit it):
+
+```powershell
+$env:GEMINI_API_KEY = "your-key"   # PowerShell; on macOS/Linux: export GEMINI_API_KEY=your-key
+npm run demo
+```
+
 (Or run them separately: `npm run gemma` for the bridge on :8000, and `npm run dev`, which proxies `/gemma` to it.)
 
 The 📷 button appears only when the bridge is reachable. Typing always works without it.
@@ -80,6 +87,12 @@ The 📷 button appears only when the bridge is reachable. Typing always works w
 | **Why Gemma here** | foil glare, curved strips and mixed fonts defeat plain OCR on brand names; a small vision model handles layout and noisy text and runs locally |
 | **What it gets wrong** | handwriting (we don't attempt it), heavy glare, confusing batch numbers with strength, occasional invented letters. So its output only feeds our deterministic matcher and the patient confirms |
 
+**Handwriting (optional beta): Google Gemini.** Gemma is not reliable on handwriting, and the brief warns that it's hard. So handwritten prescriptions can *optionally* be read by Gemini (`gemini-3.6-flash`), with the same contract as Gemma: transcribe only, unclear words become `[?]`, never drug facts. Extra guard rails:
+- an explicit consent step, because the photo goes to Google over the internet
+- no bulk "add all": each medicine needs its own tap
+- any line with an unclear word never gives a confident match; it asks the patient to pick (e.g. "Pan [?] 40" → Pan 40 or Pan D?)
+- a warning on every handwriting result to check each medicine against the prescription
+
 Measured results and prompts: [docs/GEMMA.md](docs/GEMMA.md). Bridge: [`server/gemma-bridge.mjs`](server/gemma-bridge.mjs). Evaluation script: [`server/eval.mjs`](server/eval.mjs).
 
 ## Project layout
@@ -99,7 +112,7 @@ public/sw.js         offline service worker
 - **Indicative prices.** Brand MRPs were captured by hand from public pharmacy listings on the date shown on each card; Jan Aushadhi prices come from the PMBI product list. Prices change.
 - **Coverage.** 63 brands are curated so far (206 hand-checked rows in total). Molecule search covers all 143 Jan Aushadhi products in the dataset. Anything else gets an honest "not in our list yet".
 - **Salts** (e.g. metoprolol succinate vs tartrate) are not distinguished in the Jan Aushadhi list; noted per row where it matters.
-- **Handwritten prescriptions** are not read (the app says so and asks the user to type). The app never judges whether a medicine or dose is right; only a doctor or pharmacist can.
+- **Handwritten prescriptions** are not read by default (the app says so and asks the user to type). The optional Gemini beta can misread handwriting; every result needs the patient's confirmation. The app never judges whether a medicine or dose is right; only a doctor or pharmacist can.
 - **Kendra finder** depends on OpenStreetMap coverage, which is volunteer-built and incomplete; it needs internet (the rest of the app doesn't).
 - **No pill identifier by imprint:** there is no reliable open Indian imprint database, and a wrong pill ID is dangerous.
 - **Rows marked unverified** (e.g. a release type not stated on the source page) show a warning on the card.
@@ -111,7 +124,7 @@ Adding a medicine is one CSV row with a source link. See [CONTRIBUTING.md](CONTR
 ## Credits
 
 - **Data:** [Pradhan Mantri Bhartiya Janaushadhi Pariyojana (PMBI)](https://janaushadhi.gov.in) product list and MRPs. Brand MRPs: public listings on [Truemeds](https://truemeds.in), [PharmEasy](https://pharmeasy.in) and [1mg](https://www.1mg.com) (URL and date per row in `data/src/brands.csv`).
-- **Model:** [Gemma 4](https://ai.google.dev/gemma) by Google DeepMind (Apache-2.0), served with [Ollama](https://ollama.com) (MIT).
+- **Model:** [Gemma 4](https://ai.google.dev/gemma) by Google DeepMind (Apache-2.0), served with [Ollama](https://ollama.com) (MIT). Optional handwriting beta: [Gemini API](https://ai.google.dev/gemini-api/docs) (Google, cloud; used only with the user's consent and the bridge owner's own key).
 - **Maps:** © [OpenStreetMap](https://www.openstreetmap.org/copyright) contributors (ODbL), queried through the [Overpass API](https://overpass-api.de); map drawn with [Leaflet](https://leafletjs.com) (BSD-2-Clause).
 - **Libraries:** [Preact](https://preactjs.com) (MIT), [Vite](https://vite.dev) (MIT), [Vitest](https://vitest.dev) (MIT), [TypeScript](https://www.typescriptlang.org) (Apache-2.0). UI screenshots and tests use [Playwright](https://playwright.dev) (Apache-2.0).
 - **Fonts:** none downloaded. The system's Devanagari fonts (Noto Sans Devanagari on Android) keep it light and offline.
