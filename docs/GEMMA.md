@@ -67,13 +67,13 @@ Six of our own strip photos (phone camera, ordinary light, some with pen marks),
 
 ## Fallback reading (optional)
 
-When Gemma's transcription yields no candidate we can match, or the patient rejects the pick, and only if the bridge owner enabled Gemini, the app offers to re-read the same photo with Gemini (`POST /read-gemini`, same transcribe-only prompt). The lines go back through **our** matcher and **Gemma still makes the pick** locally (`/pick`), so Gemma is always the model that chooses. The confirm card shows "Read by Gemma (on this laptop)" or "Read by Google Gemini (online)".
+When Gemma's transcription yields no candidate we can match, or the patient rejects the pick, and only if the bridge owner enabled Gemini, the app offers a "Try Gemini" button to re-read the same photo with Gemini (`POST /read-gemini`, same transcribe-only prompt). The lines go back through **our** matcher and **Gemma still makes the pick** locally (`/pick`), so Gemma is always the model that chooses. The confirm card shows "Read by Gemma (on this laptop)" or "Read by Google Gemini (online)".
 
 ## Handwriting: an optional second model (Gemini)
 
-Gemma 4 E2B is good enough for printed strips and printed prescriptions, but not for doctors' handwriting. With the organisers' go-ahead, handwritten prescriptions can optionally be read by **Gemini** (`gemini-3.6-flash`, cloud), **only** when the bridge owner sets `GEMINI_API_KEY` and the patient agrees to send the photo to Google.
+Gemma 4 E2B is good enough for printed strips and printed prescriptions, but not for doctors' handwriting. With the organisers' go-ahead, handwritten prescriptions can optionally be read by **Gemini** (`gemini-3.6-flash`, cloud), **only** when the bridge owner sets `GEMINI_API_KEY`. The photo is then sent to Google, so this mode is off by default.
 
-It follows the same contract (`POST /read-handwritten` → `{lines}`): transcribe exactly, mark unreadable words `[?]`, never add or explain anything. On top of the Gemma guard rails:
+It follows the same contract (`POST /read-handwritten` → `{lines}`): list only the prescribed medicines with their strength, exactly as written (no patient name, age, date, diagnosis, advice or dosage timings); mark unreadable words `[?]`; never add or explain anything. On top of the Gemma guard rails:
 
 - Lines containing `[?]` are never matched confidently. The app offers every plausible product (e.g. `Cap Pan [?] 40` → *Pan 40* or *Pan D*) and the patient picks from the paper.
 - There is no "add all" for handwriting; each medicine is a separate tap.

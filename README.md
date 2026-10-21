@@ -52,7 +52,7 @@ Across all **63 curated brands**, the **median saving is 80%** (range 43–96%).
 <td width="33%" valign="top"><img src="docs/screenshots/not-found.png" alt="We have Amaryl 1, not 2"><br><b>Says what it doesn't know.</b> "We have Amaryl 1, not 2", then shows the Jan Aushadhi 2 mg as information only.</td>
 </tr>
 <tr>
-<td valign="top"><img src="docs/screenshots/photo-menu.png" alt="What are you photographing?"><br><b>📷 Photo:</b> strip/box or printed prescription read by <b>Gemma 4 on our laptop</b>; handwritten (beta) by Gemini, only after consent.</td>
+<td valign="top"><img src="docs/screenshots/photo-menu.png" alt="What are you photographing?"><br><b>📷 Photo:</b> strip/box or printed prescription read by <b>Gemma 4 on our laptop</b>; handwritten (beta) by Gemini, only if enabled.</td>
 <td valign="top"><img src="docs/screenshots/list.png" alt="My prescription with total saving"><br><b>Whole prescription:</b> paste, type, speak or photograph it. Dosage like <code>1-0-1 x 5 days</code> is stripped, never interpreted. You get a total saving.</td>
 <td valign="top"><img src="docs/screenshots/kendra.png" alt="Nearest Jan Aushadhi Kendra on a map"><br><b>📍 Nearest Kendra</b> from OpenStreetMap: distance, map, directions, opening hours. Linked from every result.</td>
 </tr>
@@ -125,7 +125,7 @@ flowchart LR
 
 \* includes loading the model onto the GPU; warm reads took 7–13 s. **Gemma alone read 3/5 brands and 2/5 strengths**, which is why its output is only a hint to our deterministic matcher, and the patient always confirms. **In no case did the app show a wrong medicine.** These exact Gemma outputs are kept as regression tests (`src/photo.test.ts`). Full details: [docs/GEMMA.md](docs/GEMMA.md).
 
-**Optional Gemini fallback (off by default).** If Gemma's read gives nothing we can match, or the patient says "not this", the app *offers* to re-read the same photo with Google Gemini (`gemini-3.6-flash`). The patient decides each time, because the photo goes online, and **Gemma still makes the final pick**. Handwritten prescriptions (beta) are read only by Gemini, after an explicit consent step: no "add all", every medicine confirmed individually, unclear words marked `[?]`. Without a Gemini key, none of this appears and the app is pure Gemma, fully local.
+**Optional Gemini fallback (off by default).** If Gemma's read gives nothing we can match, or the patient says "not this", the app *offers* a "Try Gemini" button to re-read the same photo with Google Gemini (`gemini-3.6-flash`, online), and **Gemma still makes the final pick**. Handwritten prescriptions (beta) are read only by Gemini, which returns just the medicine names and strengths (no patient details): no "add all", every medicine confirmed individually, unclear words marked `[?]`. Without a Gemini key, none of this appears and the app is pure Gemma, fully local.
 
 ## Run it yourself
 
@@ -219,7 +219,7 @@ Adding a medicine is **one CSV row with a source link**, and no code. Read [CONT
 ## Credits
 
 - **Data:** [Pradhan Mantri Bhartiya Janaushadhi Pariyojana (PMBI)](https://janaushadhi.gov.in) product list and MRPs. Brand MRPs from public listings on [Truemeds](https://truemeds.in), [PharmEasy](https://pharmeasy.in) and [1mg](https://www.1mg.com) (URL and date on every row). Garyfex 180's MRP was read off a strip we photographed.
-- **Models:** [Gemma 4](https://ai.google.dev/gemma) by Google DeepMind (Apache-2.0), served with [Ollama](https://ollama.com) (MIT). Optional: [Gemini API](https://ai.google.dev/gemini-api/docs) (Google, cloud), only with the bridge owner's key and the user's consent.
+- **Models:** [Gemma 4](https://ai.google.dev/gemma) by Google DeepMind (Apache-2.0), served with [Ollama](https://ollama.com) (MIT). Optional: [Gemini API](https://ai.google.dev/gemini-api/docs) (Google, cloud), only when the bridge owner sets their own key.
 - **Maps:** © [OpenStreetMap](https://www.openstreetmap.org/copyright) contributors (ODbL), via the [Overpass API](https://overpass-api.de); drawn with [Leaflet](https://leafletjs.com) (BSD-2-Clause).
 - **Libraries:** [Preact](https://preactjs.com) (MIT), [Vite](https://vite.dev) (MIT), [Vitest](https://vitest.dev) (MIT), [TypeScript](https://www.typescriptlang.org) (Apache-2.0). Screenshots and UI checks with [Playwright](https://playwright.dev) (Apache-2.0).
 - **Speech:** the browser's built-in Web Speech API.
