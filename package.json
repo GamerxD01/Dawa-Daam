@@ -6,7 +6,7 @@
   "license": "Apache-2.0",
   "type": "module",
   "scripts": {
-    "dev": "vite --host",
+    "dev": "npm run data && vite --host",
     "build": "npm run data && tsc --noEmit && vite build",
     "preview": "vite preview --host",
     "data": "node scripts/build-data.mjs",
@@ -14,7 +14,7 @@
     "typecheck": "tsc --noEmit",
     "gemma": "node server/gemma-bridge.mjs",
     "gemma:eval": "node server/eval.mjs",
-    "demo": "node scripts/demo.mjs"
+    "demo": "npm run data && node scripts/demo.mjs"
   },
   "devDependencies": {
     "@preact/preset-vite": "2.10.1",
