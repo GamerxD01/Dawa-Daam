@@ -121,6 +121,31 @@ describe('search: exact answers', () => {
   });
 });
 
+describe('search: real strips photographed for this project', () => {
+  it('Garyfex-180 (MRP read off the strip) → Jan Aushadhi fexofenadine 180', () => {
+    const r = search(index, 'Garyfex-180');
+    expect(matched(r)).toBe('Garyfex 180');
+    if (r.kind === 'match' && r.hit.type === 'brand') expect(saving(r.hit.brand, r.hit.group!).genericPrice).toBe(37.4);
+  });
+  it('Panced-DSR composition line → pantoprazole GR + domperidone PR capsule', () => {
+    const r = search(index, 'Pantoprazole Sodium Gastro-Resistant and Domperidone Prolonged-Release Capsules IP');
+    expect(r.kind === 'match' || r.kind === 'didyoumean').toBe(true);
+    const hits = r.kind === 'match' ? [label(r.hit)] : listed(r);
+    expect(hits).toContain('JA 465');
+  });
+  it('hydroxyzine 25 (Giorax-25): we only have 10 mg, so we say so', () => {
+    const r = search(index, 'hydroxyzine hydrochloride 25');
+    expect(r.kind).toBe('none');
+    if (r.kind === 'none') expect(r.reason).toBe('strength-unavailable');
+  });
+  it('Lactopen (lactic acid bacillus) → Jan Aushadhi 196', () => {
+    expect(matched(search(index, 'lactic acid bacillus tablets'))).toBe('JA 196');
+  });
+  it('Nutricion-5G (a nutraceutical, not a medicine) → not found', () => {
+    expect(search(index, 'Nutricion-5G').kind).toBe('none');
+  });
+});
+
 describe('search: asks instead of guessing', () => {
   it('half-read word → did you mean', () => {
     const r = search(index, 'pantop');

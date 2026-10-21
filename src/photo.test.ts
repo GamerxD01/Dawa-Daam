@@ -19,4 +19,18 @@ describe('candidates from text Gemma read off a strip', () => {
   it('returns nothing for unreadable text', () => {
     expect(candidatesFromLines(['', 'Batch No. XK2231', 'Mfd. 05/2026'], index)).toEqual([]);
   });
+
+  // Exact text Gemma 4 E2B returned for our own strip photos (see docs/GEMMA.md)
+  it('recovers a brand Gemma misread ("Ganytex-180" for Garyfex-180)', () => {
+    const c = candidatesFromLines(['B.N.TG629 M. Rs.175.00', 'MFG. 03/2026 EXP. 02/2028', 'INCL ALL TAXES', 'Ganytex-180'], index);
+    expect(c.map(hitId)).toContain('b:garyfex-180');
+  });
+  it('finds Lactopen from its composition lines', () => {
+    const c = candidatesFromLines(['Each uncoated tablet contains:', 'Lactopen', 'Lactic Acid', 'Bacillus Tablets'], index);
+    expect(c.map((h) => (h.type === 'generic' ? h.group.items[0].code : null))).toContain(196);
+  });
+  it('offers nothing for an unreadable strip or a nutraceutical', () => {
+    expect(candidatesFromLines(['EXP. 07/2027', 'Mfg. 08/2025', 'No. G750088C', 'DPRET-8 DP'], index)).toEqual([]);
+    expect(candidatesFromLines(['out of the reach of', 'Other Ingredients: Soy Lecithin (INS 479), Soya Bean Oil (INS 320)', 'Store in a cool, dry & dark place'], index)).toEqual([]);
+  });
 });
