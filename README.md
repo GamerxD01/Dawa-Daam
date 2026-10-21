@@ -38,7 +38,7 @@ git clone https://github.com/GamerxD01/Dawa-Daam.git
 cd Dawa-Daam
 npm install
 npm run dev        # http://localhost:5173 — on your phone use http://<laptop-ip>:5173
-npm test           # 142 tests, including the bad-input suite
+npm test           # 233 tests, including the bad-input suite
 npm run build      # production build in dist/
 ```
 
@@ -64,7 +64,7 @@ The 📷 button appears only when the bridge is reachable. Typing always works w
                                                                             none)
 ```
 
-- **Data** (`data/src/*.csv` → `npm run data` → `src/generated/drugs.json`): 141 Jan Aushadhi products with structured compositions, 37 curated brands, 82 molecules with synonyms and Hindi names. The build fails on any unknown molecule, missing price or source. See [docs/DATA.md](docs/DATA.md).
+- **Data** (`data/src/*.csv` → `npm run data` → `src/generated/drugs.json`): 143 Jan Aushadhi products with structured compositions, 63 curated brands, 84 molecules with synonyms and Hindi names. The build fails on any unknown molecule, missing price or source. See [docs/DATA.md](docs/DATA.md).
 - **Matcher** (`src/match/`): our own, no fuzzy-search library. Damerau-Levenshtein, trigram overlap, prefix matching for half-read words, and a phonetic key tuned for Indian spellings (`ph/f`, `z/s`, `c/k`, `v/w`, `y/i`, doubled letters). Letter suffixes (`D`, `H`, `AM`, `LC`, `P`) are treated as different products, because they are.
 - **Safety equivalence** (`src/match/equivalence.ts`): a brand gets a Jan Aushadhi price **only** if every component matches on molecule, strength, unit and release type (IR / SR-ER-PR / gastro-resistant) **and** the dosage form is the same. SR never matches plain, a combination never matches a single molecule, 25 mg never matches 50 mg. Where Jan Aushadhi lists duplicates, the cheapest is shown.
 - **Prices**: generic price = cheapest Jan Aushadhi per-unit price × the brand's pack size, so the comparison is for the strip in the patient's hand. Only lines with both prices count towards a total. Nothing is estimated.
@@ -97,7 +97,7 @@ public/sw.js         offline service worker
 ## Limits we know about
 
 - **Indicative prices.** Brand MRPs were captured by hand from public pharmacy listings on the date shown on each card; Jan Aushadhi prices come from the PMBI product list. Prices change.
-- **Coverage.** 37 brands are curated so far. Molecule search covers all 141 Jan Aushadhi products in the dataset. Anything else gets an honest "not in our list yet".
+- **Coverage.** 63 brands are curated so far (206 hand-checked rows in total). Molecule search covers all 143 Jan Aushadhi products in the dataset. Anything else gets an honest "not in our list yet".
 - **Salts** (e.g. metoprolol succinate vs tartrate) are not distinguished in the Jan Aushadhi list; noted per row where it matters.
 - **Handwritten prescriptions** are not read (the app says so and asks the user to type). The app never judges whether a medicine or dose is right; only a doctor or pharmacist can.
 - **Kendra finder** depends on OpenStreetMap coverage, which is volunteer-built and incomplete; it needs internet (the rest of the app doesn't).

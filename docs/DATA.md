@@ -4,9 +4,9 @@ All data is bundled in the repo and shipped inside the app, so search works with
 
 | file | rows | what |
 |---|---|---|
-| `data/src/janaushadhi.csv` | 141 | Jan Aushadhi products: PMBI drug code, name, **structured composition**, form, pack size, MRP |
-| `data/src/brands.csv` | 37 | Curated branded products: composition, pack, listed MRP, source URL + date, expected Jan Aushadhi code |
-| `data/src/molecules.csv` | 82 | Canonical molecule names, synonyms (e.g. `frusemide`, `amoxycillin`, `thyroxine`), Hindi names |
+| `data/src/janaushadhi.csv` | 143 | Jan Aushadhi products: PMBI drug code, name, **structured composition**, form, pack size, MRP |
+| `data/src/brands.csv` | 63 | Curated branded products: composition, pack, listed MRP, source URL + date, expected Jan Aushadhi code |
+| `data/src/molecules.csv` | 84 | Canonical molecule names, synonyms (e.g. `frusemide`, `amoxycillin`, `thyroxine`), Hindi names |
 | `data/src/combo_aliases.csv` | 9 | Nicknames for combinations (`amoxyclav`, `panto d`) |
 
 `npm run data` (also run by `npm test` and `npm run build`) validates everything and writes `src/generated/drugs.json`.
@@ -14,7 +14,7 @@ All data is bundled in the repo and shipped inside the app, so search works with
 ## Sources
 
 - **Jan Aushadhi products and MRPs:** PMBI Product Portfolio List (Sr. No., Drug Code, Generic Name, Unit Size, MRP), 2025 edition. Official finder: https://www.pmbi.co.in/ProductList.aspx. We curated a subset of common outpatient medicines (oral solids, a few liquids and inhalers), not oncology or injectables.
-- **Brand MRPs:** captured by hand on 20 Oct 2026 from public product pages (Truemeds; Galvus Met from PharmEasy; Nexito from 1mg). We record the **listed MRP**, not a discounted price. URL and date per row.
+- **Brand MRPs:** captured by hand on 20–21 Oct 2026 from public product pages (Truemeds; Galvus Met from PharmEasy; Nexito from 1mg). We record the **listed MRP**, not a discounted price. URL and date per row.
 - Each brand's Jan Aushadhi match is **computed** from composition by the app, and a test checks it equals the curated `expected_ja_code`, so a typo in either place fails CI.
 
 ## Composition format
@@ -31,7 +31,7 @@ All data is bundled in the repo and shipped inside the app, so search works with
 - Pregabalin 75 mg exists as both capsule (code 3) and tablet (code 599). These are kept as **different** forms; a capsule brand only matches the capsule.
 - Rows with MRP `0.00` in the source are excluded (no price is better than a wrong price).
 - Salts are not distinguished (succinate vs tartrate) because the PMBI list doesn't; noted per row where it matters (Met XL).
-- Rows we could not fully confirm are `verified=n` and show a warning on the card: Glycomet GP 1 (metformin release type not stated on the source page) and Nexito 10 (source shows a selling price; MRP label not confirmed).
+- Rows we could not fully confirm are `verified=n` and show a warning on the card: Glycomet GP 1 and Glyciphage 500 (release type not clear on the source page), Nexito 10 and Cifran 500 (price not labelled MRP), Zentel 400 (chewable tablet). Garyfex 180's MRP was read off a photographed strip.
 
 ## Prices are indicative
 
