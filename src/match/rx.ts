@@ -1,5 +1,5 @@
-import { search, type Index } from './search';
-import type { SearchResult } from './types';
+import { prefixHits, search, type Index } from './search';
+import type { Hit, SearchResult } from './types';
 
 // Whole-prescription input: split a typed/pasted (or Gemma-read printed) prescription into medicine lines.
 // Dosage instructions are REMOVED before matching, never interpreted: "1-0-1 x 5 days after food" is the
@@ -45,9 +45,25 @@ export interface RxRow {
  * sees "not in our list" instead of the medicine silently vanishing.
  */
 export function prescriptionRows(text: string, index: Index, fromPhoto = false): { rows: RxRow[]; ignored: number } {
-  const all = splitPrescription(text).map((line) => ({ line, result: search(index, line) }));
+  const all = splitPrescription(text).map((line) => ({ line, result: line.includes('[?]') ? unclearLine(line, index) : search(index, line) }));
   const keep = fromPhoto
     ? all.filter((r) => (r.result.kind !== 'none' && r.result.kind !== 'empty') || MEDICINE_PREFIX.test(r.line))
     : all;
   return { rows: keep, ignored: all.length - keep.length };
+}
+
+/**
+ * A line with an unreadable word ("Cap Pan [?] 40") must never give a confident answer: the missing word could be
+ * "D" (Pan D, a different medicine). Offer every plausible product and let the patient pick from the prescription.
+ */
+export function unclearLine(line: string, index: Index): SearchResult {
+  const before = line.split('[?]')[0];
+  const pool = new Map<string, Hit>();
+  const add = (h: Hit) => pool.set(h.type === 'brand' ? h.brand.id : h.group.key, h);
+  const whole = search(index, line.replace(/\[\?\]/g, ' '));
+  if (whole.kind === 'match') add(whole.hit);
+  else if (whole.kind === 'didyoumean' || whole.kind === 'strength') whole.hits.forEach(add);
+  prefixHits(index, before.replace(MEDICINE_PREFIX, '')).forEach(add);
+  const hits = [...pool.values()].slice(0, 5);
+  return hits.length ? { kind: 'didyoumean', hits } : { kind: 'none', reason: 'unknown', near: [] };
 }

@@ -149,3 +149,12 @@ function byStrength(a: Hit, b: Hit) {
 function uniq<T>(xs: T[]): T[] {
   return [...new Set(xs)];
 }
+
+/** Every product whose name starts with these words ("pan" → Pan 40, Pan D). Used when a word after them was unreadable. */
+export function prefixHits(index: Index, prefix: string): Hit[] {
+  const q = parseQuery(prefix).name;
+  if (q.length < 3) return [];
+  return index.entries
+    .filter((e) => e.keys.some((k) => k === q || k.startsWith(q + ' ')))
+    .map((e) => toHit(e, 0.6));
+}

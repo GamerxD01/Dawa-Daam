@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import raw from '../generated/drugs.json';
-import { cleanRxLine, prescriptionRows, splitPrescription } from './rx';
+import { cleanRxLine, prescriptionRows, splitPrescription, unclearLine } from './rx';
 import { buildIndex, search } from './search';
 import type { DrugData } from './types';
 
@@ -61,5 +61,12 @@ describe('whole prescription', () => {
       '5. Tab. Shelcal 500', '6. Tab. Cardace 2.5', 'Dose', '1-0-0', '1-0-1 after food', '1-0-0 before breakfast', '0-0-1', 'x 30 days'];
     const { rows } = prescriptionRows(lines.join('\n'), index, true);
     expect(rows.map(label)).toEqual(['Telma H', 'Glycomet GP 1', 'Pan D', 'Rosuvas 10', 'Shelcal 500', 'none:Tab. Cardace 2.5']);
+  });
+
+  it('an unreadable word never gives a confident answer ("Pan [?] 40" could be Pan D)', () => {
+    const r = unclearLine('Cap Pan [?] 40', index);
+    expect(r.kind).toBe('didyoumean');
+    const names = r.kind === 'didyoumean' ? r.hits.map((h) => (h.type === 'brand' ? h.brand.name : h.group.key)) : [];
+    expect(names).toEqual(expect.arrayContaining(['Pan 40', 'Pan D']));
   });
 });
