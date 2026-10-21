@@ -12,7 +12,7 @@ type Recognition = any;
 const Impl: (new () => Recognition) | undefined =
   typeof window !== 'undefined' ? ((window as any).SpeechRecognition ?? (window as any).webkitSpeechRecognition) : undefined;
 
-export function Voice({ ctx, onText }: { ctx: Ctx; onText: (s: string) => void }) {
+export function Voice({ ctx, onText, compact = false }: { ctx: Ctx; onText: (s: string) => void; compact?: boolean }) {
   const [state, setState] = useState<'idle' | 'listening' | 'failed'>('idle');
   if (!Impl) return null;
 
@@ -38,9 +38,15 @@ export function Voice({ ctx, onText }: { ctx: Ctx; onText: (s: string) => void }
 
   return (
     <div class="voice">
-      <button class={`big secondary ${state === 'listening' ? 'listening' : ''}`} onClick={start} disabled={state === 'listening'}>
-        🎤 {state === 'listening' ? ctx.t.listening : ctx.t.voice}
-      </button>
+      {compact ? (
+        <button class={`tile ${state === 'listening' ? 'listening' : ''}`} onClick={start} disabled={state === 'listening'}>
+          <span class="tile-icon" aria-hidden="true">🎤</span>{state === 'listening' ? ctx.t.tileListening : ctx.t.tileVoice}
+        </button>
+      ) : (
+        <button class={`big secondary ${state === 'listening' ? 'listening' : ''}`} onClick={start} disabled={state === 'listening'}>
+          🎤 {state === 'listening' ? ctx.t.listening : ctx.t.voice}
+        </button>
+      )}
       {state === 'failed' && <p class="warn small">{ctx.t.voiceFailed}</p>}
     </div>
   );

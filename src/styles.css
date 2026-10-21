@@ -119,18 +119,27 @@ main { flex: 1; padding-bottom: 12px; }
 .total { margin-top: 8px; font-size: 20px; }
 .total-save { font-size: 26px; font-weight: 900; color: var(--green); margin-top: 4px; }
 
-.photo { margin-top: 10px; }
-.photo-btn { margin-top: 0; }
+
 .confirm { border-color: var(--green-2); }
 
 .bottom { position: sticky; bottom: 0; background: var(--paper); border-top: 1px solid var(--line); margin: 0 -16px; padding: 6px 16px calc(8px + env(safe-area-inset-bottom)); }
 .disclaimer { margin: 0; padding: 6px 10px; border-radius: 10px; background: var(--warn-bg); color: var(--warn); font-size: 13px; line-height: 1.3; }
-.list-btn { background: var(--ink); color: var(--paper); border-color: var(--ink); min-height: 50px; margin-top: 6px; font-size: 18px; }
+.list-btn { background: var(--green); color: var(--paper); border-color: var(--green); min-height: 50px; margin-top: 6px; font-size: 18px; }
 
 /* Whole prescription + voice */
-.tools { flex-wrap: wrap; }
-.tools > * { flex: 1 1 200px; }
-.voice { flex: 1 1 200px; }
+/* Tool tiles: equal 2-column grid, icon over a short label */
+.tools { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 10px; }
+.tools .voice, .tools .photo { display: contents; }
+.tools .warn, .tools .confirm { grid-column: 1 / -1; margin: 0; }
+.tile {
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px;
+  min-height: 72px; padding: 8px; border-radius: 14px; border: 1.5px solid var(--line); background: var(--card);
+  color: var(--ink); font-size: 16px; font-weight: 700; line-height: 1.2; text-align: center; cursor: pointer;
+}
+/* an odd tile out spans the row instead of leaving a gap */
+.tools > .tile:last-child:nth-child(odd) { grid-column: 1 / -1; flex-direction: row; gap: 10px; min-height: 56px; }
+.tile:active, .tile:focus-visible { border-color: var(--green-2); outline: none; }
+.tile-icon { font-size: 24px; line-height: 1; }
 .voice .big { margin-top: 10px; }
 .listening { background: var(--green-soft); animation: pulse 1.2s ease-in-out infinite; }
 @keyframes pulse { 50% { box-shadow: 0 0 0 6px var(--green-soft); } }

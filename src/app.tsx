@@ -108,13 +108,12 @@ export function App() {
               </div>
             </label>
 
-            <div class="row tools">
-              <Voice ctx={ctx} onText={(s) => { setQuery(s); setPicked(null); }} />
-              <button class="big secondary" onClick={() => setView('rx')}>📝 {t.rxOpen}</button>
-              <button class="big secondary" onClick={() => setView('kendra')}>📍 {t.kendra}</button>
+            <div class="tools" role="group">
+              <Voice ctx={ctx} compact onText={(s) => { setQuery(s); setPicked(null); }} />
+              <Photo ctx={ctx} index={index} onFound={(h) => { setPicked(h); setQuery(h.type === 'brand' ? h.brand.name : ''); }} />
+              <button class="tile" onClick={() => setView('rx')}><span class="tile-icon" aria-hidden="true">📝</span>{t.tileRx}</button>
+              <button class="tile" onClick={() => setView('kendra')}><span class="tile-icon" aria-hidden="true">📍</span>{t.tileKendra}</button>
             </div>
-
-            <Photo ctx={ctx} index={index} onFound={(h) => { setPicked(h); setQuery(h.type === 'brand' ? h.brand.name : ''); }} />
 
             {shown ? (
               <ResultCard hit={shown} ctx={ctx} inList={list.includes(hitId(shown))} onToggle={() => toggle(shown)} onKendra={() => setView('kendra')} />

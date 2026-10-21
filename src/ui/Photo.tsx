@@ -38,8 +38,8 @@ export function Photo({ ctx, index, onFound }: { ctx: Ctx; index: Index; onFound
 
   return (
     <div class="photo">
-      <label class="big secondary as-button photo-btn">
-        📷 {state === 'busy' ? t.photoReading : t.photo}
+      <label class="tile photo-btn">
+        <span class="tile-icon" aria-hidden="true">📷</span>{state === 'busy' ? t.photoReading : t.tilePhoto}
         <input type="file" accept="image/*" capture="environment" hidden disabled={state === 'busy'}
           onChange={(e) => onFile((e.target as HTMLInputElement).files?.[0])} />
       </label>
