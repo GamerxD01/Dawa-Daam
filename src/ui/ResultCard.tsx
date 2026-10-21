@@ -13,9 +13,20 @@ export function ResultCard({ hit, ctx, inList, onToggle, onKendra }: { hit: Hit;
         <article class="card">
           <h2 class="card-title">{b.name}</h2>
           <p class="contains"><span>{t.contains}:</span> {comp}</p>
-          <p class="nomatch">{t.noExact}</p>
-          <p class="muted">{t.noExactWhy}</p>
           <p class="brand-only">{t.brandPrice}: <b>{rupees(b.mrp)}</b> {t.forPack(b.pack, t.units[b.form])}</p>
+          {hit.otherForm ? (
+            <div class="ja">
+              <div class="ja-label">{t.janAushadhi} · {t.code} {hit.otherForm.items[0].code}</div>
+              <div class="ja-name">{t.otherForm(t.units[hit.otherForm.form])}</div>
+              <div class="ja-price"><b class="newc">{rupees(hit.otherForm.items[0].mrp)}</b> {t.forPack(hit.otherForm.items[0].pack, t.units[hit.otherForm.form])} · {hit.otherForm.items[0].name}</div>
+              <p class="muted small">{t.otherFormNote}</p>
+            </div>
+          ) : (
+            <>
+              <p class="nomatch">{t.noExact}</p>
+              <p class="muted">{t.noExactWhy}</p>
+            </>
+          )}
           <Source b={b} ctx={ctx} />
         </article>
       );

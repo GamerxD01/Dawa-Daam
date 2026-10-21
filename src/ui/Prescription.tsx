@@ -142,6 +142,8 @@ function RxRow({ row, ctx, list, onAdd }: { row: Row; ctx: Ctx; list: string[]; 
     if (h.type === 'brand' && h.group) {
       const s = saving(h.brand, h.group);
       price = `${rupees(s.brandPrice)} → ${rupees(s.genericPrice)} (−${s.pct}%)`;
+    } else if (h.type === 'brand' && h.otherForm) {
+      price = `${rupees(h.brand.mrp)} · ${t.janAushadhi} ${t.units[h.otherForm.form]} ${rupees(h.otherForm.items[0].mrp)}`;
     } else if (h.type === 'brand') price = t.noMatchInList;
     else price = `${t.janAushadhi} ${rupees(h.group.items[0].mrp)}`;
     return (
