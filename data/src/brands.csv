@@ -1,0 +1,38 @@
+brand,aliases,manufacturer,composition,form,pack_qty,mrp_inr,expected_ja_code,source_url,captured_on,verified,note
+Dolo 650,dolo,Micro Labs,paracetamol:650mg,tablet,15,32.12,511,https://truemeds.in/medicine/dolo-650-mg-tablet-15-TM-TACR1-011691,2026-10-20,y,
+Crocin Advance 650,crocin 650|crocin advance,GSK,paracetamol:650mg,tablet,15,31.65,511,https://truemeds.in/otc/crocin-advance-650-mg-tablet-15-tm-tacr1-053161,2026-10-20,y,
+Pan 40,pan,Alkem,pantoprazole:40mg:GR,tablet,15,192.80,212,https://www.truemeds.in/medicine/pan-40-mg-tablet-15-TM-TACR1-030125,2026-10-20,y,
+Pan D,pan-d|pan dsr,Alkem,pantoprazole:40mg:GR|domperidone:30mg:MR,capsule,15,261.90,465,https://www.truemeds.in/medicine/pan-d-30-40-mg-capsule-pr-15-tm-cacr1-004257,2026-10-20,y,
+Razo 20,razo,Dr Reddy's,rabeprazole:20mg:GR,tablet,15,267.00,215,https://www.truemeds.in/medicine/razo-20-mg-tablet-15-tm-tacr1-033472,2026-10-20,y,
+Omez 20,omez,Dr Reddy's,omeprazole:20mg:GR,capsule,20,61.22,207,https://truemeds.in/medicine/omez-20-mg-capsule-20-tm-cacr1-004029,2026-10-20,y,
+Telma 40,telma,Glenmark,telmisartan:40mg,tablet,15,106.47,300,https://www.truemeds.in/medicine/telma-40-mg-tablet-15-TM-TACR1-038772,2026-10-20,y,
+Telma H,telma-h|telma h 40,Glenmark,telmisartan:40mg|hydrochlorothiazide:12.5mg,tablet,15,356.72,298,https://truemeds.in/medicine/telma-h-40-12-5-mg-tablet-15-TM-TACR1-038797,2026-10-20,y,
+Telma AM,telma-am|telma am 40,Glenmark,telmisartan:40mg|amlodipine:5mg,tablet,15,341.72,417,https://www.truemeds.in/medicine/telma-am-405-mg-tablet-15-tm-tacr1-038780,2026-10-20,y,
+Amlong 5,amlong,Micro Labs,amlodipine:5mg,tablet,15,70.24,264,https://truemeds.in/medicine/amlong-5-mg-tablet-15-tm-tacr1-002199,2026-10-20,y,
+Atorva 10,atorva,Zydus,atorvastatin:10mg,tablet,15,80.14,266,https://truemeds.in/medicine/atorva-10-mg-tablet-15-tm-tacr1-003673,2026-10-20,y,
+Rosuvas 10,rosuvas,Sun Pharma,rosuvastatin:10mg,tablet,15,375.00,759,https://truemeds.in/medicine/rosuvas-10-mg-tablet-15-tm-tacr1-035086,2026-10-20,y,
+Ecosprin 75,ecosprin,USV,aspirin:75mg:GR,tablet,14,5.29,790,https://www.truemeds.in/medicine/ecosprin-75-mg-tablet-14-tm-tacr1-012745,2026-10-20,y,Small saving - shown honestly
+Clopitab 75,clopitab,Lupin,clopidogrel:75mg,tablet,15,107.20,269,https://truemeds.in/medicine/clopitab-75-mg-tablet-15-tm-tacr1-009049,2026-10-20,y,
+Glycomet 500 SR,glycomet sr|glycomet 500 sr,USV,metformin:500mg:MR,tablet,20,42.24,372,https://truemeds.in/medicine/glycomet-500-mg-tablet-sr-20-TM-TASR1-000446,2026-10-20,y,
+Glycomet GP 1,glycomet gp1|glycomet-gp 1|gp1,USV,metformin:500mg:MR|glimepiride:1mg,tablet,15,131.90,904,https://truemeds.in/medicine/glycomet-gp-1mg-tablet-15-tm-tacr1-017951,2026-10-20,n,Release type of metformin not stated on source page - verify on box
+Amaryl 1,amaryl,Sanofi,glimepiride:1mg,tablet,30,118.44,137,https://www.truemeds.in/medicine/amaryl-1-mg-tablet-30-tm-tacr1-001818,2026-10-20,y,
+Galvus 50,galvus,Novartis (Cipla),vildagliptin:50mg,tablet,15,371.25,1461,https://truemeds.in/medicine/galvus-50-mg-tablet-15-tm-tacr1-016729,2026-10-20,y,
+Galvus Met 50/500,galvus met,Novartis (Cipla),vildagliptin:50mg|metformin:500mg,tablet,15,372.45,1462,https://pharmeasy.in/online-medicine-order/galvus-met-50-500mg-strip-of-15-tablets-212336,2026-10-20,y,
+Thyronorm 50,thyronorm,Abbott,levothyroxine:50mcg,tablet,120,132.87,506,https://truemeds.in/medicine/thyronorm-50-mcg-tablet-120-TM-TACR1-039968,2026-10-20,y,
+Montair LC,montair-lc,Cipla,montelukast:10mg|levocetirizine:5mg,tablet,10,315.41,252,https://www.truemeds.in/medicine/montair-lc-105-mg-tablet-10-tm-tacr1-025049,2026-10-20,y,
+Azithral 500,azithral,Alembic,azithromycin:500mg,tablet,5,126.73,72,https://www.truemeds.in/medicine/azithral-500mg-tablet-tm-tacr1-004398,2026-10-20,y,
+Augmentin Duo 625,augmentin 625|augmentin|augmentin duo,GSK,amoxicillin:500mg|clavulanic acid:125mg,tablet,6,140.88,39,https://www.truemeds.in/medicine/augmentin-duo-500125-mg-tablet-6-tm-tacr1-003782,2026-10-20,y,
+Taxim-O 200,taxim o|taxim o 200,Alkem,cefixime:200mg,tablet,10,104.43,55,https://www.truemeds.in/medicine/taxim-o-200-tablet-10-tm-tacr1-038390,2026-10-20,y,
+Allegra 120,allegra,Sanofi,fexofenadine:120mg,tablet,10,272.99,246,https://truemeds.in/medicine/allegra-120mg-tablet-10-tm-tacr1-001433,2026-10-20,y,
+Ciplox 500,ciplox,Cipla,ciprofloxacin:500mg,tablet,10,45.66,86,https://truemeds.in/medicine/ciplox-500-mg-tablet-10-tm-tacr1-008298,2026-10-20,y,
+Zerodol P,zerodol-p,Ipca,aceclofenac:100mg|paracetamol:325mg,tablet,10,75.94,1,https://truemeds.in/medicine/zerodol-p-tablet-tm-tacr1-044724,2026-10-20,y,
+Shelcal 500,shelcal,Torrent,calcium:500mg|cholecalciferol:250iu,tablet,15,163.45,220,https://truemeds.in/otc/shelcal-500-mg250iu-tablet-15-tm-tacr1-036336,2026-10-20,y,
+Nexito 10,nexito,Sun Pharma,escitalopram:10mg,tablet,15,144.22,321,https://csc.1mg.com/te/drugs/nexito-10-tablet-167450,2026-10-20,n,Source shows selling price - MRP label not confirmed
+Lyrica 75,lyrica,Viatris,pregabalin:75mg,capsule,14,841.87,3,https://truemeds.in/medicine/lyrica-75-mg-capsule-14-tm-cacr1-003195,2026-10-20,y,
+Met XL 50,met xl,Ajanta,metoprolol:50mg:MR,tablet,20,124.74,291,https://truemeds.in/medicine/met-xl-50-mg-tablet-20-tm-taet1-000181,2026-10-20,y,Succinate ER; JA lists extended release metoprolol 50mg
+Ondem 4,ondem,Alkem,ondansetron:4mg,tablet,10,55.20,209,https://www.truemeds.in/medicine/ondem-4-mg-tablet-10-TM-TACR1-029192,2026-10-20,y,
+Levocet 5,levocet,Hetero,levocetirizine:5mg,tablet,10,52.90,248,https://truemeds.in/medicine/levocet-5-mg-tablet-10-tm-tacr1-021519,2026-10-20,y,
+Brufen 400,brufen,Abbott,ibuprofen:400mg,tablet,15,25.17,16,https://truemeds.in/medicine/brufen-400-mg-tablet-15-tm-tacr1-005841,2026-10-20,y,
+Zyloric 100,zyloric,GSK,allopurinol:100mg,tablet,10,20.16,336,https://truemeds.in/medicine/zyloric-100-mg-tablet-10-tm-tacr1-045653,2026-10-20,y,
+Flagyl 400,flagyl,Abbott,metronidazole:400mg,tablet,15,24.35,202,https://truemeds.in/medicine/flagyl-400-mg-tablet-15-tm-tacr1-015558,2026-10-20,y,
+Asthalin Inhaler,asthalin|asthalin 100,Cipla,salbutamol:100mcg,inhaler,1,169.88,255,https://www.truemeds.in/hi/medicine/asthalin-100-mcg-inhaler-200-mdi-TM-INON1-000022,2026-10-20,y,200 doses
