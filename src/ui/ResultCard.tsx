@@ -89,6 +89,13 @@ export function ResultCard({ hit, ctx, inList, onToggle }: { hit: Hit; ctx: Ctx;
 }
 
 function Source({ b, ctx }: { b: Brand; ctx: Ctx }) {
+  if (b.source.startsWith('strip:')) {
+    return (
+      <p class="source muted">
+        {ctx.t.indicative} · {ctx.t.source}: {b.source.slice(6)} ({b.captured}), PMBI · {b.maker}
+      </p>
+    );
+  }
   const host = (() => {
     try {
       return new URL(b.source).hostname.replace(/^www\./, '');

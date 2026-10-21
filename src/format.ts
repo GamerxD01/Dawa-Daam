@@ -12,7 +12,7 @@ export function compositionText(comp: Component[], molecules?: Map<string, Molec
     .map((c) => {
       const hi = lang === 'hi' ? molecules?.get(c.m)?.hi : '';
       const name = hi ? `${title(c.m)} (${hi})` : title(c.m);
-      return `${name} ${c.v} ${c.u}${c.per ? `/${c.per} ml` : ''}${RELEASE[c.r]}`;
+      return `${name} ${c.v} ${c.u === 'mspores' ? 'million spores' : c.u}${c.per ? `/${c.per} ml` : ''}${RELEASE[c.r]}`;
     })
     .join(' + ');
 }
