@@ -154,6 +154,10 @@ main { flex: 1; padding-bottom: 12px; }
 .rx-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
 button:disabled { opacity: 0.5; cursor: default; }
 
+.consent { margin-top: 10px; padding: 12px; border-radius: 12px; border: 2px solid var(--gold); background: var(--warn-bg); color: var(--warn); }
+.consent .big { margin-top: 6px; }
+.unclear { color: var(--old); font-weight: 700; }
+
 /* Nearest Kendra */
 .map { height: 260px; border-radius: 12px; margin: 10px 0; border: 1.5px solid var(--line); z-index: 0; }
 .kendras { padding-left: 22px; margin: 8px 0; }

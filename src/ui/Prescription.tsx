@@ -4,14 +4,18 @@ import { prescriptionRows, splitPrescription, type RxRow } from '../match/rx';
 import { search, type Index } from '../match/search';
 import type { Hit } from '../match/types';
 import { compositionText, rupees } from '../format';
-import { gemmaAvailable, gemmaUrl, readLines } from '../photo';
+import { bridgeHealth, gemmaUrl, readLines, type BridgeHealth } from '../photo';
 import { hitId } from '../store';
 import type { Ctx } from './ctx';
 import { Voice } from './Voice';
 
 type Row = RxRow;
 
-/** Whole prescription at once: typed, pasted, spoken, or read off a PRINTED prescription by Gemma. */
+/**
+ * Whole prescription at once: typed, pasted, spoken, read off a PRINTED prescription by Gemma (local),
+ * or, opt-in beta, read off a HANDWRITTEN one by Google Gemini (cloud, only with the user's consent).
+ * Handwriting can be misread, so its lines are never added in bulk: each medicine needs its own tap.
+ */
 export function Prescription({ ctx, index, list, onAdd, onDone }: {
   ctx: Ctx;
   index: Index;
@@ -23,13 +27,16 @@ export function Prescription({ ctx, index, list, onAdd, onDone }: {
   const [text, setText] = useState('');
   const [rows, setRows] = useState<Row[] | null>(null);
   const [ignored, setIgnored] = useState(0);
-  const [gemma, setGemma] = useState(false);
+  const [health, setHealth] = useState<BridgeHealth>({ ok: false, handwriting: false });
   const [reading, setReading] = useState(false);
   const [handwritten, setHandwritten] = useState(false);
+  const [consent, setConsent] = useState(false);
+  const [source, setSource] = useState<'typed' | 'printed' | 'handwritten'>('typed');
+  const [hwFailed, setHwFailed] = useState(false);
 
   useEffect(() => {
     const url = gemmaUrl();
-    if (url) gemmaAvailable(url).then(setGemma);
+    if (url) bridgeHealth(url).then(setHealth);
   }, []);
 
   const check = (src = text, fromPhoto = false) => {
@@ -38,25 +45,29 @@ export function Prescription({ ctx, index, list, onAdd, onDone }: {
     setRows(keep);
   };
 
-  const onPhoto = async (file?: File) => {
+  const onPhoto = async (file?: File, mode: 'printed' | 'handwritten' = 'printed') => {
     if (!file) return;
     setReading(true);
     setHandwritten(false);
+    setHwFailed(false);
+    setConsent(false);
     try {
-      const lines = await readLines(file, 1400);
+      const lines = await readLines(file, mode === 'handwritten' ? 1600 : 1400, mode);
       const joined = lines.join('\n');
+      setSource(mode);
       setText(joined);
       check(joined, true);
-      if (!lines.length || splitPrescription(joined).every((l) => search(index, l).kind === 'none')) setHandwritten(true);
+      const nothing = !lines.length || splitPrescription(joined).every((l) => search(index, l).kind === 'none');
+      if (nothing) (mode === 'handwritten' ? setHwFailed : setHandwritten)(true);
     } catch {
-      setHandwritten(true);
+      (mode === 'handwritten' ? setHwFailed : setHandwritten)(true);
     } finally {
       setReading(false);
     }
   };
 
   const matched = (rows ?? []).flatMap((r) => (r.result.kind === 'match' ? [r.result.hit] : []));
-  const toAdd = matched.filter((h) => !list.includes(hitId(h)));
+  const toAdd = source === 'handwritten' ? [] : matched.filter((h) => !list.includes(hitId(h)));
 
   return (
     <section class="card">
@@ -70,17 +81,38 @@ export function Prescription({ ctx, index, list, onAdd, onDone }: {
         onInput={(e) => setText((e.target as HTMLTextAreaElement).value)}
       />
       <Voice ctx={ctx} onText={(s) => { const next = text ? `${text}\n${s}` : s; setText(next); check(next); }} />
-      {gemma && (
+      {health.ok && (
         <label class="big secondary as-button">
           📷 {reading ? t.photoReading : t.rxPhoto}
           <input type="file" accept="image/*" capture="environment" hidden disabled={reading}
-            onChange={(e) => onPhoto((e.target as HTMLInputElement).files?.[0])} />
+            onChange={(e) => onPhoto((e.target as HTMLInputElement).files?.[0], 'printed')} />
         </label>
       )}
-      <p class="muted small">✍️ {t.rxHandwriting}</p>
+      {health.handwriting ? (
+        consent ? (
+          <div class="consent">
+            <b>{t.hwConsentTitle}</b>
+            <p class="small">{t.hwConsent}</p>
+            <div class="row">
+              <label class="big primary as-button">
+                {t.hwContinue}
+                <input type="file" accept="image/*" capture="environment" hidden disabled={reading}
+                  onChange={(e) => onPhoto((e.target as HTMLInputElement).files?.[0], 'handwritten')} />
+              </label>
+              <button class="big secondary" onClick={() => setConsent(false)}>{t.cancel}</button>
+            </div>
+          </div>
+        ) : (
+          <button class="big secondary" onClick={() => setConsent(true)} disabled={reading}>✍️ {t.hwButton}</button>
+        )
+      ) : (
+        <p class="muted small">✍️ {t.rxHandwriting}</p>
+      )}
       <button class="big primary" onClick={() => check()} disabled={!text.trim()}>{t.rxCheck}</button>
 
       {handwritten && <p class="warn">{t.rxHandwriting}</p>}
+      {hwFailed && <p class="warn">{t.hwFailed}</p>}
+      {source === 'handwritten' && rows && <p class="warn">⚠ {t.hwWarn}</p>}
       {rows && (
         <>
           <ul class="rx-rows">
@@ -112,7 +144,7 @@ function RxRow({ row, ctx, list, onAdd }: { row: Row; ctx: Ctx; list: string[]; 
     else price = `${t.janAushadhi} ${rupees(h.group.items[0].mrp)}`;
     return (
       <li class="rx-row ok">
-        <div class="rx-line">“{row.line}”</div>
+        <div class="rx-line">“{row.line}”{row.line.includes('[?]') && <span class="unclear"> · {t.hwUnclear}</span>}</div>
         <div><b>✓ {h.type === 'brand' ? h.brand.name : compositionText(h.group.comp)}</b> · {price}</div>
         {added ? <span class="muted small">{t.added}</span> : <button class="link" onClick={() => onAdd(h)}>＋ {t.add}</button>}
       </li>
