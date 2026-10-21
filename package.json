@@ -1,0 +1,28 @@
+{
+  "name": "dawa-daam",
+  "version": "0.1.0",
+  "private": true,
+  "description": "See the price of the same medicine at Jan Aushadhi before you pay. Offline-first, Hindi + English.",
+  "license": "Apache-2.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host",
+    "build": "npm run data && tsc --noEmit && vite build",
+    "preview": "vite preview --host",
+    "data": "node scripts/build-data.mjs",
+    "test": "npm run data && vitest run",
+    "typecheck": "tsc --noEmit",
+    "gemma": "node server/gemma-bridge.mjs",
+    "gemma:eval": "node server/eval.mjs"
+  },
+  "devDependencies": {
+    "@preact/preset-vite": "2.10.1",
+    "preact": "10.26.4",
+    "typescript": "5.7.3",
+    "vite": "6.2.6",
+    "vitest": "3.1.1"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
