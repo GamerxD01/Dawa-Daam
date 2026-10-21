@@ -158,6 +158,8 @@ $env:GEMINI_API_KEY = "your-key"     # PowerShell  ·  macOS/Linux: export GEMIN
 npm run demo
 ```
 
+If a Gemini model is overloaded (503), the bridge retries and then falls back through `gemini-3.6-flash → gemini-2.5-flash → gemini-2.5-flash-lite` (override with `GEMINI_MODELS=a,b,c`).
+
 **Measure Gemma on your own photos:** `npm run gemma:eval -- path/to/photos` (optional `expected.csv`: `file,brand,strength`).
 
 ## Data
