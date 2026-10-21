@@ -13,7 +13,8 @@
     "test": "npm run data && vitest run",
     "typecheck": "tsc --noEmit",
     "gemma": "node server/gemma-bridge.mjs",
-    "gemma:eval": "node server/eval.mjs"
+    "gemma:eval": "node server/eval.mjs",
+    "demo": "node scripts/demo.mjs"
   },
   "devDependencies": {
     "@preact/preset-vite": "2.10.1",
