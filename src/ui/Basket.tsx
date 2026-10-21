@@ -32,12 +32,13 @@ export function totals(lines: Line[]) {
   return { brand, generic, saving: round(brand - generic), pct: brand ? Math.round(((brand - generic) / brand) * 100) : 0 };
 }
 
-export function Basket({ lines, ctx, onRemove, onSheet, onBack }: {
+export function Basket({ lines, ctx, onRemove, onSheet, onBack, onKendra }: {
   lines: Line[];
   ctx: Ctx;
   onRemove: (h: Hit) => void;
   onSheet: () => void;
   onBack: () => void;
+  onKendra: () => void;
 }) {
   const { t } = ctx;
   const tot = totals(lines);
@@ -65,6 +66,7 @@ export function Basket({ lines, ctx, onRemove, onSheet, onBack }: {
           <div>{t.total}: <span class="old small">{rupees(tot.brand)}</span> → <b class="newc">{rupees(tot.generic)}</b></div>
           <div class="total-save">{t.totalSaving}: {rupees(tot.saving)} ({tot.pct}%)</div>
           <button class="big primary" onClick={onSheet}>🧾 {t.print}</button>
+          <button class="big secondary" onClick={onKendra}>📍 {t.kendra}</button>
         </div>
       )}
       <button class="big secondary" onClick={onBack}>← {t.back}</button>

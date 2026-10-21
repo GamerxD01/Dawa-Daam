@@ -8,6 +8,9 @@ import { Basket, lineFor } from './ui/Basket';
 import { Choices } from './ui/Choices';
 import type { Ctx } from './ui/ctx';
 import { Photo } from './ui/Photo';
+import { Kendras } from './ui/Kendras';
+import { Prescription } from './ui/Prescription';
+import { Voice } from './ui/Voice';
 import { ResultCard } from './ui/ResultCard';
 import { Sheet } from './ui/Sheet';
 
@@ -16,7 +19,7 @@ const index = buildIndex(data);
 const molecules = new Map(data.molecules.map((m) => [m.name, m]));
 const byId = new Map(index.entries.map((e) => [hitId({ ...e.hit, score: 1 } as Hit), { ...e.hit, score: 1 } as Hit]));
 
-type View = 'search' | 'list' | 'sheet';
+type View = 'search' | 'list' | 'sheet' | 'rx' | 'kendra';
 
 export function App() {
   const [lang, setLang] = useState<Lang>(() => load<Lang>('lang', 'hi'));
@@ -73,8 +76,14 @@ export function App() {
       {!online && <p class="offline">● {t.offline}</p>}
 
       <main>
-        {view === 'list' ? (
-          <Basket lines={lines} ctx={ctx} onRemove={toggle} onSheet={() => setView('sheet')} onBack={() => setView('search')} />
+        {view === 'kendra' ? (
+          <Kendras ctx={ctx} onBack={() => setView('search')} />
+        ) : view === 'rx' ? (
+          <Prescription ctx={ctx} index={index} list={list}
+            onAdd={(hits) => setList((l) => [...l, ...hits.map(hitId).filter((id) => !l.includes(id))])}
+            onDone={() => setView('list')} />
+        ) : view === 'list' ? (
+          <Basket lines={lines} ctx={ctx} onRemove={toggle} onSheet={() => setView('sheet')} onBack={() => setView('search')} onKendra={() => setView('kendra')} />
         ) : (
           <>
             <label class="search">
@@ -99,10 +108,16 @@ export function App() {
               </div>
             </label>
 
+            <div class="row tools">
+              <Voice ctx={ctx} onText={(s) => { setQuery(s); setPicked(null); }} />
+              <button class="big secondary" onClick={() => setView('rx')}>📝 {t.rxOpen}</button>
+              <button class="big secondary" onClick={() => setView('kendra')}>📍 {t.kendra}</button>
+            </div>
+
             <Photo ctx={ctx} index={index} onFound={(h) => { setPicked(h); setQuery(h.type === 'brand' ? h.brand.name : ''); }} />
 
             {shown ? (
-              <ResultCard hit={shown} ctx={ctx} inList={list.includes(hitId(shown))} onToggle={() => toggle(shown)} />
+              <ResultCard hit={shown} ctx={ctx} inList={list.includes(hitId(shown))} onToggle={() => toggle(shown)} onKendra={() => setView('kendra')} />
             ) : result.kind !== 'empty' && result.kind !== 'match' ? (
               <Choices result={result} ctx={ctx} onPick={setPicked} onNone={() => setPicked(null)} />
             ) : (

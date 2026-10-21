@@ -3,7 +3,7 @@ import type { Brand, Hit } from '../match/types';
 import { compositionText, rupees } from '../format';
 import type { Ctx } from './ctx';
 
-export function ResultCard({ hit, ctx, inList, onToggle }: { hit: Hit; ctx: Ctx; inList: boolean; onToggle: () => void }) {
+export function ResultCard({ hit, ctx, inList, onToggle, onKendra }: { hit: Hit; ctx: Ctx; inList: boolean; onToggle: () => void; onKendra: () => void }) {
   const { t } = ctx;
   if (hit.type === 'brand') {
     const b = hit.brand;
@@ -46,6 +46,7 @@ export function ResultCard({ hit, ctx, inList, onToggle }: { hit: Hit; ctx: Ctx;
         <button class={`big ${inList ? 'secondary' : 'primary'}`} onClick={onToggle}>
           {inList ? t.added : `＋ ${t.add}`}
         </button>
+        <button class="big secondary" onClick={onKendra}>📍 {t.kBuyAt}</button>
         <Source b={b} ctx={ctx} />
       </article>
     );
@@ -83,6 +84,7 @@ export function ResultCard({ hit, ctx, inList, onToggle }: { hit: Hit; ctx: Ctx;
       <button class={`big ${inList ? 'secondary' : 'primary'}`} onClick={onToggle}>
         {inList ? t.added : `＋ ${t.add}`}
       </button>
+      <button class="big secondary" onClick={onKendra}>📍 {t.kBuyAt}</button>
       <p class="source muted">{t.indicative} · {t.source}: PMBI (Jan Aushadhi) product list · {t.dataAsOf} {ctx.version}</p>
     </article>
   );
