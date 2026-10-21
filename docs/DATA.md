@@ -5,7 +5,7 @@ All data is bundled in the repo and shipped inside the app, so search works with
 | file | rows | what |
 |---|---|---|
 | `data/src/janaushadhi.csv` | 149 | Jan Aushadhi products: PMBI drug code, name, **structured composition**, form, pack size, MRP |
-| `data/src/brands.csv` | 63 | Curated branded products: composition, pack, listed MRP, source URL + date, expected Jan Aushadhi code |
+| `data/src/brands.csv` | 64 | Curated branded products: composition, pack, listed MRP, source URL + date, expected Jan Aushadhi code |
 | `data/src/molecules.csv` | 88 | Canonical molecule names, synonyms (e.g. `frusemide`, `amoxycillin`, `thyroxine`), Hindi names |
 | `data/src/combo_aliases.csv` | 9 | Nicknames for combinations (`amoxyclav`, `panto d`) |
 
