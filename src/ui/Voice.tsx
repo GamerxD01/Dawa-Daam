@@ -1,9 +1,10 @@
 import { useState } from 'preact/hooks';
 import { spokenToText } from '../match/spoken';
+import { stopSpeaking } from '../speak';
 import type { Ctx } from './ctx';
 
 /* Voice input via the phone's built-in speech recognition (Chrome on Android, Edge, Safari).
-   Recognised in Indian English, because brand names are spoken in Latin letters ("Dolo six fifty").
+   Recognised in Hindi or Indian English depending on user selection.
    The text goes through exactly the same matcher as typing; nothing is interpreted. Hidden if unsupported. */
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -17,8 +18,9 @@ export function Voice({ ctx, onText, compact = false }: { ctx: Ctx; onText: (s: 
   if (!Impl) return null;
 
   const start = () => {
+    stopSpeaking();
     const rec = new Impl();
-    rec.lang = 'en-IN';
+    rec.lang = ctx.lang === 'hi' ? 'hi-IN' : 'en-IN';
     rec.interimResults = false;
     rec.maxAlternatives = 1;
     rec.onresult = (e: any) => {

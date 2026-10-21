@@ -1,6 +1,7 @@
 import { saving, perUnit } from '../match/equivalence';
 import type { Brand, Hit } from '../match/types';
 import { compositionText, rupees } from '../format';
+import { canSpeak, speakHit } from '../speak';
 import type { Ctx } from './ctx';
 
 export function ResultCard({ hit, ctx, inList, onToggle, onKendra }: { hit: Hit; ctx: Ctx; inList: boolean; onToggle: () => void; onKendra: () => void }) {
@@ -43,6 +44,11 @@ export function ResultCard({ hit, ctx, inList, onToggle, onKendra }: { hit: Hit;
           </div>
         </div>
         {!b.verified && <p class="warn">⚠ {t.unverified}</p>}
+        {canSpeak() && (
+          <button class="big secondary" style="border-color:var(--green); font-weight:700;" onClick={() => speakHit(hit, ctx)}>
+            {t.listenVoice}
+          </button>
+        )}
         <button class={`big ${inList ? 'secondary' : 'primary'}`} onClick={onToggle}>
           {inList ? t.added : `＋ ${t.add}`}
         </button>
@@ -80,6 +86,11 @@ export function ResultCard({ hit, ctx, inList, onToggle, onKendra }: { hit: Hit;
             })}
           </ul>
         </div>
+      )}
+      {canSpeak() && (
+        <button class="big secondary" style="border-color:var(--green); font-weight:700;" onClick={() => speakHit(hit, ctx)}>
+          {t.listenVoice}
+        </button>
       )}
       <button class={`big ${inList ? 'secondary' : 'primary'}`} onClick={onToggle}>
         {inList ? t.added : `＋ ${t.add}`}

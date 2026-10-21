@@ -53,7 +53,7 @@ export function Prescription({ ctx, index, list, onAdd, onDone, startHandwritten
     setHwFailed(false);
     setConsent(false);
     try {
-      const lines = await readLines(file, mode === 'handwritten' ? 1600 : 1400, mode);
+      const { lines } = await readLines(file, mode === 'handwritten' ? 1600 : 1400, mode);
       const joined = lines.join('\n');
       setSource(mode);
       setText(joined);

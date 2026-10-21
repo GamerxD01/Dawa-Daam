@@ -18,9 +18,21 @@ const GEMINI_KEY = process.env.GEMINI_API_KEY ?? '';
 const GEMINI_MODEL = process.env.GEMINI_MODEL ?? 'gemini-3.6-flash';
 
 export const READ_PROMPT =
-  'You transcribe printed text from a photo of a medicine strip, a medicine box or a printed prescription. ' +
+  'You transcribe printed text from a photo of a medicine strip (wrapper/blister pack) or medicine box. ' +
   'Return every line of printed text exactly as printed, top to bottom: brand name, composition, strength. ' +
+  'Also classify the medicine packaging in the photo: "wrapper" if it is a blister strip/foil pack/wrapper, "box" if it is an outer carton box, or "bottle". ' +
   'Do not add, correct, translate, explain or guess anything. If nothing is readable, return an empty list.';
+
+export function detectPackagingFromLines(lines = []) {
+  const combined = lines.join(' ').toLowerCase();
+  if (/blister|strip|foil|alu-alu|alupack|1x10|10 tab|15 tab|10 cap|15 cap|wrapper/i.test(combined)) {
+    return 'wrapper';
+  }
+  if (/carton|box|pack of|keep in box|outer box|mfg\. lic/i.test(combined)) {
+    return 'box';
+  }
+  return 'wrapper'; // Default for strips/wrappers commonly photographed at chemist counters
+}
 
 export function pickPrompt(lines, candidates) {
   return [
@@ -90,9 +102,18 @@ async function readWithGemini(imageBase64, prompt) {
 export async function readStrip(imageBase64) {
   const out = await ollamaChat(
     [{ role: 'user', content: READ_PROMPT, images: [imageBase64] }],
-    { type: 'object', properties: { lines: { type: 'array', items: { type: 'string' } } }, required: ['lines'] },
+    {
+      type: 'object',
+      properties: {
+        lines: { type: 'array', items: { type: 'string' } },
+        packaging: { type: 'string', enum: ['wrapper', 'box', 'bottle', 'unknown'] },
+      },
+      required: ['lines'],
+    },
   );
-  return (Array.isArray(out.lines) ? out.lines : []).map(String).map((s) => s.trim()).filter(Boolean).slice(0, 30);
+  const lines = (Array.isArray(out.lines) ? out.lines : []).map(String).map((s) => s.trim()).filter(Boolean).slice(0, 30);
+  const packaging = out.packaging && out.packaging !== 'unknown' ? out.packaging : detectPackagingFromLines(lines);
+  return { lines, packaging };
 }
 
 export async function pickCandidate(lines, candidates) {
@@ -141,9 +162,9 @@ const server = createServer(async (req, res) => {
       const { image } = await body(req);
       if (typeof image !== 'string' || image.length < 100) return send(res, 400, { error: 'image (base64 JPEG) required' });
       const t0 = Date.now();
-      const lines = await readStrip(image);
-      console.log(`[read] ${lines.length} lines in ${Date.now() - t0} ms: ${lines.slice(0, 3).join(' | ')}`);
-      return send(res, 200, { lines });
+      const { lines, packaging } = await readStrip(image);
+      console.log(`[read] packaging=${packaging}, ${lines.length} lines in ${Date.now() - t0} ms: ${lines.slice(0, 3).join(' | ')}`);
+      return send(res, 200, { lines, packaging });
     }
     if (req.method === 'POST' && path === '/read-handwritten') {
       const { image } = await body(req);

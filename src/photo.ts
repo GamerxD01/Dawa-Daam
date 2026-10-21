@@ -78,7 +78,7 @@ export function candidatesFromLines(lines: string[], index: Index, limit = 5): H
 export type ReadMode = 'printed' | 'gemini' | 'handwritten';
 const ENDPOINT: Record<ReadMode, string> = { printed: 'read', gemini: 'read-gemini', handwritten: 'read-handwritten' };
 
-export async function readLines(file: File, maxSide = 1024, mode: ReadMode = 'printed'): Promise<string[]> {
+export async function readLines(file: File, maxSide = 1024, mode: ReadMode = 'printed'): Promise<{ lines: string[]; packaging: string }> {
   const url = gemmaUrl();
   if (!url) throw new Error('no gemma server');
   const image = await toJpegBase64(file, maxSide);
@@ -88,17 +88,17 @@ export async function readLines(file: File, maxSide = 1024, mode: ReadMode = 'pr
     body: JSON.stringify({ image }),
   });
   if (!read.ok) throw new Error(`read failed ${read.status}`);
-  const { lines } = (await read.json()) as { lines: string[] };
-  return lines ?? [];
+  const data = (await read.json()) as { lines: string[]; packaging?: string };
+  return { lines: data.lines ?? [], packaging: data.packaging ?? 'wrapper' };
 }
 
-export async function readStrip(file: File, index: Index, mode: 'printed' | 'gemini' = 'printed'): Promise<{ lines: string[]; hit: Hit | null }> {
+export async function readStrip(file: File, index: Index, mode: 'printed' | 'gemini' = 'printed'): Promise<{ lines: string[]; hit: Hit | null; packaging: string }> {
   const url = gemmaUrl();
   if (!url) throw new Error('no gemma server');
   // Whichever model read the text, the local Gemma still makes the pick from OUR candidates.
-  const lines = await readLines(file, 1024, mode);
+  const { lines, packaging } = await readLines(file, 1024, mode);
   const candidates = candidatesFromLines(lines ?? [], index);
-  if (!candidates.length) return { lines, hit: null };
+  if (!candidates.length) return { lines, hit: null, packaging };
 
   const pick = await fetch(`${url}/pick`, {
     method: 'POST',
@@ -115,5 +115,5 @@ export async function readStrip(file: File, index: Index, mode: 'printed' | 'gem
   const { id } = pick.ok ? ((await pick.json()) as { id: string | null }) : { id: null };
   // Gemma may only choose from our list; anything else is ignored.
   const chosen = candidates.find((h) => hitId(h) === id) ?? null;
-  return { lines, hit: chosen };
+  return { lines, hit: chosen, packaging };
 }

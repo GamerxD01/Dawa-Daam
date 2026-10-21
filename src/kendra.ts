@@ -68,11 +68,11 @@ export function parseOverpass(json: { elements?: OsmElement[] }, here: { lat: nu
   return out.sort((a, b) => a.km - b.km);
 }
 
-const ENDPOINTS = ['https://overpass-api.de/api/interpreter', 'https://overpass.kumi.systems/api/interpreter'];
+import { MAP_CONFIG } from './mapConfig';
 
 export async function findKendras(lat: number, lon: number): Promise<Kendra[]> {
   let lastErr: unknown;
-  for (const url of ENDPOINTS) {
+  for (const url of MAP_CONFIG.overpassEndpoints) {
     try {
       const ctl = new AbortController();
       const timer = setTimeout(() => ctl.abort(), 20000);

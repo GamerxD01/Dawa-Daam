@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'preact/hooks';
 import { directionsUrl, findKendras, googleMapsSearch, type Kendra } from '../kendra';
+import { MAP_CONFIG } from '../mapConfig';
 import type { Ctx } from './ctx';
 
 type State =
@@ -46,9 +47,9 @@ export function Kendras({ ctx, onBack }: { ctx: Ctx; onBack: () => void }) {
       await import('leaflet/dist/leaflet.css');
       if (cancelled || !mapEl.current) return;
       map = L.map(mapEl.current, { zoomControl: true, attributionControl: true });
-      L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      L.tileLayer(MAP_CONFIG.tileUrl, {
         maxZoom: 19,
-        attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+        attribution: MAP_CONFIG.attribution,
       }).addTo(map);
       const dot = (color: string) => ({ radius: 9, color: '#fff', weight: 2, fillColor: color, fillOpacity: 1 });
       L.circleMarker([st.here.lat, st.here.lon], dot('#2563eb')).addTo(map).bindTooltip(t.kYou);

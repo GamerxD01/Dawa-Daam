@@ -3,7 +3,10 @@ import preact from '@preact/preset-vite';
 
 // BASE lets the same build work at / (local) and /Dawa-Daam/ (GitHub Pages).
 export default defineConfig({
-  base: process.env.BASE ?? './',
+  base: process.env.BASE ?? '/',
+  define: {
+    __WS_TOKEN__: '""',
+  },
   plugins: [preact()],
   // Phone on the same Wi-Fi opens http://<laptop-ip>:5173 — /gemma is proxied to the local Gemma bridge.
   server: { proxy: { '/gemma': { target: 'http://localhost:8000', rewrite: (p: string) => p.replace(/^\/gemma/, '') } } },
