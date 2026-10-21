@@ -87,6 +87,8 @@ The 📷 button appears only when the bridge is reachable. Typing always works w
 | **Why Gemma here** | foil glare, curved strips and mixed fonts defeat plain OCR on brand names; a small vision model handles layout and noisy text and runs locally |
 | **What it gets wrong** | handwriting (we don't attempt it), heavy glare, confusing batch numbers with strength, occasional invented letters. So its output only feeds our deterministic matcher and the patient confirms |
 
+**Gemini as a fallback reader (optional).** If Gemma's read of a strip gives nothing we can match, or the patient says "not this", the app offers to re-read the same photo with Gemini. The patient decides each time, because the photo goes online. **Gemma (local) still makes the pick** from our candidate list, and the confirm screen says which model read the text.
+
 **Handwriting (optional beta): Google Gemini.** Gemma is not reliable on handwriting, and the brief warns that it's hard. So handwritten prescriptions can *optionally* be read by Gemini (`gemini-3.6-flash`), with the same contract as Gemma: transcribe only, unclear words become `[?]`, never drug facts. Extra guard rails:
 - an explicit consent step, because the photo goes to Google over the internet
 - no bulk "add all": each medicine needs its own tap

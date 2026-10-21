@@ -65,6 +65,10 @@ Six of our own strip photos (phone camera, ordinary light, some with pen marks),
 - **Numbers:** batch numbers, MRP and dates sit next to the strength. The matcher's strength check and the patient's confirmation catch mix-ups.
 - **Latency:** the first call after loading the model is slow (warm-up). Run one photo before a demo.
 
+## Fallback reading (optional)
+
+When Gemma's transcription yields no candidate we can match, or the patient rejects the pick, and only if the bridge owner enabled Gemini, the app offers to re-read the same photo with Gemini (`POST /read-gemini`, same transcribe-only prompt). The lines go back through **our** matcher and **Gemma still makes the pick** locally (`/pick`), so Gemma is always the model that chooses. The confirm card shows "Read by Gemma (on this laptop)" or "Read by Google Gemini (online)".
+
 ## Handwriting: an optional second model (Gemini)
 
 Gemma 4 E2B is good enough for printed strips and printed prescriptions, but not for doctors' handwriting. With the organisers' go-ahead, handwritten prescriptions can optionally be read by **Gemini** (`gemini-3.6-flash`, cloud), **only** when the bridge owner sets `GEMINI_API_KEY` and the patient agrees to send the photo to Google.
