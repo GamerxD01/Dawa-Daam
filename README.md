@@ -15,7 +15,7 @@
 
 **[▶ Open the app](https://gamerxd01.github.io/Dawa-Daam/)** · [How it works](#how-it-works) · [Gemma 4](#gemma-4-on-our-own-laptop) · [Run it yourself](#run-it-yourself) · [Data](#data) · [Contribute](CONTRIBUTING.md)
 
-<img src="docs/screenshots/result.png" width="230" alt="Lyrica 75: ₹841.87 → ₹30.80, 96% saving">&nbsp;
+<img src="docs/screenshots/result.png" width="230" alt="Lyrica 75: ₹841.87 → ₹31.77, 96% saving">&nbsp;
 <img src="docs/screenshots/prescription.png" width="230" alt="A whole prescription checked line by line">&nbsp;
 <img src="docs/screenshots/sheet.png" width="230" alt="Printable sheet to hand across the counter">
 
@@ -34,14 +34,16 @@ A patient is handed a prescription of brand names, takes it to a chemist, and pa
 
 | Brand (pack) | Brand MRP | Jan Aushadhi, same pack | Saving |
 |---|---:|---:|---:|
-| Lyrica 75 (14 capsules) | ₹841.87 | **₹30.80** | **96%** |
-| Rosuvas 10 (15 tablets) | ₹375.00 | **₹18.70** | **95%** |
-| Galvus 50 (15 tablets) | ₹371.25 | **₹20.00** | **95%** |
-| Telma H (15 tablets) | ₹356.72 | **₹25.50** | **93%** |
-| Pan 40 (15 tablets) | ₹192.80 | **₹18.15** | **91%** |
-| Garyfex 180 (10 tablets) *(MRP read off our own strip)* | ₹175.00 | **₹37.40** | **79%** |
+| Lyrica 75 (14 capsules) | ₹841.87 | **₹31.77** | **96%** |
+| Rosuvas 10 (15 tablets) | ₹375.00 | **₹19.28** | **95%** |
+| Galvus 50 (15 tablets) | ₹371.25 | **₹20.63** | **94%** |
+| Telma H (15 tablets) | ₹356.72 | **₹26.30** | **93%** |
+| Pan 40 (15 tablets) | ₹192.80 | **₹18.71** | **90%** |
+| Garyfex 180 (10 tablets) *(MRP read off our own strip)* | ₹175.00 | **₹35.06** | **80%** |
 
-Across all **63 curated brands**, the **median saving is 80%** (range 43–96%). We show small savings honestly too: Ecosprin 75 saves 43%.
+Across our **63 hand-checked brands**, the **median saving is 80%** (range 47–96%). Jan Aushadhi prices are from the official PMBI product list of 25 Oct 2026.
+
+**Coverage:** **1,196 Jan Aushadhi medicines** (every oral tablet, capsule, syrup and suspension in the PMBI list that we can read with confidence) and **86,521 brands** that are an exact equivalent of one of them, plus our 63 hand-checked brands. The big brand list comes from a public dataset and is labelled as such in the app ([details](#data)).
 
 ## What it does
 
@@ -62,9 +64,9 @@ Across all **63 curated brands**, the **median saving is 80%** (range 43–96%).
 
 | The brief asked for | DawaDaam |
 |---|---|
-| Enter a brand **or** a molecule → generic name, strength, indicative generic vs branded price | ✅ Both: `Pan 40` → Pantoprazole 40 mg GR, ₹192.80 → ₹18.15; `paracetamol 650` → Jan Aushadhi 511 plus the brands we know |
+| Enter a brand **or** a molecule → generic name, strength, indicative generic vs branded price | ✅ Both: `Pan 40` → Pantoprazole 40 mg GR, ₹192.80 → ₹18.71; `paracetamol 650` → Jan Aushadhi 511 plus the brands we know |
 | Make the saving the headline (`₹240 → ₹28`) | ✅ A 56 px number, at the patient's own pack size, with the per-tablet price underneath |
-| Tolerate misspellings, missing strengths, half-read words | ✅ `lirika`, `rozuvas`, `alegra`, `dolo650`, `DOLO-650 TAB`, `pantop`, `६५०`. Covered by 234 tests |
+| Tolerate misspellings, missing strengths, half-read words | ✅ `lirika`, `rozuvas`, `alegra`, `dolo650`, `DOLO-650 TAB`, `pantop`, `६५०`. Covered by 274 tests |
 | A clear disclaimer, and mean it | ✅ On every screen; the app never says "switch", "replace" or "use instead" |
 | ➕ Photograph the strip or box | ✅ Gemma 4 E2B, local. Measured on our own strips (below) |
 | ➕ Whole prescription with a total saving | ✅ Typed, pasted, spoken, or a photo of a **printed** prescription |
@@ -73,8 +75,8 @@ Across all **63 curated brands**, the **median saving is 80%** (range 43–96%).
 | ➕ Pill identifier by imprint | ❌ **Deliberately not built.** There is no reliable open Indian imprint database, and a wrong pill ID is dangerous |
 | Never generate drug information with a language model | ✅ Models only **read text** and **pick from our list**. Every fact shown comes from data we ship |
 | OCR on handwriting is hard: keep typing as the path that always works | ✅ Typing always works. Handwriting is an opt-in beta with extra safeguards |
-| Curate 200 drugs well | ✅ **212 hand-checked rows** (149 Jan Aushadhi products + 63 brands), each brand with a source and date |
-| Cheap phone, bad signal | ✅ **≈33 KB gzipped** app with the data inside; **works in aeroplane mode**; no web fonts; 48 px+ tap targets |
+| Curate 200 drugs well | ✅ **1,196 Jan Aushadhi medicines** read from the official PMBI list (143 of them also hand-checked), **63 hand-checked brands** with a source and date, and **86,521 dataset brands** kept only when they exactly equal a Jan Aushadhi product |
+| Cheap phone, bad signal | ✅ **≈67 KB gzipped** app with all Jan Aushadhi data inside; the 86k-brand list (≈1.2 MB) loads in the background and is cached; **works in aeroplane mode**; no web fonts; 48 px+ tap targets |
 | Open source, honest commits | ✅ Apache-2.0, CONTRIBUTING.md, small commits from the build window, CI on every push |
 
 ## How it works
@@ -138,7 +140,7 @@ git clone https://github.com/GamerxD01/Dawa-Daam.git
 cd Dawa-Daam
 npm install
 npm run dev          # http://localhost:5173 · phone on the same Wi-Fi: http://<laptop-ip>:5173
-npm test             # data build + 234 tests
+npm test             # data build + 274 tests
 npm run build        # production build in dist/
 ```
 
@@ -168,16 +170,18 @@ Everything is bundled in the repo and shipped inside the app.
 
 | File | Rows | What |
 |---|---:|---|
-| [`data/src/janaushadhi.csv`](data/src/janaushadhi.csv) | 143 | Jan Aushadhi products: PMBI drug code, MRP, pack, and a **structured composition** (molecule, strength and release type per ingredient) |
+| [`data/src/janaushadhi.csv`](data/src/janaushadhi.csv) | 143 | Hand-checked Jan Aushadhi products: PMBI drug code, MRP, pack, and a **structured composition** (molecule, strength and release type per ingredient) |
+| [`data/auto/janaushadhi_pmbi.csv`](data/auto/janaushadhi_pmbi.csv) | 1,047 | More Jan Aushadhi products, **read by our parser** from the [official PMBI list](data/raw/) (every skipped product and why: [`pmbi_skipped.csv`](data/auto/pmbi_skipped.csv)) |
+| `data/auto/brands_dataset.csv` | 86,521 | Brands from the public *A–Z Medicine Dataset of India* that exactly equal a Jan Aushadhi product; prices not checked by us |
 | [`data/src/brands.csv`](data/src/brands.csv) | 63 | Curated brands: composition, pack, **listed MRP**, **source URL and date**, expected Jan Aushadhi code |
 | [`data/src/molecules.csv`](data/src/molecules.csv) | 84 | Canonical names, synonyms (`frusemide`, `amoxycillin`, `thyroxine`), Hindi names |
 | [`data/src/combo_aliases.csv`](data/src/combo_aliases.csv) | 9 | Combination nicknames (`amoxyclav`, `panto d`) |
 
-`npm run data` validates everything and fails the build on an unknown molecule, a malformed strength, a missing price or a missing source. A test checks that **every brand maps to its expected Jan Aushadhi code** and that **every brand is found by its own name**. Rows we couldn't fully confirm are marked `verified=n` and show a "check the box" warning. Sources and cleaning decisions: [docs/DATA.md](docs/DATA.md).
+`npm run data:import` re-reads the raw lists (`data/raw/`) into `data/auto/`. `npm run data` validates everything and fails the build on an unknown molecule, a malformed strength, a missing price or a missing source. A test checks that **every brand maps to its expected Jan Aushadhi code** and that **every brand is found by its own name**. Rows we couldn't fully confirm are marked `verified=n` and show a "check the box" warning. Sources and cleaning decisions: [docs/DATA.md](docs/DATA.md).
 
 ## Built for the person with the cheap phone
 
-- **≈33 KB gzipped** for the whole app, including all the data. The map library loads only on the Kendra screen.
+- **≈67 KB gzipped** app with all 1,196 Jan Aushadhi medicines inside. The 86,521-brand list (≈1.2 MB) downloads **after** the first screen, builds its search index in small slices so typing never freezes, and is then cached for offline use. On a 4×-slowed CPU: first screen < 1 s, full list ready in ≈10 s, each search ≈0.1 s. The map library loads only on the Kendra screen.
 - **Works offline:** a service worker precaches the app on the first visit. Tested by reloading in aeroplane mode.
 - **Hindi by default**, with "साल्ट" (salt) as chemists say it. One tap switches to English. No web fonts, because Android's built-in Devanagari font works offline.
 - **One hand:** 48 px+ targets, 22 px input, the main actions in the bottom thumb zone. Dark mode follows the phone.
@@ -186,7 +190,9 @@ Everything is bundled in the repo and shipped inside the app.
 ## Project layout
 
 ```
-data/src/              curated CSVs: the single source of truth
+data/src/              hand-checked CSVs: always win over machine-read rows
+data/raw/              official PMBI product list (and the public brand list, not committed)
+data/auto/             machine-read rows from data/raw (scripts/import-big.mjs)
 scripts/build-data.mjs CSV → validated src/generated/drugs.json
 scripts/demo.mjs       one-command local demo (Gemma bridge + app)
 src/match/             normalise · parse · phonetic · similarity · equivalence · search · prescription · voice (+ tests)
@@ -200,16 +206,16 @@ docs/                  DATA.md · GEMMA.md · screenshots · sample printed pres
 
 ## Limits, honestly
 
-- **Prices are indicative MRPs**, captured by hand on 20–21 Oct 2026. Prices change and pharmacies discount.
-- **Coverage:** 63 brands so far. Molecule search covers all 149 Jan Aushadhi products in the dataset; anything else gets "not in our list yet" and a link to request it.
+- **Prices are indicative MRPs.** Jan Aushadhi: official PMBI list, 25 Oct 2026. Hand-checked brands: captured 20–21 Oct 2026. **Dataset brands: older prices from a public list that we did not check**; the app says so on every such result and asks the patient to check the MRP on the strip.
+- **Coverage:** brands that the public dataset lists with only two ingredients are kept **only** when the brand name itself prints both strengths (the dataset drops a third ingredient, so `Cheston Cold` could otherwise look like a 2-ingredient medicine). Dispersible, mouth-dissolving, chewable, injections, creams and drops are not compared yet. Anything else gets "not in our list yet".
 - **"Same molecule & strength" is not a medical judgement.** Bioequivalence and the decision to switch belong to the doctor and pharmacist.
 - **Gemma misreads** (see the table above), so the patient always confirms. Handwriting is only an opt-in Gemini beta and can be wrong.
 - **Kendra finder** depends on OpenStreetMap coverage, which volunteers build and is incomplete; it needs internet.
-- **Salts** (e.g. metoprolol succinate vs tartrate) aren't distinguished, because the PMBI list doesn't distinguish them.
+- **Salts:** most are not distinguished (as in the PMBI list). Metoprolol succinate is treated as extended-release; diclofenac sodium and potassium are kept apart, and dataset diclofenac brands are left out because the dataset doesn't say which salt.
 
 ## Roadmap
 
-- Grow to 500+ brands with pharmacists through the [add-a-medicine issue form](https://github.com/GamerxD01/Dawa-Daam/issues/new?template=add-medicine.yml)
+- Hand-check the most-used dataset brands with pharmacists through the [add-a-medicine issue form](https://github.com/GamerxD01/Dawa-Daam/issues/new?template=add-medicine.yml)
 - NPPA ceiling prices as a third reference price
 - Bundle the official Kendra list for offline lookups
 - More Indian languages (the UI strings are already separated in `src/i18n.ts`)

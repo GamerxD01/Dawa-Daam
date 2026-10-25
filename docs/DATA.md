@@ -4,12 +4,43 @@ All data is bundled in the repo and shipped inside the app, so search works with
 
 | file | rows | what |
 |---|---|---|
-| `data/src/janaushadhi.csv` | 149 | Jan Aushadhi products: PMBI drug code, name, **structured composition**, form, pack size, MRP |
-| `data/src/brands.csv` | 64 | Curated branded products: composition, pack, listed MRP, source URL + date, expected Jan Aushadhi code |
-| `data/src/molecules.csv` | 88 | Canonical molecule names, synonyms (e.g. `frusemide`, `amoxycillin`, `thyroxine`), Hindi names |
+| `data/src/janaushadhi.csv` | 149 | Hand-checked Jan Aushadhi products: PMBI drug code, name, **structured composition**, form, pack size, MRP |
+| `data/src/brands.csv` | 64 | Hand-checked brands: composition, pack, listed MRP, source URL + date, expected Jan Aushadhi code |
+| `data/src/molecules.csv` | 89 | Canonical molecule names, synonyms (e.g. `frusemide`, `amoxycillin`, `thyroxine`), Hindi names |
 | `data/src/combo_aliases.csv` | 9 | Nicknames for combinations (`amoxyclav`, `panto d`) |
+| `data/raw/pmbi-product-list-2026-10-25.csv` | 2,438 | The official PMBI product list, as downloaded from janaushadhi.gov.in on 25 Oct 2026 |
+| `data/auto/janaushadhi_pmbi.csv` | 1,047 | Jan Aushadhi products read from that list by `scripts/import/pmbi.mjs` (not already hand-checked) |
+| `data/auto/pmbi_skipped.csv` | 1,249 | Every product we did **not** read, with the reason |
+| `data/auto/brands_dataset.csv` | 86,521 | Brands from the public *A–Z Medicine Dataset of India* (Kaggle) that exactly equal a Jan Aushadhi product |
+| `data/auto/molecules_auto.csv` | 459 | Molecules seen only in the machine-read rows (no Hindi name yet) |
 
-`npm run data` (also run by `npm test` and `npm run build`) validates everything and writes `src/generated/drugs.json`.
+`npm run data` (also run by `npm test` and `npm run build`) validates everything and writes `src/generated/drugs.json` (all Jan Aushadhi products and hand-checked brands, bundled in the app) and `public/data/brands.json` (the dataset brands, loaded in the background).
+
+`npm run data:import` rebuilds `data/auto/` from `data/raw/`. The brand list is not committed in raw form (32 MB, third-party): download `A_Z_medicines_dataset_of_India.csv` from https://www.kaggle.com/datasets/shudhanshusingh/az-medicine-dataset-of-india and save it as `data/raw/kaggle-az-medicines.csv`.
+
+## Reading the official PMBI list
+
+Kept: oral **tablets, capsules, syrups and oral suspensions** with an MRP. Left out: injections, creams, drops, inhalers, sachets, dispersible / mouth-dissolving / chewable tablets, kits and combi-packs, surgical items, nutraceuticals and Ayurvedic products, and anything whose name we can't read with confidence (e.g. "Vitamin B Complex", probiotics counted in spores).
+
+- Each ingredient needs a name and a strength (`Aceclofenac 100mg and Paracetamol 325mg Tablets`, `Prednisolone Tablets IP 10 mg`, `Amlodipine + Enalapril Tablet (5/5 Mg)`, `Co-trimoxazole (Sulphamethoxazole 800mg and Trimethoprim 160mg)`).
+- Release type per ingredient when written next to it (`Pantoprazole 20mg (Gastro-resistant) and Domperidone 10mg (Prolonged Release)`); a release type for the whole tablet (`… Extended Release Tablets`) marks every ingredient. Pantoprazole, rabeprazole, omeprazole, esomeprazole, lansoprazole, dexrabeprazole and duloxetine solids are always gastro-resistant.
+- Salt words are dropped (`Sitagliptin Phosphate` → sitagliptin) except where the salt is a different product (diclofenac sodium vs potassium) or there is nothing else left (`Ferrous Sulphate`, `Disodium Hydrogen Citrate`). Metoprolol succinate is always extended-release.
+- Check: the parser agrees with **all 143** of our hand-checked rows that are still in the list. The 143 hand-checked rows keep their composition; their MRP was refreshed from the 25 Oct 2026 list.
+
+## The public brand dataset
+
+The *A–Z Medicine Dataset of India* (Kaggle, about 254,000 rows scraped from a pharmacy site) gives brand name, price, pack, maker and up to two ingredients. Its prices are **older and were not checked by us**, so every one of these brands is `verified=n` and the app shows "price from an older public list, check the MRP on your strip".
+
+A brand is kept only if **all** of these hold:
+
+- not discontinued; a plain tablet, capsule, syrup or oral suspension (by the pack label and the name);
+- every ingredient readable, strengths in the right unit for the form;
+- **two-ingredient rows:** the dataset keeps at most two ingredients and silently drops a third (e.g. *Cheston Cold* is cetirizine + paracetamol + phenylephrine but is listed with two). So a two-ingredient row is kept only if the brand name prints **both** strengths (`500mg/125mg`) or their sum (`Augmentin 625`);
+- release type read from the label or name (`Tablet SR`, `ER`, `XL`, `DSR`…); an `OD` brand is left out (release type unclear); diclofenac brands are left out (salt not stated);
+- the result is **exactly** one Jan Aushadhi product (same molecules, strengths, release types and form). The build re-checks every row and fails otherwise;
+- a name used for two different medicines is dropped; a name already in our hand-checked list is dropped (ours wins); for one name in several packs we keep the lowest price per unit, so a saving is never overstated.
+
+Result: 86,521 brands covering 924 different Jan Aushadhi medicines.
 
 ## Sources
 
