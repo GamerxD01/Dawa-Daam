@@ -30,7 +30,7 @@ Kept: oral **tablets, capsules, syrups and oral suspensions** with an MRP. Left 
 
 ## The public brand dataset
 
-The *A–Z Medicine Dataset of India* (Kaggle, about 254,000 rows scraped from a pharmacy site) gives brand name, price, pack, maker and up to two ingredients. Its prices are **older and were not checked by us**, so every one of these brands is `verified=n` and the app shows "price from an older public list, check the MRP on your strip".
+The *A–Z Medicine Dataset of India* by Shudhanshu Singh (Kaggle, **CC BY-SA 4.0**; about 254,000 rows) gives brand name, price, pack, maker and up to two ingredients. Its prices are **older and were not checked by us**, so every one of these brands is `verified=n` and the app shows "price from an older public list, check the MRP on your strip".
 
 A brand is kept only if **all** of these hold:
 
@@ -42,6 +42,8 @@ A brand is kept only if **all** of these hold:
 - a name used for two different medicines is dropped; a name already in our hand-checked list is dropped (ours wins); for one name in several packs we keep the lowest price per unit, so a saving is never overstated.
 
 Result: 86,521 brands covering 924 different Jan Aushadhi medicines.
+
+**Licence:** our adapted brand files are shared under the same CC BY-SA 4.0 licence, with attribution and the list of changes in [`data/auto/BRANDS-LICENSE.md`](../data/auto/BRANDS-LICENSE.md). Everything else in the repo is Apache-2.0.
 
 ## Sources
 

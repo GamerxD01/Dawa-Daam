@@ -173,7 +173,7 @@ Everything is bundled in the repo and shipped inside the app.
 | [`data/src/janaushadhi.csv`](data/src/janaushadhi.csv) | 143 | Hand-checked Jan Aushadhi products: PMBI drug code, MRP, pack, and a **structured composition** (molecule, strength and release type per ingredient) |
 | [`data/auto/janaushadhi_pmbi.csv`](data/auto/janaushadhi_pmbi.csv) | 1,047 | More Jan Aushadhi products, **read by our parser** from the [official PMBI list](data/raw/) (every skipped product and why: [`pmbi_skipped.csv`](data/auto/pmbi_skipped.csv)) |
 | [`data/auto/kendras.csv`](data/auto/kendras.csv) | 4,497 | Official Jan Aushadhi Kendra list for Uttar Pradesh: code, district, PIN, address (operators' names left out) |
-| `data/auto/brands_dataset.csv` | 86,521 | Brands from the public *A–Z Medicine Dataset of India* that exactly equal a Jan Aushadhi product; prices not checked by us |
+| [`data/auto/brands_dataset.csv`](data/auto/brands_dataset.csv) | 86,521 | Brands adapted from the *A–Z Medicine Dataset of India* by Shudhanshu Singh (Kaggle, **CC BY-SA 4.0**, [details](data/auto/BRANDS-LICENSE.md)) that exactly equal a Jan Aushadhi product; prices not checked by us |
 | [`data/src/brands.csv`](data/src/brands.csv) | 63 | Curated brands: composition, pack, **listed MRP**, **source URL and date**, expected Jan Aushadhi code |
 | [`data/src/molecules.csv`](data/src/molecules.csv) | 84 | Canonical names, synonyms (`frusemide`, `amoxycillin`, `thyroxine`), Hindi names |
 | [`data/src/combo_aliases.csv`](data/src/combo_aliases.csv) | 9 | Combination nicknames (`amoxyclav`, `panto d`) |
@@ -236,4 +236,6 @@ Adding a medicine is **one CSV row with a source link**, and no code. Read [CONT
 
 ## Licence
 
-[Apache-2.0](LICENSE), the same licence as Gemma 4.
+Code and our own data: [Apache-2.0](LICENSE), the same licence as Gemma 4.
+
+The 86,521 dataset brands (`data/auto/brands_dataset.csv` and the generated `public/data/brands.json`) are adapted from the *A–Z Medicine Dataset of India* by Shudhanshu Singh ([Kaggle](https://www.kaggle.com/datasets/shudhanshusingh/az-medicine-dataset-of-india)) and shared under **[CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)**, as that licence requires. Attribution and the changes we made: [data/auto/BRANDS-LICENSE.md](data/auto/BRANDS-LICENSE.md). The Jan Aushadhi product and Kendra lists are public information from PMBI / janaushadhi.gov.in.
