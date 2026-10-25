@@ -9,5 +9,5 @@ export default defineConfig({
   server: { proxy: { '/gemma': { target: 'http://localhost:8000', rewrite: (p: string) => p.replace(/^\/gemma/, '') } } },
   preview: { proxy: { '/gemma': { target: 'http://localhost:8000', rewrite: (p: string) => p.replace(/^\/gemma/, '') } } },
   build: { target: 'es2019', assetsInlineLimit: 0 },
-  test: { environment: 'node', include: ['src/**/*.test.ts'] },
+  test: { environment: 'node', include: ['src/**/*.test.ts', 'server/**/*.test.mjs'] },
 } as any);

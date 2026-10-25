@@ -16,9 +16,10 @@ const MAX_BODY = 6 * 1024 * 1024;
 // Optional, off by default: handwritten prescriptions via Google Gemini (cloud). Only if the laptop owner sets a key.
 const GEMINI_KEY = process.env.GEMINI_API_KEY ?? '';
 const GEMINI_MODEL = process.env.GEMINI_MODEL ?? 'gemini-3.6-flash';
-// Tried in order when a model is overloaded (503/429) or unavailable (404). Override with GEMINI_MODELS=a,b,c
-const GEMINI_MODELS = (process.env.GEMINI_MODELS ?? `${GEMINI_MODEL},gemini-2.5-flash,gemini-2.5-flash-lite`)
-  .split(',').map((m) => m.trim()).filter(Boolean);
+// Tried in order when a model is busy or not available to this key. Set GEMINI_MODELS=a,b,c to fix the list;
+// otherwise the backups are discovered at start-up from the models this key can see (Flash / Flash-Lite only).
+const FIXED_MODELS = process.env.GEMINI_MODELS ? process.env.GEMINI_MODELS.split(',').map((m) => m.trim()).filter(Boolean) : null;
+let GEMINI_MODELS = FIXED_MODELS ?? [GEMINI_MODEL];
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 export const READ_PROMPT =
@@ -84,14 +85,10 @@ async function readWithGemini(imageBase64, prompt, field = 'lines') {
       responseSchema: { type: 'OBJECT', properties: { [field]: { type: 'ARRAY', items: { type: 'STRING' } } }, required: [field] },
     },
   });
-  let lastError = '';
-  for (const model of GEMINI_MODELS) {
+  const failures = [];
+  for (const model of usableModels()) {
     for (let attempt = 0; attempt < 3; attempt++) {
-      const r = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'x-goog-api-key': GEMINI_KEY },
-        body,
-      });
+      const r = await geminiCall(model, body);
       if (r.ok) {
         const j = await r.json();
         const text = j.candidates?.[0]?.content?.parts?.map((p) => p.text ?? '').join('') ?? '{}';
@@ -99,17 +96,88 @@ async function readWithGemini(imageBase64, prompt, field = 'lines') {
         if (model !== GEMINI_MODELS[0] || attempt > 0) console.log(`[gemini] answered by ${model} (attempt ${attempt + 1})`);
         return (Array.isArray(items) ? items : []).map(String).map((l) => l.trim()).filter(Boolean).slice(0, 30);
       }
-      lastError = `gemini ${model} ${r.status}: ${(await r.text()).slice(0, 200)}`;
-      if (r.status === 503 || r.status === 429 || r.status >= 500) {
-        console.log(`[gemini] ${model} busy (${r.status}), ${attempt < 2 ? 'retrying' : 'trying next model'}…`);
-        if (attempt < 2) await sleep(1000 * (attempt + 1));
+      const kind = classifyGeminiError(r.status, await r.text());
+      if (kind.type === 'bad-key') throw Object.assign(new Error(`Gemini key rejected: ${kind.detail}`), { status: 502 });
+      if (kind.type === 'busy' && attempt < 2) {
+        console.log(`[gemini] ${model} busy (${r.status}), retrying…`);
+        await sleep(1000 * (attempt + 1));
         continue;
       }
-      if (r.status === 404) break; // model not available on this key: try the next one
-      throw new Error(lastError); // bad key / bad request: no point retrying
+      if (kind.type === 'not-allowed') blocked.add(model); // never try it again this run
+      console.log(`[gemini] ${model}: ${kind.detail}, trying next model…`);
+      failures.push(`${model}: ${kind.detail}`);
+      break;
     }
   }
-  throw Object.assign(new Error(lastError || 'all Gemini models busy'), { status: 503 });
+  throw Object.assign(new Error(failures.length ? failures.join('; ') : 'no Gemini model available for this key'), { status: 503 });
+}
+
+// Models this key turned out not to be allowed to use (e.g. "limit: 0" on the free tier). Skipped from then on.
+const blocked = new Set();
+const usableModels = () => GEMINI_MODELS.filter((m) => !blocked.has(m));
+
+function geminiCall(model, body) {
+  return fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'x-goog-api-key': GEMINI_KEY },
+    body,
+  });
+}
+
+/**
+ * Sort a Gemini error into what to do next:
+ *  bad-key     → stop, no model will work (invalid / expired key)
+ *  not-allowed → this model is not available to this key (free tier "limit: 0", permission, not found): skip it for good
+ *  busy        → overloaded or a short rate limit: retry, then try the next model
+ *  other       → this model refused this request: try the next model
+ */
+export function classifyGeminiError(status, text) {
+  const t = String(text ?? '');
+  const msg = (() => { try { return JSON.parse(t).error?.message ?? t; } catch { return t; } })().replace(/\s+/g, ' ').slice(0, 160);
+  if (status === 401 || /API_KEY_INVALID|API key not valid|API key expired/i.test(t)) return { type: 'bad-key', detail: msg };
+  if (status === 404 || status === 403) return { type: 'not-allowed', detail: `not available to this key (${status})` };
+  if (status === 429 && /limit:\s*0\b|free[ _-]?tier|not available|billing/i.test(t)) return { type: 'not-allowed', detail: 'not available on this key\'s plan (free tier)' };
+  if (status === 429 || status >= 500) return { type: 'busy', detail: `busy (${status})` };
+  if (/free[ _-]?tier|billing|paid/i.test(t)) return { type: 'not-allowed', detail: 'not available on this key\'s plan' };
+  return { type: 'other', detail: `${status}: ${msg}` };
+}
+
+/** Text-capable Flash / Flash-Lite models from Google's model list, newest version first. */
+export function pickBackupModels(list, primary) {
+  const version = (n) => Number((n.match(/gemini-(\d+(?:\.\d+)?)/) ?? [])[1] ?? 0);
+  const names = (list ?? [])
+    .filter((m) => (m.supportedGenerationMethods ?? []).includes('generateContent'))
+    .map((m) => String(m.name ?? '').replace(/^models\//, ''))
+    .filter((n) => /^gemini-[\d.]+-flash(-lite)?(-latest|-\d{3})?$/.test(n) && n !== primary);
+  names.sort((a, b) => version(b) - version(a) || (a.includes('lite') ? 1 : 0) - (b.includes('lite') ? 1 : 0));
+  return [primary, ...names].slice(0, 4);
+}
+
+async function discoverGeminiModels() {
+  try {
+    const r = await fetch('https://generativelanguage.googleapis.com/v1beta/models?pageSize=200', { headers: { 'x-goog-api-key': GEMINI_KEY } });
+    if (r.ok) GEMINI_MODELS = pickBackupModels((await r.json()).models, GEMINI_MODEL);
+  } catch { /* offline: keep the primary only */ }
+}
+
+/** At start-up, ask each model for one token so we know straight away which ones this key can use. */
+async function probeGeminiModels() {
+  if (!FIXED_MODELS) await discoverGeminiModels();
+  console.log(`Gemini models to try: ${GEMINI_MODELS.join(' → ')}`);
+  const body = JSON.stringify({ contents: [{ parts: [{ text: 'Reply with OK.' }] }], generationConfig: { maxOutputTokens: 1 } });
+  for (const model of GEMINI_MODELS) {
+    try {
+      const r = await geminiCall(model, body);
+      if (r.ok) { console.log(`  ✓ ${model}`); continue; }
+      const kind = classifyGeminiError(r.status, await r.text());
+      if (kind.type === 'not-allowed') blocked.add(model);
+      console.log(`  ${kind.type === 'busy' ? '~' : '✗'} ${model}: ${kind.detail}`);
+      if (kind.type === 'bad-key') return;
+    } catch (e) {
+      console.log(`  ? ${model}: ${e.message}`);
+    }
+  }
+  if (!usableModels().length) console.log('  No Gemini model is usable with this key. Set GEMINI_MODELS to one your key allows (see https://aistudio.google.com).');
 }
 
 export async function readStrip(imageBase64) {
@@ -175,8 +243,8 @@ const server = createServer(async (req, res) => {
       if (typeof image !== 'string' || image.length < 100) return send(res, 400, { error: 'image (base64 JPEG) required' });
       const t0 = Date.now();
       const lines = await readHandwritten(image);
-      console.log(`[handwritten] ${lines.length} lines in ${Date.now() - t0} ms via ${GEMINI_MODEL}`);
-      return send(res, 200, { lines, model: GEMINI_MODEL });
+      console.log(`[handwritten] ${lines.length} lines in ${Date.now() - t0} ms`);
+      return send(res, 200, { lines, model: 'gemini' });
     }
     if (req.method === 'POST' && path === '/read-gemini') {
       const { image } = await body(req);
@@ -184,7 +252,7 @@ const server = createServer(async (req, res) => {
       const t0 = Date.now();
       const lines = await readStripWithGemini(image);
       console.log(`[gemini fallback] ${lines.length} lines in ${Date.now() - t0} ms: ${lines.slice(0, 3).join(' | ')}`);
-      return send(res, 200, { lines, model: GEMINI_MODEL });
+      return send(res, 200, { lines, model: 'gemini' });
     }
     if (req.method === 'POST' && path === '/pick') {
       const { lines, candidates } = await body(req);
@@ -203,6 +271,8 @@ const server = createServer(async (req, res) => {
 if (process.argv[1] && import.meta.url.endsWith(process.argv[1].split(/[\\/]/).pop())) {
   server.listen(PORT, () => {
     console.log(`Gemma bridge on http://localhost:${PORT} → ${OLLAMA} (${MODEL})`);
-    console.log(GEMINI_KEY ? `Gemini (fallback + handwriting): on, models ${GEMINI_MODELS.join(' → ')}` : 'Gemini (fallback + handwriting): off (set GEMINI_API_KEY to enable)');
+    if (!GEMINI_KEY) return console.log('Gemini (fallback + handwriting): off (set GEMINI_API_KEY to enable)');
+    console.log('Gemini (fallback + handwriting): on, checking which models this key can use…');
+    probeGeminiModels();
   });
 }
