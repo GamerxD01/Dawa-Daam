@@ -1,0 +1,1048 @@
+ja_code,name,composition,form,pack_qty,mrp_inr
+6,"Chlorzoxazone 500mg, Diclofenac 50mg and Paracetamol 325mg Tablets",chlorzoxazone:500mg|diclofenac:50mg|paracetamol:325mg,tablet,10,25.78
+8,Serratiopeptidase 10mg and Diclofenac Sodium 50mg Tablets,diclofenac:50mg|serratiopeptidase:10mg,tablet,10,15.88
+9,Diclofenac Sodium Prolonged Release Tablets IP 100 mg,diclofenac:100mg:MR,tablet,10,12.47
+17,Indomethacin Capsules IP 25 mg,indomethacin:25mg,capsule,10,12.19
+19,Nimesulide 100mg and Paracetamol 325mg Tablets,nimesulide:100mg|paracetamol:325mg,tablet,10,11.34
+20,Nimesulide Tablets 100 mg,nimesulide:100mg,tablet,10,6.81
+25,Serratiopeptidase Tablets IP 10 mg,serratiopeptidase:10mg,tablet,10,12.47
+36,Amoxycillin 200mg and Potassium Clavulanate 28.5mg Oral Suspension IP per 5ml,amoxicillin:200mg/5ml|clavulanic acid:28.5mg/5ml,suspension,30,25.31
+40,Amoxycillin 250mg and Cloxacillin 250mg Capsules,amoxicillin:250mg|cloxacillin:250mg,capsule,10,29.91
+43,Amoxycillin Oral Suspension IP 125mg per 5ml,amoxicillin:125mg/5ml,suspension,60,17.81
+47,Azithromycin Oral Suspension IP 100mg per 5ml,azithromycin:100mg/5ml,suspension,15,14.06
+53,Cefixime Oral Suspension IP 50mg per 5ml,cefixime:50mg/5ml,suspension,30,18.75
+81,Cephalexin Capsules IP 250mg,cephalexin:250mg,capsule,10,30.94
+83,Ciprofloxacin 250mg and Tinidazole 300mg Tablets,ciprofloxacin:250mg|tinidazole:300mg,tablet,10,26.25
+84,Ciprofloxacin 500mg and Tinidazole 600mg Tablets,ciprofloxacin:500mg|tinidazole:600mg,tablet,10,36.56
+85,Ciprofloxacin Hydrochloride Tablets IP 250 mg,ciprofloxacin:250mg,tablet,10,10.31
+88,Co-trimoxazole (Sulphamethoxazole 200mg and Trimethoprim 40mg per 5ml) Oral Suspension IP,sulphamethoxazole:200mg/5ml|trimethoprim:40mg/5ml,suspension,50,9.45
+89,Co-trimoxazole (Sulphamethoxazole 800mg and Trimethoprim 160mg) Tablets IP,sulphamethoxazole:800mg|trimethoprim:160mg,tablet,10,11.34
+90,Co-trimoxazole (Sulphamethoxazole 100mg and Trimethoprim 20mg) Tablets IP,sulphamethoxazole:100mg|trimethoprim:20mg,tablet,10,2.06
+93,Erythromycin Stearate Tablets IP 250mg,erythromycin:250mg,tablet,10,19.59
+95,Levofloxacin Tablets IP 250mg,levofloxacin:250mg,tablet,10,16.88
+98,Norfloxacin 400mg and Tinidazole 600mg Tablets,norfloxacin:400mg|tinidazole:600mg,tablet,10,37.50
+102,Ofloxacin Tablets IP 400mg,ofloxacin:400mg,tablet,10,32.81
+105,Roxithromycin Tablets IP 150 mg,roxithromycin:150mg,tablet,10,26.25
+106,Roxithromycin Tablets IP 300 mg,roxithromycin:300mg,tablet,10,46.88
+107,Tinidazole Tablets IP 300 mg,tinidazole:300mg,tablet,10,12.19
+108,Tinidazole Tablets IP 500 mg,tinidazole:500mg,tablet,10,15.00
+134,Glibenclamide Tablets IP 5 mg,glibenclamide:5mg,tablet,10,5.68
+141,Glipizide Tablet IP 5 mg,glipizide:5mg,tablet,10,4.74
+150,Pioglitazone 15mg and Metformin 500mg Sustained Release Tablets,metformin:500mg:MR|pioglitazone:15mg:MR,tablet,10,27.84
+163,Tamoxifen Citrate Tablets IP 10 mg,tamoxifen:10mg,tablet,10,11.34
+164,Tamoxifen Citrate Tablets IP 20 mg,tamoxifen:20mg,tablet,10,15.86
+177,Albendazole Oral Suspension IP 200 mg per 5ml,albendazole:200mg/5ml,suspension,10,7.50
+180,Bisacodyl Tablets IP 5mg,bisacodyl:5mg,tablet,10,6.19
+181,Tricholine Citrate 275mg and Cyproheptadine Hydrochloride 2mg Syrup per 5ml,cyproheptadine:2mg/5ml|tricholine:275mg/5ml,syrup,200,35.63
+183,Dicyclomine Tablets IP 10mg,dicyclomine:10mg,tablet,10,0.94
+184,Paracetamol 325mg and Dicyclomine Hydrochloride 20mg Tablets,dicyclomine:20mg|paracetamol:325mg,tablet,10,7.50
+187,Domperidone Suspension IP 5mg per 5ml,domperidone:5mg/5ml,suspension,30,12.19
+188,"Dried Aluminium Hydroxide 250mg, Magnesium Hydroxide 250mg and Activated Dimethicone 50mg Tablets",activated dimethicone:50mg|dried aluminium hydroxide:250mg|magnesium hydroxide:250mg,tablet,10,6.19
+193,Furazolidone Tablets IP 100 mg,furazolidone:100mg,tablet,10,0.94
+194,Hyoscine Butylbromide Tablets IP 10 mg,hyoscine butylbromide:10mg,tablet,10,16.50
+198,"Dried Aluminium Hydroxide 250mg, Magnesium Hydroxide 250mg and Activated Dimethicone 50mg per 5ml Suspension",activated dimethicone:50mg/5ml|dried aluminium hydroxide:250mg/5ml|magnesium hydroxide:250mg/5ml,suspension,170,33.00
+199,Metoclopramide Tablets IP 10 mg,metoclopramide:10mg,tablet,10,7.50
+203,Misoprostol Tablets IP 200 mcg,misoprostol:200mcg,tablet,4,18.75
+210,Ornidazole Tablets IP 500mg,ornidazole:500mg,tablet,10,23.44
+218,Ranitidine Tablets IP 300 mg,ranitidine:300mg,tablet,10,13.41
+223,"Pyridoxine Hydrochloride 10mg, Doxylamine 10mg and Folic Acid 2.5mg Tablets",doxylamine:10mg|folic acid:2.5mg|pyridoxine:10mg,tablet,30,32.81
+235,Budesonide Nebuliser Suspension 1mg per 2ml,budesonide nebuliser:1mg/2ml,suspension,2,12.80
+239,Cetirizine Syrup IP 5 mg per 5 ml,cetirizine:5mg/5ml,syrup,60,13.41
+245,Etophyllin 77mg and Theophylline 23mg Tablets,etophyllin:77mg|theophylline:23mg,tablet,10,5.16
+253,Pheniramine Maleate Tablets IP 25 mg,pheniramine:25mg,tablet,15,4.69
+254,Promethazine Syrup IP 5mg per 5ml,promethazine:5mg/5ml,syrup,100,13.13
+256,Salbutamol Tablets IP 2mg,salbutamol:2mg,tablet,10,0.94
+259,Salbutamol Syrup IP 2mg per 5ml,salbutamol:2mg/5ml,syrup,100,10.31
+260,Salbutamol Tablets IP 4 mg,salbutamol:4mg,tablet,10,1.88
+268,Clonidine Tablets IP 100 mcg,clonidine:100mcg,tablet,10,10.50
+271,Diltiazem Tablets IP 30 mg,diltiazem:30mg,tablet,10,11.34
+272,Diltiazem Tablets IP 60 mg,diltiazem:60mg,tablet,10,15.94
+275,Enalapril Tablets IP 5 mg,enalapril:5mg,tablet,10,5.68
+283,Isosorbide Dinitrate Tablets IP 10mg,isosorbide dinitrate:10mg,tablet,50,19.69
+285,Amlodipine 5mg and Lisinopril 5mg Tablets IP,amlodipine:5mg|lisinopril:5mg,tablet,15,16.50
+286,Lisinopril Tablets IP 5mg,lisinopril:5mg,tablet,10,10.31
+295,Simvastatin Tablets IP 10mg,simvastatin:10mg,tablet,10,10.31
+296,Simvastatin Tablets IP 20mg,simvastatin:20mg,tablet,10,15.00
+301,Tranexamic Acid Tablets IP 500 mg,tranexamic acid:500mg,tablet,10,74.00
+305,Chloroquine Phosphate Tablets IP 250 mg,chloroquine:250mg,tablet,10,5.00
+311,Disodium Hydrogen Citrate Syrup (Alkalyser) 1.4 gm per 5 ml,disodium hydrogen citrate:1400mg/5ml,syrup,100,22.69
+313,Alprazolam Tablets IP 0.25 mg,alprazolam:0.25mg,tablet,10,4.54
+314,Alprazolam Tablets IP 0.5 mg,alprazolam:0.5mg,tablet,10,7.94
+316,Betahistine Tablets IP 8 mg,betahistine:8mg,tablet,10,9.08
+317,Carbamazepine Tablets IP 100 mg,carbamazepine:100mg,tablet,10,7.50
+319,Clonazepam Tablets IP 0.5 mg,clonazepam:0.5mg,tablet,10,5.68
+320,Diazepam Tablets IP 5 mg,diazepam:5mg,tablet,10,5.63
+323,Flunarizine Tablets IP 10 mg,flunarizine:10mg,tablet,10,7.50
+324,Flunarizine Tablets IP 5 mg,flunarizine:5mg,tablet,10,7.22
+325,Fluoxetine Hydrochloride Capsules IP 20mg,fluoxetine:20mg,capsule,10,9.08
+326,Methyl Ergometrine Tablets IP 0.125 mg,methyl ergometrine:0.125mg,tablet,10,10.31
+327,Phenytoin Tablets IP 100 mg,phenytoin:100mg,tablet,100,56.72
+328,Prochlorperazine Tablets IP 5 mg,prochlorperazine:5mg,tablet,10,5.63
+333,Dexamethasone Tablets IP 0.5 mg,dexamethasone:0.5mg,tablet,10,1.88
+337,Clomiphene Citrate Tablets IP 50mg,clomiphene:50mg,tablet,10,20.63
+360,Mifepristone Tablets IP 200 mg,mifepristone:200mg,tablet,1,62.81
+366,Glipizide 5mg and Metformin Hydrochloride 500mg Tablets,glipizide:5mg|metformin:500mg,tablet,10,9.28
+368,Gliclazide Extended release Tablets 60 mg,gliclazide:60mg:MR,tablet,10,45.38
+369,Acarbose Tablets IP 50 mg,acarbose:50mg,tablet,10,63.94
+375,Quinine Sulphate Tablets IP 300 mg,quinine:300mg,tablet,10,30.40
+377,Clindamycin Capsules IP 300 mg,clindamycin:300mg,capsule,10,84.38
+380,Clarithromycin Tablets IP 500 mg,clarithromycin:500mg,tablet,4,67.50
+381,Cefixime 200mg and Ofloxacin 200mg Tablets,cefixime:200mg|ofloxacin:200mg,tablet,10,52.18
+382,Linezolid Tablets IP 600 mg,linezolid:600mg,tablet,10,154.69
+383,Cefpodoxime 200mg and Potassium Clavulanate 125mg Tablets,cefpodoxime:200mg|clavulanic acid:125mg,tablet,6,74.25
+384,Itraconazole Capsules 100 mg,itraconazole:100mg,capsule,4,24.96
+385,Cefixime 200mg and Potassium Clavulanate 125mg Tablets,cefixime:200mg|clavulanic acid:125mg,tablet,10,120.00
+386,Diethylcarbamazine Tablets IP 50 mg,diethylcarbamazine:50mg,tablet,30,9.00
+387,Terbinafine Tablets IP 250mg,terbinafine:250mg,tablet,7,42.28
+391,Moxifloxacin Tablets 400 mg,moxifloxacin:400mg,tablet,5,61.88
+392,Griseofulvin Tablets IP 250 mg,griseofulvin:250mg,tablet,10,15.00
+395,Cefuroxime Axetil 500mg and Potassium Clavulanate 125mg Tablets IP,cefuroxime:500mg|clavulanic acid:125mg,tablet,6,102.19
+400,Ketoconazole Tablets IP 200 mg,ketoconazole:200mg,tablet,10,26.25
+401,Amoxycillin 250mg and Potassium Clavulanate 125mg Tablets IP,amoxicillin:250mg|clavulanic acid:125mg,tablet,6,45.39
+402,Amoxycillin 875mg and Potassium Clavulanate 125mg Tablets IP,amoxicillin:875mg|clavulanic acid:125mg,tablet,6,72.19
+412,Azathioprine Tablets IP 50 mg,azathioprine:50mg,tablet,10,45.00
+414,Tranexamic Acid 500mg and Mefenamic Acid 250mg Tablets,mefenamic acid:250mg|tranexamic acid:500mg,tablet,10,76.88
+416,Prazosin Tablets IP 5 mg,prazosin:5mg,tablet,15,31.77
+420,Atorvastatin 10mg and Clopidogrel 75mg Capsules,atorvastatin:10mg|clopidogrel:75mg,capsule,10,39.70
+422,Torasemide Tablets IP 10mg,torasemide:10mg,tablet,15,17.53
+424,Carvedilol Tablets IP 3.125 mg,carvedilol:3.125mg,tablet,10,7.94
+425,Diltiazem Sustained Release Tablets 90 mg,diltiazem:90mg:MR,tablet,10,37.43
+426,Acenocoumarol Tablets IP 2 mg,acenocoumarol:2mg,tablet,30,33.75
+427,S(-)Amlodipine Tablets IP 2.5 mg,s amlodipine:2.5mg,tablet,10,12.47
+428,Digoxin Tablets IP 0.25 mg,digoxin:0.25mg,tablet,10,8.44
+429,Atorvastatin 10mg and Fenofibrate 160mg Tablets IP,atorvastatin:10mg|fenofibrate:160mg,tablet,15,30.94
+430,Amiodarone Tablets IP 200 mg,amiodarone:200mg,tablet,10,60.84
+431,Ramipril 5mg and Hydrochlorothiazide 12.5mg Tablets IP,hydrochlorothiazide:12.5mg|ramipril:5mg,tablet,10,13.13
+433,Isosorbide Mononitrate Sustained Release Tablets 30 mg,isosorbide mononitrate:30mg:MR,tablet,30,65.63
+434,Propranolol Tablets IP 40 mg,propranolol:40mg,tablet,10,6.81
+435,Rosuvastatin 10mg and Fenofibrate 160mg Tablets IP,fenofibrate:160mg|rosuvastatin:10mg,tablet,10,35.17
+437,Nifedipine Prolonged release Tablets IP 20mg,nifedipine:20mg:MR,tablet,10,9.28
+438,Indapamide Tablets IP 1.5 mg,indapamide:1.5mg,tablet,10,24.38
+439,Olmesartan Medoxomil 40mg and Hydrochlorothiazide 12.5mg Tablets IP,hydrochlorothiazide:12.5mg|olmesartan:40mg,tablet,10,30.94
+440,Metoprolol 50mg (Prolonged release) and Amlodipine Besilate 5mg Tablets IP,amlodipine:5mg|metoprolol:50mg:MR,tablet,7,11.34
+442,Fenofibrate Tablets IP 160 mg,fenofibrate:160mg,tablet,10,27.84
+443,Isosorbide Dinitrate Tablets IP 5 mg,isosorbide dinitrate:5mg,tablet,50,18.75
+444,Enalapril 10mg and Hydrochlorothiazide 25mg Tablets IP,enalapril:10mg|hydrochlorothiazide:25mg,tablet,30,56.25
+446,Amlodipine 5mg and Hydrochlorothiazide 12.5mg Tablets,amlodipine:5mg|hydrochlorothiazide:12.5mg,tablet,10,17.02
+447,Moxonidine Tablets 0.3 mg,moxonidine:0.3mg,tablet,10,48.47
+448,Ramipril 5mg and Amlodipine 5mg Tablets,amlodipine:5mg|ramipril:5mg,tablet,10,23.44
+450,Labetalol Hydrochloride Tablets IP 100mg,labetalol:100mg,tablet,10,42.19
+452,Warfarin Tablets IP 5 mg,warfarin:5mg,tablet,10,16.88
+453,Bisoprolol 5mg and Hydrochlorothiazide 6.25mg Tablets IP,bisoprolol:5mg|hydrochlorothiazide:6.25mg,tablet,10,15.47
+454,Valsartan Tablets IP 80 mg,valsartan:80mg,tablet,10,34.03
+455,Verapamil Tablets IP 80 mg,verapamil:80mg,tablet,10,8.56
+457,Torsemide Tablets IP 20 mg,torsemide:20mg,tablet,10,20.42
+466,Ursodeoxycholic Acid Tablets IP 300 mg,ursodeoxycholic acid:300mg,tablet,10,176.66
+467,Dicyclomine Hydrochloride 10mg and Mefenamic Acid 250mg Tablets IP,dicyclomine:10mg|mefenamic acid:250mg,tablet,10,13.62
+473,Pantoprazole 40mg (Enteric Coated) and Levosulpiride 75mg (Sustained Release) Capsules,levosulpiride:75mg:MR|pantoprazole:40mg:GR,capsule,10,56.72
+474,Doxylamine Succinate 10mg and Pyridoxine Hydrochloride 10mg Tablets,doxylamine:10mg|pyridoxine:10mg,tablet,30,21.56
+475,Sucralfate Suspension 500mg per 5ml,sucralfate:500mg/5ml,suspension,200,72.19
+477,Chlordiazepoxide 5mg and Clidinium Bromide 2.5mg Tablets,chlordiazepoxide:5mg|clidinium:2.5mg,tablet,10,9.28
+478,Sodium Picosulphate Tablets 10 mg,sodium picosulphate:10mg,tablet,10,11.34
+480,Esomeprazole 40mg (Enteric-coated) and Levosulpiride 75mg (Sustained release) Capsules,esomeprazole:40mg:GR|levosulpiride:75mg:MR,capsule,10,68.07
+481,Rifaximin Tablets 400 mg,rifaximin:400mg,tablet,10,134.06
+482,Rabeprazole 20mg (Enteric Coated) and Levosulpiride 75mg (Sustained Release) Capsules,levosulpiride:75mg:MR|rabeprazole:20mg:GR,capsule,10,37.13
+485,Promethazine Tablets IP 25 mg,promethazine:25mg,tablet,10,6.56
+486,Pancreatin 170mg and Activated Dimethicone 80mg Tablets,activated dimethicone:80mg|pancreatin:170mg,tablet,10,51.56
+487,Dicyclomine Hydrochloride 10mg and Activated Dimethicone 40mg per 5 ml Suspension,activated dimethicone:40mg/5ml|dicyclomine:10mg/5ml,suspension,30,15.94
+488,Lansoprazole Capsules IP 15 mg,lansoprazole:15mg:GR,capsule,10,20.63
+489,Sulfasalazine Gastro-resistant Tablets 1000mg,sulfasalazine:1000mg:GR,tablet,10,72.19
+491,Itopride Tablets IP 50 mg,itopride:50mg,tablet,10,33.75
+492,Sulfasalazine Delayed Release Tablets 500mg,sulfasalazine:500mg:GR,tablet,10,25.36
+496,Dydrogesterone Tablets IP 10 mg,dydrogesterone:10mg,tablet,10,328.13
+499,Norethisterone Tablets IP 5 mg,norethisterone:5mg,tablet,10,13.13
+501,Betamethasone Sodium Phosphate Tablets IP 0.5 mg,betamethasone:0.5mg,tablet,20,8.25
+502,Deflazacort Tablets 6 mg,deflazacort:6mg,tablet,6,14.75
+505,Carbimazole Tablets IP 10 mg,carbimazole:10mg,tablet,100,79.41
+507,Carbimazole Tablets IP 5 mg,carbimazole:5mg,tablet,10,10.31
+510,Paracetamol 325mg and Tramadol 37.5mg Tablets,paracetamol:325mg|tramadol:37.5mg,tablet,10,13.62
+512,"Aceclofenac 100mg, Paracetamol 325mg and Serratiopeptidase 15mg Tablets",aceclofenac:100mg|paracetamol:325mg|serratiopeptidase:15mg,tablet,10,19.59
+513,Piroxicam Capsules IP 20 mg,piroxicam:20mg,capsule,10,8.44
+515,Mefenamic Acid Suspension 100mg per 5ml,mefenamic acid:100mg/5ml,suspension,60,17.96
+516,Aceclofenac Sustained Release Tablets 200mg,aceclofenac:200mg:MR,tablet,10,18.75
+517,Thiocolchicoside 4mg and Aceclofenac 100mg Tablets,aceclofenac:100mg|thiocolchicoside:4mg,tablet,10,51.57
+518,Baclofen Tablets IP 10 mg,baclofen:10mg,tablet,10,12.10
+519,Ketorolac Tromethamine Tablets IP 10mg,ketorolac tromethamine:10mg,tablet,10,9.38
+521,Tramadol Prolonged Release Tablets IP 100 mg,tramadol:100mg:MR,tablet,10,32.81
+522,Alfacalcidol Soft Gelatin Capsules 0.25 mcg,alfacalcidol:0.25mcg,capsule,10,20.63
+523,Naproxen Tablets IP 500 mg,naproxen:500mg,tablet,15,45.00
+528,"Paracetamol 325mg, Phenylephrine 10mg and Chlorpheniramine 2mg Tablets",chlorpheniramine:2mg|paracetamol:325mg|phenylephrine:10mg,tablet,10,22.69
+539,Acetylcysteine Tablets 600 mg,acetylcysteine:600mg,tablet,10,30.00
+541,Acebrophylline Capsules 100 mg,acebrophylline:100mg,capsule,10,22.69
+555,Doxofylline Tablets IP 400 mg,doxofylline:400mg,tablet,10,17.53
+556,Montelukast Sodium 10mg and Fexofenadine Hydrochloride 120 mg Tablets,fexofenadine:120mg|montelukast:10mg,tablet,10,45.38
+561,Levosalbutamol Syrup 1mg per 5ml,levosalbutamol:1mg/5ml,syrup,100,12.38
+562,Loratadine Tablets IP 10mg,loratadine:10mg,tablet,10,9.38
+569,Sildenafil Tablets IP 50 mg,sildenafil:50mg,tablet,4,10.21
+570,Tadalafil Tablets IP 20 mg,tadalafil:20mg,tablet,4,17.02
+571,Tamsulosin Hydrochloride (Modified Release) 0.4mg and Dutasteride 0.5mg Tablets,dutasteride:0.5mg|tamsulosin:0.4mg:MR,tablet,15,27.23
+581,"Calcium Carbonate 500mg, Calcitriol 0.25mcg and Zinc 7.5mg Capsules",calcitriol:0.25mcg|calcium:500mg|zinc:7.5mg,capsule,10,20.42
+583,Cyproheptadine Tablets IP 4 mg,cyproheptadine:4mg,tablet,10,4.13
+586,"Methylcobalamin 1500mcg, L- Carnitine L- Tartrate 500mg and Folic Acid 1.5mg Tablets",folic acid:1.5mg|l- carnitine l-:500mg|methylcobalamin:1500mcg,tablet,10,103.13
+588,Vitamin E Softgel Capsules 400 mg,vitamin e softgel:400mg,capsule,10,22.69
+589,Calcium 500mg and Calcitriol 0.25mcg Tablets,calcitriol:0.25mcg|calcium:500mg,tablet,15,18.56
+597,Pyridoxine Tablets IP 50 mg,pyridoxine:50mg,tablet,10,8.44
+598,Pregabalin 75mg and Methylcobalamin 750mcg Tablets,methylcobalamin:750mcg|pregabalin:75mg,tablet,10,39.19
+601,Disulfiram Tablets IP 500 mg,disulfiram:500mg,tablet,4,6.56
+603,"Cetirizine Dihydrochloride 5mg, Phenylephrine Hydrochloride 10mg and Paracetamol 325mg Tablets",cetirizine:5mg|paracetamol:325mg|phenylephrine:10mg,tablet,10,17.54
+613,"Diclofenac Potassium 50mg, Paracetamol 325mg and Serratiopeptidase 10mg Tablets",diclofenac potassium:50mg|paracetamol:325mg|serratiopeptidase:10mg,tablet,10,20.42
+625,Bromhexine Hydrochloride 8mg and Phenylephrine Hydrochloride 5mg Tablets,bromhexine:8mg|phenylephrine:5mg,tablet,15,11.25
+627,Etophylline 115mg and Theophylline 35mg Prolonged Release Tablets IP,etophylline:115mg:MR|theophylline:35mg:MR,tablet,10,7.50
+628,Etophylline 231mg and Theophylline 69mg Prolonged Release Tablets IP,etophylline:231mg:MR|theophylline:69mg:MR,tablet,10,14.75
+629,"Inhalent Softgel Capsules (Camphor 25mg, Chlorothymol 5mg, Eucalyptol 130mg, Menthol 55mg, Turpineol 110mg)",chlorothymol:5mg|eucalyptol:130mg|inhalent softgel camphor:25mg|menthol:55mg|turpineol:110mg,capsule,10,26.25
+631,Etamsylate Tablets 500 mg,etamsylate:500mg,tablet,10,12.19
+632,Etamsylate Tablets 250 mg,etamsylate:250mg,tablet,10,8.44
+637,"Aceclofenac 100mg, Paracetamol 325mg and Chlorzoxazone 250mg Tablets",aceclofenac:100mg|chlorzoxazone:250mg|paracetamol:325mg,tablet,10,16.50
+639,"Terbutaline Sulphate 1.25mg, Bromhexine 4mg, Guaiphenesin 50mg and Menthol 2.5mg Syrup per 5ml",bromhexine:4mg/5ml|guaiphenesin:50mg/5ml|menthol:2.5mg/5ml|terbutaline:1.25mg/5ml,syrup,100,24.96
+645,"Nimesulid 100mg, Paracetamol 325mg and Chlorzoxazone 375mg Tablets",chlorzoxazone:375mg|nimesulid:100mg|paracetamol:325mg,tablet,10,18.75
+650,Mefenamic Acid 500mg and Paracetamol 325mg Tablets,mefenamic acid:500mg|paracetamol:325mg,tablet,10,15.94
+655,Pepsin 7.5mg and Fungal Diastase Enzyme 12.5mg Syrup per 5ml (Mix Fruit Flavour),fungal diastase:12.5mg/5ml|pepsin:7.5mg/5ml,syrup,200,45.00
+669,Cefuroxime Axetil Oral Suspension 125mg per 5ml,cefuroxime:125mg/5ml,suspension,30,61.88
+670,"Glucosamine 750mg , Diacerein 50mg and Methylsulfonylmethane 250mg Tablets",diacerein:50mg|glucosamine:750mg|methylsulfonylmethane:250mg,tablet,10,51.05
+671,Glucosamine 500mg and Diacerein 50mg Tablets,diacerein:50mg|glucosamine:500mg,tablet,10,51.56
+673,Biotin Tablets 10mg,biotin:10mg,tablet,10,31.88
+677,Flupentixol Tablets 0.5 mg,flupentixol:0.5mg,tablet,10,10.31
+679,Nalidixic Acid Tablets IP 500 mg,nalidixic acid:500mg,tablet,10,15.94
+680,Finasteride Tablets IP 5mg,finasteride:5mg,tablet,10,41.25
+683,Rabeprazole Sodium (Gastro-resistant) 20mg and Itopride Hydrochloride Prolonged release 150mg Capsules IP,itopride:150mg:MR|rabeprazole:20mg:GR,capsule,10,37.50
+685,Pantoprazole Sodium 40 mg (Enteric Coated) and Itopride Hydrochloride 150 mg (Sustained Release) Capsules,itopride:150mg:MR|pantoprazole:40mg:GR,capsule,10,46.88
+686,Magaldrate 400mg and Simethicone 20mg Oral Suspension IP per 5ml,magaldrate:400mg/5ml|simethicone:20mg/5ml,suspension,170,39.38
+712,Paracetamol Oral Suspension IP 250mg per 5ml,paracetamol:250mg/5ml,suspension,60,19.69
+713,Glibenclamide 5mg and Metformin Hydrochloride 500mg Tablets IP,glibenclamide:5mg|metformin:500mg,tablet,10,12.38
+717,Etodolac Tablets IP 300mg,etodolac:300mg,tablet,10,35.06
+718,Escitalopram Oxelate 10mg and Clonazepam 0.5mg Tablets IP,clonazepam:0.5mg|escitalopram oxelate:10mg,tablet,10,15.47
+733,Progesterone Sustained Release Tablets 200 mg,progesterone:200mg:MR,tablet,10,152.81
+734,Dehydroepiandrosterone (Micronized) 25 mg Capsule,dehydroepiandrosterone:25mg,capsule,10,65.63
+736,Megestrol Acetate Tablets IP 40mg,megestrol:40mg,tablet,10,131.25
+739,Cefuroxime Axetil Tablets IP 125mg,cefuroxime:125mg,tablet,6,32.81
+740,Clarithromycin Tablets IP 250 mg,clarithromycin:250mg,tablet,10,76.88
+746,Valganciclovir Hydrochloride Tablets USP 450 mg,valganciclovir:450mg,tablet,10,1740.00
+762,Nortriptyline Tablets IP 25mg,nortriptyline:25mg,tablet,10,15.00
+764,Etizolam Tablets IP 0.5mg,etizolam:0.5mg,tablet,10,10.21
+766,L-Methylfolate calcium 7.5mg Tablet,l-methylfolate:7.5mg,tablet,10,55.31
+768,Acetazolamide Tablets IP 250mg,acetazolamide:250mg,tablet,10,18.00
+769,Acetylsalicylic Acid (Aspirin) Gastro-resistant Tablets IP 325mg,aspirin:325mg:GR,tablet,14,7.50
+779,"Alpha Lipolic Acid 100mg, Vitamin D3 1000IU, Folic Acid 1.5mg, Pyridoxine 3mg and Methylcobalamin 1500mcg Tablets",alpha lipolic acid:100mg|cholecalciferol:1000iu|folic acid:1.5mg|methylcobalamin:1500mcg|pyridoxine:3mg,tablet,10,49.50
+781,Alprazolam 0.25mg and Fluoxetine 20mg Tablets,alprazolam:0.25mg|fluoxetine:20mg,tablet,10,13.13
+784,Amisulpride Tablets IP 50mg,amisulpride:50mg,tablet,10,29.06
+786,Amitriptyline Hydrochloride Tablets IP 10mg,amitriptyline:10mg,tablet,10,6.81
+788,Anastrozole Tablets IP 1mg,anastrozole:1mg,tablet,10,44.00
+791,Atenolol 25mg and Amlodipine 5mg Tablets IP,amlodipine:5mg|atenolol:25mg,tablet,14,16.50
+793,Atenolol Tablets IP 25mg,atenolol:25mg,tablet,14,6.19
+796,Aspirin Gastro-resistant 75mg and Atorvastatin 10mg Capsules IP,aspirin:75mg:GR|atorvastatin:10mg,capsule,10,16.50
+806,Bicalutamide Tablets IP 50mg,bicalutamide:50mg,tablet,10,60.00
+812,Bromocriptine Mesylate Tablets IP 2.5mg,bromocriptine:2.5mg,tablet,10,82.50
+814,Cabergoline Tablets IP 0.5mg,cabergoline:0.5mg,tablet,4,159.38
+815,Calcitriol Capsules IP 0.25mcg,calcitriol:0.25mcg,capsule,10,27.84
+816,Calcium Acetate Tablets 667mg,calcium acetate:667mg,tablet,10,26.25
+817,"Calcium Carbonate 1250mg, Vitamin D3 250IU, Magnesium Oxide 40mg, Manganese Sulphate 1.8mg and Zinc 7.5mg Tablets",calcium:1250mg|cholecalciferol:250iu|magnesium oxide:40mg|manganese:1.8mg|zinc:7.5mg,tablet,10,14.75
+821,Carvedilol Tablets IP 6.25mg,carvedilol:6.25mg,tablet,10,7.94
+830,Chlordiazepoxide 10mg and Trifluoperazine 1mg Tablets,chlordiazepoxide:10mg|trifluoperazine:1mg,tablet,10,14.06
+835,Glucosamine Sulphate 500mg and Chondroitin 400mg Tablets,chondroitin:400mg|glucosamine:500mg,tablet,10,79.69
+838,Cilostazol Tablets IP 50mg,cilostazol:50mg,tablet,10,68.07
+840,Citicoline Tablets IP 500mg,citicoline:500mg,tablet,10,207.28
+844,Clonazepam Tablets IP 1mg,clonazepam:1mg,tablet,10,9.08
+860,Dextromethorphan Hydrobromide Syrup IP 13.5mg per 5ml,dextromethorphan:13.5mg/5ml,syrup,50,21.56
+865,Diacerein Capsules IP 50mg,diacerein:50mg,capsule,10,42.19
+875,Donepezil Hydrochloride Tablets IP 10mg,donepezil:10mg,tablet,10,23.44
+878,Drotaverine Hydrochloride 80mg and Mefenamic Acid 250mg Tablets,drotaverine:80mg|mefenamic acid:250mg,tablet,10,18.75
+879,Drotaverine Hydrochloride Tablets IP 40mg,drotaverine:40mg,tablet,10,7.50
+881,Ebastine Tablets IP 10mg,ebastine:10mg,tablet,10,18.75
+882,Efavirenz Tablets IP 600mg,efavirenz:600mg,tablet,30,510.00
+885,Ethinylestradiol 0.05mg and Levonorgestrel 0.25mg Tablets IP,ethinylestradiol:0.05mg|levonorgestrel:0.25mg,tablet,21,30.00
+889,Febuxostat Tablets 80mg,febuxostat:80mg,tablet,10,35.07
+899,Frusemide 20mg and Spironolactone 50mg Tablets,furosemide:20mg|spironolactone:50mg,tablet,10,28.88
+900,Gabapentin 100mg and Methylcobalamin 500mcg Tablets,gabapentin:100mg|methylcobalamin:500mcg,tablet,10,37.43
+912,Hydrochlorothiazide Tablets IP 12.5mg,hydrochlorothiazide:12.5mg,tablet,10,5.63
+916,Imatinib Mesylate Tablets IP 400mg,imatinib:400mg,tablet,10,232.03
+917,Imipramine Hydrochloride Tablets IP 25mg,imipramine:25mg,tablet,10,4.69
+923,Isosorbidemononitrate Tablets IP 20mg,isosorbidemononitrate:20mg,tablet,10,8.25
+924,Isoxsuprine Hydrochloride Tablets IP 10mg,isoxsuprine:10mg,tablet,50,42.19
+931,Lamotrigine Tablets 100mg,lamotrigine:100mg,tablet,10,41.25
+933,Leflunomide Tablets IP 20mg,leflunomide:20mg,tablet,10,69.38
+934,Lenalidomide Capsules 10mg,lenalidomide:10mg,capsule,10,294.00
+935,Letrozole Tablets IP 2.5mg,letrozole:2.5mg,tablet,10,31.88
+939,Levocarnitine Tablets 500mg,levocarnitine:500mg,tablet,10,52.50
+945,Levosulpiride Tablets 25mg,levosulpiride:25mg,tablet,10,10.31
+947,Lithium Carbonate Prolonged Release Tablets IP 450mg,lithium carbonate:450mg:MR,tablet,10,18.75
+948,Lorazepam Tablets IP 1mg,lorazepam:1mg,tablet,10,10.31
+949,Lorazepam Tablets IP 2mg,lorazepam:2mg,tablet,10,12.38
+954,Medroxyprogesterone Acetate Tablets IP 10mg,medroxyprogesterone:10mg,tablet,10,24.38
+955,Mefenamic Acid 50mg and Paracetamol 125mg Suspension per 5ml,mefenamic acid:50mg/5ml|paracetamol:125mg/5ml,suspension,60,10.31
+956,Mefloquine Hydrochloride Tablets IP 250mg,mefloquine:250mg,tablet,4,106.88
+957,Memantine Hydrochloride Tablets IP 10mg,memantine:10mg,tablet,10,23.44
+968,Mirtazapine Tablets IP 15mg,mirtazapine:15mg,tablet,10,28.13
+972,Mycophenolate Mofetil Tablets IP 500mg,mycophenolate mofetil:500mg,tablet,10,180.00
+974,Natural Micronised Progesterone Capsules 100mg,natural progesterone:100mg,capsule,10,62.81
+975,Nebivolol 5mg and Hydrochlorothiazide 12.5mg Tablets,hydrochlorothiazide:12.5mg|nebivolol:5mg,tablet,10,61.88
+976,Nebivolol Tablets IP 2.5mg,nebivolol:2.5mg,tablet,10,16.50
+986,Nitrazepam Tablets I.P 10mg,nitrazepam i p:10mg,tablet,10,9.28
+987,Nitrofurantoin Tablets I.P 100mg,nitrofurantoin i p:100mg,tablet,10,18.15
+990,Olanzapine Tablets IP 10mg,olanzapine:10mg,tablet,10,9.08
+991,Olanzapine Tablets IP 5mg,olanzapine:5mg,tablet,10,6.81
+999,Paroxetine Prolonged Release Tablets IP 37.5mg,paroxetine:37.5mg:MR,tablet,10,60.00
+1005,Phenobarbitone Tablets IP 30mg,phenobarbitone:30mg,tablet,30,15.94
+1009,Pioglitazone Tablets IP 15 mg,pioglitazone:15mg,tablet,10,9.08
+1011,Piracetam Syrup 500mg per 5ml,piracetam:500mg/5ml,syrup,100,60.94
+1012,Piracetam Tablets 400mg,piracetam:400mg,tablet,10,17.53
+1026,Propranolol Tablets IP 10mg,propranolol:10mg,tablet,10,5.68
+1031,Quetiapine Fumarate Tablets IP 200mg,quetiapine:200mg,tablet,10,60.94
+1032,Quetiapine Tablets IP 100mg,quetiapine:100mg,tablet,10,34.03
+1041,Risperidone 4mg and Trihexiphenidyl 2mg Tablets,risperidone:4mg|trihexiphenidyl:2mg,tablet,10,13.41
+1042,Risperidone Tablets IP 4mg,risperidone:4mg,tablet,10,8.44
+1050,Sertraline Tablets IP 100mg,sertraline:100mg,tablet,10,20.63
+1051,Sertraline Tablets IP 25mg,sertraline:25mg,tablet,10,14.06
+1059,Sodium Valproate Enteric Coated Tablets IP 200mg,valproic acid:200mg:GR,tablet,10,17.53
+1060,Sodium Valproate Gastro-Resistant Tablets IP 300mg,valproic acid:300mg:GR,tablet,10,20.63
+1062,Sofosbuvir Tablets IP 400mg,sofosbuvir:400mg,tablet,28,4125.00
+1068,Sucralfate 1g and Oxetacaine 10mg Suspension per 10ml,oxetacaine:10mg/10ml|sucralfate:1000mg/10ml,suspension,100,63.75
+1073,Telmisartan 40mg and Metoprolol 25mg Tablets,metoprolol:25mg|telmisartan:40mg,tablet,10,30.94
+1076,Tenofovir Disoproxil Fumarate Tablets IP 300 mg,tenofovir disoproxil:300mg,tablet,10,202.13
+1081,Tizanidine Tablets I.P 2mg,tizanidine i p:2mg,tablet,10,10.31
+1087,Trihexyphenidyl Hydrochloride Tablets IP 2mg (Benzhexol Hydrochloride Tablets IP 2mg),trihexyphenidyl:2mg,tablet,10,6.81
+1088,Trimetazidine Hydrochloride Modified Release Tablets 35 mg,trimetazidine:35mg:MR,tablet,10,22.69
+1097,Vitamin A Capsule IP 25000 IU,vitamin a:25000iu,capsule,30,16.50
+1098,Metformin Hydrochloride 500mg (Sustained Release) and Voglibose 0.2mg Tablets,metformin:500mg:MR|voglibose:0.2mg,tablet,10,14.44
+1099,Metformin Hydrochloride 500mg and Voglibose 0.3mg Tablets,metformin:500mg|voglibose:0.3mg,tablet,10,17.02
+1105,Zolpidem Tablets IP 10mg,zolpidem:10mg,tablet,10,18.57
+1106,Metoprolol Succinate 50mg (Extended Release) and Telmisartan 40mg Tablets,metoprolol:50mg:MR|telmisartan:40mg,tablet,10,32.90
+1108,Sildenafil Tablets IP 100 mg,sildenafil:100mg,tablet,4,10.32
+1110,Clobazam Tablet IP 5mg,clobazam:5mg,tablet,10,15.47
+1111,Gabapentin 400mg and Nortriptyline 10mg Tablets,gabapentin:400mg|nortriptyline:10mg,tablet,10,56.72
+1112,Cinnarizine Tablets IP 25mg,cinnarizine:25mg,tablet,10,7.94
+1123,Clomipramine Hydrochloride Sustained release Tablets 75mg,clomipramine:75mg:MR,tablet,10,51.56
+1124,Fluvoxamine Maleate Tablets IP 100mg,fluvoxamine:100mg,tablet,10,69.38
+1125,Aripiprazole Tablets IP 5mg,aripiprazole:5mg,tablet,10,13.13
+1130,Teneligliptin 20mg and Metformin Hydrochloride 1000mg (Sustained Release) Tablets IP,metformin:1000mg:MR|teneligliptin:20mg,tablet,10,41.25
+1131,Natural Micronised Progesterone Capsules 200mg,natural progesterone:200mg,capsule,10,117.19
+1135,Diacerein 50mg and Glucosamine Sulphate 750mg Tablets,diacerein:50mg|glucosamine:750mg,tablet,10,46.88
+1149,Lisinopril Tablets IP 10mg,lisinopril:10mg,tablet,15,21.56
+1152,Carbamazepine Prolonged-release Tablets IP 200mg,carbamazepine:200mg:MR,tablet,10,14.06
+1154,Diethylcarbamazine Citrate Tablets IP 100mg,diethylcarbamazine:100mg,tablet,30,17.00
+1156,Metoprolol Succinate 25mg (Extended Release) and Amlodipine Besilate 5mg Tablets IP,amlodipine:5mg|metoprolol:25mg:MR,tablet,7,12.00
+1157,Doxylamine Succinate 20mg and Pyridoxine Hydrochloride 20mg Tablets,doxylamine:20mg|pyridoxine:20mg,tablet,10,14.06
+1166,Mefenamic Acid Tablets 250 mg,mefenamic acid:250mg,tablet,10,9.38
+1167,Mefenamic Acid Tablets 500 mg,mefenamic acid:500mg,tablet,10,15.94
+1199,Hydroxyurea Capsules IP 500mg,hydroxyurea:500mg,capsule,10,44.00
+1213,Erlotinib Tablets IP 150 mg,erlotinib:150mg,tablet,10,656.25
+1214,Gefitinib Tablets IP 250 mg,gefitinib:250mg,tablet,10,412.50
+1217,Temozolomide Capsules IP 100mg,temozolomide:100mg,capsule,5,1371.56
+1218,Temozolomide Capsules IP 250 mg,temozolomide:250mg,capsule,5,649.00
+1220,Oseltamivir Capsules IP 75mg,oseltamivir:75mg,capsule,10,178.13
+1222,Artemether 80mg and Lumefantrine 480mg Tablets,artemether:80mg|lumefantrine:480mg,tablet,6,28.13
+1223,"Carbonyl Iron 50mg, Folic Acid 0.5mg and Zinc 61.8mg Capsules",carbonyl iron:50mg|folic acid:0.5mg|zinc:61.8mg,capsule,15,22.69
+1225,Orlistat Capsules 120 mg,orlistat:120mg,capsule,10,147.47
+1227,Triamcinolone Tablets IP 4mg,triamcinolone:4mg,tablet,10,32.81
+1228,Gabapentin 300mg and Amitriptyline 10mg Tablets,amitriptyline:10mg|gabapentin:300mg,tablet,10,51.56
+1232,Noscapine Syrup 1.83mg per 5ml,noscapine:1.83mg/5ml,syrup,50,37.50
+1238,Prazosin Hydrochloride Sustained Release Tablets 2.5 mg,prazosin:2.5mg:MR,tablet,30,56.25
+1240,Gliclazide 80mg and Metformin Hydrochloride 500mg Tablets,gliclazide:80mg|metformin:500mg,tablet,10,29.49
+1251,Vitamin B6 (Pyridoxine Hydrochloride) Tablets IP 100mg,vitamin b6:100mg,tablet,10,20.63
+1255,Acebrophylline 200mg (Sustained Release) and Montelukast 10mg Tablets,acebrophylline:200mg:MR|montelukast:10mg,tablet,10,56.72
+1257,Allylestrenol Tablets 5 mg,allylestrenol:5mg,tablet,10,30.94
+1261,Amiloride 2.5mg and Hydrochlorothiazide 25mg Tablet IP,amiloride:2.5mg|hydrochlorothiazide:25mg,tablet,10,14.06
+1263,Ampicillin Capsules IP 500 mg,ampicillin:500mg,capsule,10,37.50
+1281,Chlordiazepoxide Tablets IP 10 mg,chlordiazepoxide:10mg,tablet,10,19.69
+1283,Chlorthalidone Tablets IP 6.25 mg,chlorthalidone:6.25mg,tablet,10,10.32
+1284,Cilnidipine 10mg and Telmisartan 40mg Tablets,cilnidipine:10mg|telmisartan:40mg,tablet,10,24.96
+1285,Cinitapride Tablets 1 mg,cinitapride:1mg,tablet,10,28.13
+1297,Ranitidine 150mg and Domperidone 10mg Tablets,domperidone:10mg|ranitidine:150mg,tablet,15,15.47
+1298,Donepezil Tablets IP 5 mg,donepezil:5mg,tablet,10,18.75
+1301,Drotaverine 80mg and Aceclofenac 100mg Tablets,aceclofenac:100mg|drotaverine:80mg,tablet,10,30.94
+1302,Duloxetine Gastro-resistant Tablets IP 20 mg,duloxetine:20mg:GR,tablet,10,27.84
+1306,Escitalopram Oxalate 5mg and Clonazepam 0.5mg Tablets IP,clonazepam:0.5mg|escitalopram:5mg,tablet,10,14.75
+1307,Ethinylestradiol 0.03mg and Desogestrel 0.15mg Tablets,desogestrel:0.15mg|ethinylestradiol:0.03mg,tablet,21,90.00
+1308,Ethinylestradiol 0.03mg and Levonorgestrel 0.15mg Tablets IP,ethinylestradiol:0.03mg|levonorgestrel:0.15mg,tablet,21,35.00
+1310,Faropenem Tablets 200mg,faropenem:200mg,tablet,6,281.25
+1311,Fenofibrate Tablets IP 145 mg,fenofibrate:145mg,tablet,10,20.63
+1312,Flavoxate Tablets IP 200 mg,flavoxate:200mg,tablet,15,56.25
+1319,Gabapentin Tablets IP 100 mg,gabapentin:100mg,tablet,10,15.88
+1341,Mebendazole Tablets IP 100 mg,mebendazole:100mg,tablet,6,8.44
+1342,Mebeverine Hydrochloride Tablets IP 200mg,mebeverine:200mg,tablet,10,52.50
+1348,Methylprednisolone Tablets IP 4mg,methylprednisolone:4mg,tablet,10,17.02
+1353,Mirtazapine Tablets IP 7.5mg,mirtazapine:7.5mg,tablet,10,12.19
+1354,Modafinil Tablets IP 200mg,modafinil:200mg,tablet,10,78.75
+1359,Naproxen Tablets IP 250 mg,naproxen:250mg,tablet,15,21.56
+1367,"Olmesartan 20mg, Amlodipine 5mg and Hydrochlorothiazide 12.5mg Tablets",amlodipine:5mg|hydrochlorothiazide:12.5mg|olmesartan:20mg,tablet,10,43.11
+1368,Olmesartan Medoxomil 20mg and Hydrochlorothiazide 12.5mg Tablets IP,hydrochlorothiazide:12.5mg|olmesartan:20mg,tablet,10,27.84
+1375,Phenobarbitone Tablets IP 60 mg,phenobarbitone:60mg,tablet,30,28.88
+1382,Prasugrel Tablets IP 10 mg,prasugrel:10mg,tablet,10,61.88
+1383,Pregabalin 75mg and Nortriptyline 10mg Tablets,nortriptyline:10mg|pregabalin:75mg,tablet,10,35.17
+1384,Quetiapine Tablets IP 25 mg,quetiapine:25mg,tablet,10,10.31
+1392,Aspirin Gastro Resistant 75mg and Rosuvastatin 10mg Capsules IP,aspirin:75mg:GR|rosuvastatin:10mg,capsule,10,38.16
+1393,Rosuvastatin 10mg and Clopidogrel 75mg Capsules,clopidogrel:75mg|rosuvastatin:10mg,capsule,10,43.32
+1410,"Telmisartan 40mg, Amlodipine 5mg and Hydrochlorothiazide 12.5mg Tablets",amlodipine:5mg|hydrochlorothiazide:12.5mg|telmisartan:40mg,tablet,10,21.55
+1411,Telmisartan 40mg and Chlorthalidone 6.25mg Tablets,chlorthalidone:6.25mg|telmisartan:40mg,tablet,10,20.63
+1417,Thiocolchicoside Capsules IP 4mg,thiocolchicoside:4mg,capsule,10,42.19
+1427,"Trypsin 48mg, Bromelain 90mg and Rutoside Trihydrate 100mg Tablets",bromelain:90mg|rutoside:100mg|trypsin:48mg,tablet,10,65.63
+1435,Capecitabine Tablets IP 500mg,capecitabine:500mg,tablet,10,257.81
+1438,"Metformin Hydrochloride 500mg (Sustained Release), Glimepiride 2mg and Voglibose 0.2mg Tablets",glimepiride:2mg|metformin:500mg:MR|voglibose:0.2mg,tablet,10,32.90
+1450,Pyrantel Pamoate Oral Suspension IP 250mg per 5ml,pyrantel:250mg/5ml,suspension,10,11.25
+1451,Theophylline Prolonged-release Tablets IP 400 mg,theophylline:400mg:MR,tablet,10,28.13
+1452,Pyridoxine Hydrochloride Sustained release tablets 100mg,pyridoxine:100mg:MR,tablet,10,32.81
+1456,Itraconazole Capsules 200 mg,itraconazole:200mg,capsule,4,36.30
+1476,Hydroxychloroquine Tablet IP 400 mg,hydroxychloroquine:400mg,tablet,10,74.18
+1479,Canagliflozin Tablets 100 mg,canagliflozin:100mg,tablet,10,174.38
+1480,Metformin 500mg (Prolonged release) and Glimepiride 0.5mg Tablets IP,glimepiride:0.5mg|metformin:500mg:MR,tablet,10,18.15
+1481,Metformin 1000mg (Prolonged release) and Glimepiride 1mg Tablets IP,glimepiride:1mg|metformin:1000mg:MR,tablet,10,29.49
+1482,Metformin 1000mg (Prolonged release) and Glimepiride 3mg Tablets IP,glimepiride:3mg|metformin:1000mg:MR,tablet,15,43.11
+1483,Metformin 1000mg (Prolonged release) and Glimepiride 4mg Tablets IP,glimepiride:4mg|metformin:1000mg:MR,tablet,15,43.13
+1485,Mesalazine Prolonged release Tablets IP 1200 mg,mesalazine:1200mg:MR,tablet,10,129.38
+1488,Acarbose Tablets IP 25 mg,acarbose:25mg,tablet,10,37.50
+1489,Acebrophylline 100mg and Acetylcysteine 600mg Tablets,acebrophylline:100mg|acetylcysteine:600mg,tablet,10,61.88
+1490,Acebrophylline Sustained Release Tablets 200 mg,acebrophylline:200mg:MR,tablet,10,28.13
+1492,Aceclofenac 200mg (Sustained release) and Rabeprazole Sodium 20mg (Enteric-coated) Capsules,aceclofenac:200mg:MR|rabeprazole:20mg:GR,capsule,10,28.13
+1493,"Aceclofenac 100mg, Paracetamol 325mg and Thiocolchicoside 4mg Tablets",aceclofenac:100mg|paracetamol:325mg|thiocolchicoside:4mg,tablet,10,51.56
+1495,"Aceclofenac 100mg, Paracetamol 325mg and Tizanidine 2mg Tablets",aceclofenac:100mg|paracetamol:325mg|tizanidine:2mg,tablet,10,18.75
+1498,Acotiamide Tablets 100mg,acotiamide:100mg,tablet,10,68.44
+1501,Amantadine Hydrochloride Capsules IP 100 mg,amantadine:100mg,capsule,10,46.88
+1502,Amiodarone Tablets IP 100 mg,amiodarone:100mg,tablet,10,31.97
+1503,Amlodipine Besilate 5mg and Bisoprolol Fumarate 5mg Tablets,amlodipine:5mg|bisoprolol:5mg,tablet,10,18.56
+1508,Ampicillin 250mg and Cloxacillin 250mg Capsules,ampicillin:250mg|cloxacillin:250mg,capsule,10,28.13
+1509,Ampicillin 250mg and Di-Cloxacillin 250mg Capsules,ampicillin:250mg|di-cloxacillin:250mg,capsule,10,42.19
+1515,Atorvastatin 10mg and Aspirin 150mg Capsules,aspirin:150mg|atorvastatin:10mg,capsule,15,24.38
+1516,Atorvastatin 20mg and Clopidogrel 75mg Capsules,atorvastatin:20mg|clopidogrel:75mg,capsule,10,39.70
+1517,"Atorvastatin 20mg, Clopidogrel 75mg and Aspirin 75mg Capsules",aspirin:75mg|atorvastatin:20mg|clopidogrel:75mg,capsule,10,45.38
+1518,Azilsartan 40mg and Chlorthalidone 6.25mg Tablet,azilsartan:40mg|chlorthalidone:6.25mg,tablet,10,60.94
+1519,Azilsartan Medoxomil 40mg and Chlorthalidone 12.5mg Tablets,azilsartan:40mg|chlorthalidone:12.5mg,tablet,10,68.44
+1520,Azilsartan Medoxomil Tablets IP 40mg,azilsartan:40mg,tablet,10,60.00
+1524,Bepotastine Besilate Tablets 10mg,bepotastine:10mg,tablet,10,60.94
+1525,Betahistine Tablets IP 16 mg,betahistine:16mg,tablet,15,16.50
+1526,Betahistine Tablets IP 24 mg,betahistine:24mg,tablet,15,22.50
+1531,Bisoprolol Fumarate Tablets 2.5 mg,bisoprolol:2.5mg,tablet,10,11.34
+1536,Calcitriol 0.25mcg and Calcium 200mg Capsules,calcitriol:0.25mcg|calcium:200mg,capsule,15,32.81
+1538,"Calcium Citrate Malate 250mg, Calcitriol 0.25mcg and Vitamin K2-7 50mcg Tablets",calcitriol:0.25mcg|calcium citrate malate:250mg|vitamin k2-7:50mcg,tablet,10,37.50
+1540,Calcium (from Coral Grains) 500mg and Vitamin D-3 500IU Tablets,calcium:500mg|vitamin d-3:500iu,tablet,10,28.13
+1541,"Calcium 1250mg, Calcitriol 0.25mcg and Vitamin K2-7 45mcg Capsules",calcitriol:0.25mcg|calcium:1250mg|vitamin k2-7:45mcg,capsule,10,51.57
+1543,Camylofin Dihydrochloride 25mg and Paracetamol 300mg Tablets,camylofin:25mg|paracetamol:300mg,tablet,10,18.75
+1548,Cefixime Oral Suspension IP 100 mg per 5ml,cefixime:100mg/5ml,suspension,30,30.00
+1549,Cefixime Oral Suspension IP 25 mg per ml,cefixime:25mg/1ml,suspension,10,20.63
+1556,Cephalexin Extended Release Tablets 750mg,cephalexin:750mg:MR,tablet,10,107.81
+1559,Chloramphenicol Capsules IP 250 mg,chloramphenicol:250mg,capsule,10,37.50
+1560,Chloramphenicol Capsules IP 500 mg,chloramphenicol:500mg,capsule,10,60.94
+1562,Chlordiazepoxide 5mg and Amitriptyline Hydrochloride 12.5mg Tablets,amitriptyline:12.5mg|chlordiazepoxide:5mg,tablet,10,8.44
+1565,Cilnidipine Tablets IP 10 mg,cilnidipine:10mg,tablet,10,17.02
+1566,Cilnidipine Tablets IP 5 mg,cilnidipine:5mg,tablet,10,11.34
+1567,Pantoprazole Gastro-resistant 40mg and Cinitapride Sustained release 3mg Capsules,cinitapride:3mg:MR|pantoprazole:40mg:GR,capsule,10,51.56
+1568,Cinnarizine Tablets IP 75mg,cinnarizine:75mg,tablet,10,14.06
+1570,Citicoline 500mg and Piracetam 800mg Tablets,citicoline:500mg|piracetam:800mg,tablet,10,206.25
+1571,"Clidinium Bromide 2.5mg, Chlordiazepoxide 5mg and Dicyclomine Hydrochloride 10mg Tablets",chlordiazepoxide:5mg|clidinium:2.5mg|dicyclomine:10mg,tablet,10,13.13
+1574,Clobazam Tablets IP 10 mg,clobazam:10mg,tablet,15,30.00
+1581,Clopidogrel 75mg and Aspirin 150mg Capsules,aspirin:150mg|clopidogrel:75mg,capsule,15,58.13
+1587,Colistin Sulphate Oral Suspension IP 12.5 mg per 5ml,colistin:12.5mg/5ml,suspension,30,27.19
+1590,Dabigatran Etexilate Mesilate Capsules 110 mg,dabigatran etexilate:110mg,capsule,10,128.91
+1591,Dabigatran Etexilate Mesilate Capsules 150 mg,dabigatran etexilate:150mg,capsule,10,165.00
+1592,Dapagliflozin Tablets 10 mg,dapagliflozin:10mg,tablet,10,33.00
+1593,Desloratadine 5mg and Montelukast 10mg Tablets,desloratadine:5mg|montelukast:10mg,tablet,10,23.44
+1596,Diclofenac Potassium 50mg and Metaxalone 400mg Tablets,diclofenac potassium:50mg|metaxalone:400mg,tablet,10,46.88
+1597,Diclofenac Prolonged release Tablets IP 75 mg,diclofenac:75mg:MR,tablet,10,9.38
+1598,"Pancreatin 170 mg (containing 15000 units of Amylase activity, 4000 units of Lipase activity, 15000 units of Protease activity) and Sodium Tauroglycocholate 65mg Digestive Enzyme Tablets",pancreatin:170mg|sodium tauroglycocholate:65mg,tablet,10,70.31
+1599,Diltiazem Hydrochloride Extended Release Capsules 120 mg,diltiazem:120mg:MR,capsule,10,32.81
+1601,Diphenoxylate Hydrochloride 2.5mg and Atropine sulphate 0.025mg Tablet,atropine:0.025mg|diphenoxylate:2.5mg,tablet,10,5.63
+1602,Divalproex Tablets IP 500 mg,divalproex:500mg,tablet,10,36.09
+1605,Dosulepin (or Dothiepin) Tablets 25 mg,dosulepin:25mg,tablet,10,16.50
+1606,Dosulepine (or Dothiepin) Tablets IP 75mg,dosulepine:75mg,tablet,10,67.50
+1607,Drotaverine Hydrochloride Tablets IP 80 mg,drotaverine:80mg,tablet,15,20.63
+1608,"Efavirenz 600mg, Emtricitabine 200mg and Tenofovir Disoproxil Fumarate 300mg Tablets IP",efavirenz:600mg|emtricitabine:200mg|tenofovir disoproxil:300mg,tablet,30,1031.25
+1609,Empagliflozin Tablets 10 mg,empagliflozin:10mg,tablet,10,37.50
+1610,Empagliflozin Tablets 25 mg,empagliflozin:25mg,tablet,10,61.88
+1611,Emtricitabine 200mg and Tenofovir Disoproxil Fumarate 300mg Tablets IP,emtricitabine:200mg|tenofovir disoproxil:300mg,tablet,30,984.38
+1612,Entecavir Tablets IP 0.5 mg,entecavir:0.5mg,tablet,10,93.75
+1613,Eplerenone Tablets IP 25 mg,eplerenone:25mg,tablet,10,121.88
+1615,Erythromycin Stearate Tablets IP 500mg,erythromycin:500mg,tablet,10,53.44
+1617,Etoricoxib 60mg and Paracetamol 325mg Tablets,etoricoxib:60mg|paracetamol:325mg,tablet,10,25.31
+1618,Etoricoxib 60mg and Thiocolchicoside 4mg Tablets,etoricoxib:60mg|thiocolchicoside:4mg,tablet,10,56.25
+1622,"Ferrous Ascorbate 100mg, Folic Acid 1.5mg and Zinc Sulphate 22.5mg Tablets",ferrous ascorbate:100mg|folic acid:1.5mg|zinc sulphate:22.5mg,tablet,10,34.03
+1623,Fexofenadine Hydrochloride Suspension (30mg/5ml),fexofenadine:30mg/5ml,suspension,100,28.13
+1624,Flupentixol 0.5mg and Melitracen 10mg Tablets,flupentixol:0.5mg|melitracen:10mg,tablet,10,18.75
+1639,Gabapentin 100 mg and Nortryptyline 10 mg Tablet,gabapentin:100mg|nortryptyline:10mg,tablet,15,23.44
+1640,Gabapentin 300mg and Methylcobalamin 500mcg Tablet,gabapentin:300mg|methylcobalamin:500mcg,tablet,10,41.25
+1644,"Glibenclamide 5 mg, Metformin 500 mg and Pioglitazone 15 mg Tablet",glibenclamide:5mg|metformin:500mg|pioglitazone:15mg,tablet,10,25.78
+1645,Gliclazide 60mg (Modified Release) and Metformin 500mg (Extended Release) Tablets,gliclazide:60mg:MR|metformin:500mg:MR,tablet,10,28.13
+1646,"Metformin 500mg (Sustained Release), Glimepiride 2mg and Pioglitazone 15mg Tablets",glimepiride:2mg|metformin:500mg:MR|pioglitazone:15mg,tablet,10,24.96
+1647,Metformin 850mg (Prolonged release) and Glimepiride 3mg IP Tablets,glimepiride:3mg|metformin:850mg:MR,tablet,10,23.44
+1650,Glucosamine 750mg and Chondroitin 100mg Tablets,chondroitin:100mg|glucosamine:750mg,tablet,10,173.44
+1662,Hydroxyzine Tablets IP 25mg,hydroxyzine:25mg,tablet,15,11.25
+1663,Hyoscine Butylbromide 10mg and Mefenamic Acid 250mg Tablets,hyoscine butylbromide:10mg|mefenamic acid:250mg,tablet,10,46.88
+1671,Ivabradine Tablets 5mg,ivabradine:5mg,tablet,15,92.82
+1679,Lecithin Capsules 1000mg,lecithin:1000mg,capsule,10,56.25
+1680,Levetiracetam Tablets IP 1000 mg,levetiracetam:1000mg,tablet,10,112.50
+1681,Levetiracetam Tablets IP 250 mg,levetiracetam:250mg,tablet,10,28.13
+1682,Levetiracetam Tablets IP 750 mg,levetiracetam:750mg,tablet,10,84.38
+1683,Levocetirizine Dihydrochloride Tablets IP 10mg,levocetirizine:10mg,tablet,15,14.44
+1694,Linagliptin 2.5mg and Metformin 1000mg Tablets,linagliptin:2.5mg|metformin:1000mg,tablet,10,36.56
+1695,Linagliptin 2.5mg and Metformin 500mg Tablets,linagliptin:2.5mg|metformin:500mg,tablet,10,32.81
+1696,Linagliptin Tablets 5mg,linagliptin:5mg,tablet,10,39.19
+1706,Metoprolol 50mg (Extended Release) and Ramipril 5mg Tablet,metoprolol:50mg:MR|ramipril:5mg,tablet,10,84.38
+1708,Metoprolol Succinate Prolonged release tablets IP 25mg,metoprolol:25mg:MR,tablet,15,17.02
+1714,Naproxen 250 mg and Domperidone 10 mg Tablet,domperidone:10mg|naproxen:250mg,tablet,10,28.13
+1715,Naproxen 500 mg and Domperidone 10 mg Tablet,domperidone:10mg|naproxen:500mg,tablet,10,48.75
+1716,Nebivolol 5 mg and S- Amlodipine 2.5 mg Tablet,nebivolol:5mg|s- amlodipine:2.5mg,tablet,10,23.44
+1718,Nicorandil Tablet IP 10mg,nicorandil:10mg,tablet,10,51.57
+1719,Nicorandil Tablet IP 5mg,nicorandil:5mg,tablet,10,41.25
+1720,Nicoumalone/Acenocoumarol Tablets IP 1 mg,nicoumalone acenocoumarol:1mg,tablet,10,37.50
+1721,Nicoumalone/Acenocoumarol Tablets IP 3 mg,nicoumalone acenocoumarol:3mg,tablet,10,60.94
+1722,Nicoumalone/Acenocoumarol Tablets IP 4 mg,nicoumalone acenocoumarol:4mg,tablet,30,46.88
+1723,Nifedipine Sustained Release Tablets IP 10mg,nifedipine:10mg:MR,tablet,15,11.25
+1725,"Nimesulide 100 mg, Paracetamol 325 mg and Serratiopeptidase 15 mg Tablet",nimesulide:100mg|paracetamol:325mg|serratiopeptidase:15mg,tablet,10,23.44
+1729,Ofloxaxin 200mg and Flavoxate 200 mg Tablet,flavoxate:200mg|ofloxaxin:200mg,tablet,10,60.94
+1730,"Olmesartan 40mg, Amlodipine 5mg and Hydrochlorothiazide 12.5mg Tablets",amlodipine:5mg|hydrochlorothiazide:12.5mg|olmesartan:40mg,tablet,10,42.19
+1731,Olmesartan Medoxomil 20mg and Chlorthalidone 12.5mg Tablets,chlorthalidone:12.5mg|olmesartan:20mg,tablet,10,28.13
+1732,Olmesartan Medoxomil 40mg and Chlorthalidone 12.5mg Tablets,chlorthalidone:12.5mg|olmesartan:40mg,tablet,10,42.19
+1733,Omeprazole Gastro-resistant 20mg and Domperidone Sustained Release 30mg Capsules,domperidone:30mg:MR|omeprazole:20mg:GR,capsule,15,28.36
+1737,Oxaceprol Capsules 200mg,oxaceprol:200mg,capsule,10,93.75
+1738,L-Ornithine L-Aspartate 150mg and Pancreatin 100mg Tablets,l-ornithine l-aspartate:150mg|pancreatin:100mg,tablet,10,18.75
+1741,Pantoprazole 20mg (Gastro-resistant) and Domperidone 10mg (Prolonged Release) Capsules IP,domperidone:10mg:MR|pantoprazole:20mg:GR,capsule,10,20.63
+1747,Paracetamol 162.5 mg and Tramadol 18.75 mg Tablet,paracetamol:162.5mg|tramadol:18.75mg,tablet,10,9.38
+1751,Paracetamol 500mg and Caffeine 25mg Tablet IP,caffeine:25mg|paracetamol:500mg,tablet,10,11.25
+1752,Paracetamol 500mg and Chlorzoxazone 250mg Tablet,chlorzoxazone:250mg|paracetamol:500mg,tablet,10,15.00
+1753,"Paracetamol 500 mg, Phenylephrine 10 mg and Chlorpheniramine 2 mg Tablet",chlorpheniramine:2mg|paracetamol:500mg|phenylephrine:10mg,tablet,10,13.13
+1760,Piracetam Tablet 800 mg,piracetam:800mg,tablet,10,31.88
+1763,Prazosin Extended Release Tablets 5mg,prazosin:5mg:MR,tablet,10,28.88
+1764,Pregabalin 75 mg and Methylcobalamin 1500 mcg and Nortriptyline 10 mg Tablets,methylcobalamin:1500mcg|nortriptyline:10mg|pregabalin:75mg,tablet,10,46.41
+1765,Pregabalin 75mg and Methylcobalamin 750mcg Capsule IP,methylcobalamin:750mcg|pregabalin:75mg,capsule,10,39.70
+1767,Probiotic Microbes Capsules 5mg,probiotic microbes:5mg,capsule,10,26.25
+1769,Prucalopride Tablet 2 mg,prucalopride:2mg,tablet,10,112.50
+1770,Prucalopride Tablets 1mg,prucalopride:1mg,tablet,10,84.38
+1774,Racecadotril Capsule IP 100 mg,racecadotril:100mg,capsule,15,103.13
+1775,Metoprolol Succinate 25mg (Extended release) and Ramipril 2.5mg Tablets,metoprolol:25mg:MR|ramipril:2.5mg,tablet,10,23.44
+1777,Ranitidine Syrup IP 75 mg per 5ml,ranitidine:75mg/5ml,syrup,100,23.44
+1778,Ranolazine Extended Release Tablets 500mg,ranolazine:500mg:MR,tablet,10,56.72
+1780,Rivaroxaban Tablets 10mg,rivaroxaban:10mg,tablet,30,196.88
+1781,Rivaroxaban Tablets 20mg,rivaroxaban:20mg,tablet,14,140.63
+1782,"Rosehip Extract 275mg, Devil's Claw Extract (20%) 100mg and Boswellia serrata Extract (65%) 307.5mg Capsules",boswellia serrata extract:307.5mg|devil s claw extract:100mg|rosehip extract:275mg,capsule,10,84.38
+1783,Rosuvastatin 20mg and Fenofibrate 160mg Tablets IP,fenofibrate:160mg|rosuvastatin:20mg,tablet,10,37.50
+1784,Rosuvastatin Tablets IP 40mg,rosuvastatin:40mg,tablet,10,45.38
+1785,"Rosuvastatin 10mg, Aspirin 75mg and Clopidogrel 75mg Capsules",aspirin:75mg|clopidogrel:75mg|rosuvastatin:10mg,capsule,10,51.05
+1786,"Rosuvastatin 20mg, Aspirin 75mg and Clopidogrel 75mg Capsules",aspirin:75mg|clopidogrel:75mg|rosuvastatin:20mg,capsule,10,56.72
+1787,S (-) Amlodipine Tablets IP 5mg,s amlodipine:5mg,tablet,15,10.32
+1789,S(-) Amlodipine 2.5mg and Atenolol 50mg Tablets,atenolol:50mg|s amlodipine:2.5mg,tablet,10,14.06
+1790,Saccharomyces Boulardii Capsule 250mg,saccharomyces boulardii:250mg,capsule,5,61.88
+1792,Sacubitril 24mg and Valsartan 26mg Tablets,sacubitril:24mg|valsartan:26mg,tablet,10,67.50
+1793,Sacubitril 49mg and Valsartan 51mg Tablets,sacubitril:49mg|valsartan:51mg,tablet,10,131.25
+1799,Saxagliptin Tablets 5mg,saxagliptin:5mg,tablet,10,87.19
+1801,Sitagliptin Phosphate 50mg & Metformin Hydrochloride 1000mg Tablets,metformin:1000mg|sitagliptin:50mg,tablet,10,61.88
+1802,Sitagliptin Phosphate 50mg & Metformin Hydrochloride 500mg Tablets,metformin:500mg|sitagliptin:50mg,tablet,10,56.72
+1803,Sitagliptin Phosphate Tablets IP 100mg,sitagliptin:100mg,tablet,10,82.50
+1804,Sitagliptin Phosphate Tablets IP 50mg,sitagliptin:50mg,tablet,10,44.34
+1811,Telmisartan 80mg and Amlodipine 5mg Tablets IP,amlodipine:5mg|telmisartan:80mg,tablet,10,28.13
+1812,Telmisartan 80mg and Cilnidipine 10mg Tablets,cilnidipine:10mg|telmisartan:80mg,tablet,10,32.81
+1813,Telmisartan Tablets IP 80mg,telmisartan:80mg,tablet,10,24.96
+1814,"Telmisartan 40mg, Chlorthalidone 12.5mg and Amlodipine 5mg Tablets",amlodipine:5mg|chlorthalidone:12.5mg|telmisartan:40mg,tablet,10,22.50
+1815,"Telmisartan 40mg, Chlorthalidone 6.25mg and Amlodipine 5mg Tablets",amlodipine:5mg|chlorthalidone:6.25mg|telmisartan:40mg,tablet,10,18.75
+1816,"Telmisartan 40mg, Cilnidipine 10mg and Chlorthalidone 6.25mg Tablets",chlorthalidone:6.25mg|cilnidipine:10mg|telmisartan:40mg,tablet,10,28.13
+1818,Tetrabenazine Tablets 25mg,tetrabenazine:25mg,tablet,10,178.13
+1819,Ticagrelor Tablets IP 90 mg,ticagrelor:90mg,tablet,10,134.07
+1824,Tolvaptan Tablets 15mg,tolvaptan:15mg,tablet,10,196.88
+1825,Torsemide 10mg and Spironolactone 50mg Tablets,spironolactone:50mg|torsemide:10mg,tablet,15,33.00
+1827,Torsemide Tablets IP 40mg,torsemide:40mg,tablet,15,46.88
+1828,Torsemide Tablets IP 5mg,torsemide:5mg,tablet,15,10.32
+1830,Trimetazidine Hydrochloride Controlled Release Capsules 60mg,trimetazidine:60mg:MR,capsule,10,41.25
+1831,"Trypsin 48mg, Bromelain 90mg, Rutoside Trihydrate 100mg and Diclofenac Sodium 50mg Tablets",bromelain:90mg|diclofenac:50mg|rutoside:100mg|trypsin:48mg,tablet,10,46.88
+1833,Ursodeoxycholic Acid Tablets IP 150mg,ursodeoxycholic acid:150mg,tablet,15,100.00
+1834,Valacyclovir Tablets 1000mg,valacyclovir:1000mg,tablet,3,103.13
+1837,Vildagliptin 50mg and Metformin Hydrochloride 850mg Tablets IP,metformin:850mg|vildagliptin:50mg,tablet,15,30.00
+1843,"Voglibose 0.2mg, Glimepiride 1mg and Metformin Hydrochloride 500mg (Sustained Release) Tablets",glimepiride:1mg|metformin:500mg:MR|voglibose:0.2mg,tablet,10,30.94
+1844,"Voglibose 0.2mg, Glimepiride 2mg and Metformin Hydrochloride 1000mg (Sustained Release) Tablets",glimepiride:2mg|metformin:1000mg:MR|voglibose:0.2mg,tablet,10,23.44
+1845,"Voglibose 0.3mg, Glimepiride 2mg and Metformin Hydrochloride 1000mg (Sustained Release) Tablets",glimepiride:2mg|metformin:1000mg:MR|voglibose:0.3mg,tablet,10,33.75
+1850,Thyroxine Sodium Tablets IP 12.5mcg,levothyroxine:12.5mcg,tablet,100,60.94
+1851,Thyroxine Sodium Tablets IP 25mcg,levothyroxine:25mcg,tablet,100,42.19
+1852,Thyroxine Sodium Tablets IP 75mcg,levothyroxine:75mcg,tablet,100,56.25
+1853,Thyroxine Sodium Tablets IP 125mcg,levothyroxine:125mcg,tablet,100,71.25
+1854,Alfuzosin Prolonged-release Tablets IP 10mg,alfuzosin:10mg:MR,tablet,10,42.19
+1855,Alfuzosin 10mg and Dutasteride 0.5mg Tablets,alfuzosin:10mg|dutasteride:0.5mg,tablet,10,56.25
+1856,Disodium Hydrogen Citrate Syrup 1.53gm per 5ml,disodium hydrogen citrate:1530mg/5ml,syrup,100,28.13
+1857,Citric Acid 334mg and Potassium Citrate 1100mg Syrup per 5ml,citric acid:334mg/5ml|potassium citrate:1100mg/5ml,syrup,200,51.56
+1858,Darifenacin Prolonged Release Tablets IP 7.5mg,darifenacin:7.5mg:MR,tablet,10,89.06
+1859,Disodium Hydrogen Citrate Syrup 1.37gm per 5ml,disodium hydrogen citrate:1370mg/5ml,syrup,100,42.19
+1860,Dutasteride Capsule IP 0.5 mg,dutasteride:0.5mg,capsule,10,46.88
+1861,Finasteride Tablets IP 1mg,finasteride:1mg,tablet,10,14.06
+1862,Mirabegron Extended-release Tablets 25 mg,mirabegron:25mg:MR,tablet,10,93.75
+1863,Mirabegron Extended-release Tablets 50 mg,mirabegron:50mg:MR,tablet,10,135.94
+1865,Silodosin Capsules 4 mg,silodosin:4mg,capsule,10,46.88
+1866,Silodosin Capsules 8 mg,silodosin:8mg,capsule,10,77.34
+1867,Silodosin 4mg and Dutasteride 0.5mg Capsules,dutasteride:0.5mg|silodosin:4mg,capsule,10,93.75
+1868,Silodosin 8mg and Dutasteride 0.5mg Capsules,dutasteride:0.5mg|silodosin:8mg,capsule,10,144.38
+1869,Solifenacin Succinate Tablets IP 5 mg,solifenacin:5mg,tablet,10,60.94
+1870,Solifenacin Succinate Tablets IP 10 mg,solifenacin:10mg,tablet,10,75.00
+1871,Tamsulosin Hydrochloride 0.4mg and Tolterodine Tartrate 2mg Extended Release Capsules,tamsulosin:0.4mg:MR|tolterodine:2mg:MR,capsule,10,56.25
+1872,Tamsulosin Hydrochloride 0.4mg and Tolterodine Tartrate 4mg Extended Release Capsules,tamsulosin:0.4mg:MR|tolterodine:4mg:MR,capsule,10,75.00
+1873,Tolterodine Tartrate Extended Release Capsules 2mg,tolterodine:2mg:MR,capsule,10,46.88
+1874,Tolterodine Tartrate Extended Release Capsules 4 mg,tolterodine:4mg:MR,capsule,10,65.63
+1880,Epalrestat Sustained Release Tablets 150 mg,epalrestat:150mg:MR,tablet,10,79.69
+1893,Primaquine Phosphate Tablets IP 7.5 mg,primaquine:7.5mg,tablet,10,12.19
+1894,Primaquine Phosphate Tablets IP 2.5 mg,primaquine:2.5mg,tablet,10,9.38
+1897,Quinine Sulphate Tablets IP 600 mg,quinine:600mg,tablet,10,50.00
+1898,Agomelatine Tablets 25 mg,agomelatine:25mg,tablet,10,61.88
+1899,Alprazolam 0.25mg and Propranolol Hydrochloride 20mg Tablets,alprazolam:0.25mg|propranolol:20mg,tablet,10,15.00
+1900,Alprazolam 0.25mg and Propranolol Hydrochloride 10mg Tablets,alprazolam:0.25mg|propranolol:10mg,tablet,10,14.06
+1901,Alprazolam 0.5mg and Sertraline Hydrochloride 25mg Tablets,alprazolam:0.5mg|sertraline:25mg,tablet,10,23.44
+1902,Alprazolam 0.5mg and Sertraline Hydrochloride 50mg Tablets,alprazolam:0.5mg|sertraline:50mg,tablet,10,32.81
+1903,Amisulpride Tablets IP 100 mg,amisulpride:100mg,tablet,10,37.50
+1904,Amisulpride Tablets IP 200 mg,amisulpride:200mg,tablet,10,65.63
+1905,Amitriptyline Hydrochloride Tablets IP 75 mg,amitriptyline:75mg,tablet,10,18.75
+1906,Amitriptyline Hydrochloride Tablets IP 50 mg,amitriptyline:50mg,tablet,10,14.06
+1908,Amitriptyline Hydrochloride 25mg Chlordiazepoxide 10mg Tablets,amitriptyline:25mg|chlordiazepoxide:10mg,tablet,10,9.38
+1909,Amoxapine Tablets IP 50mg,amoxapine:50mg,tablet,10,48.28
+1910,Amoxapine Tablets IP 100mg,amoxapine:100mg,tablet,10,69.38
+1911,Aripiprazole Tablets IP 2.5 mg,aripiprazole:2.5mg,tablet,10,9.38
+1912,Aripiprazole Tablets IP 10 mg,aripiprazole:10mg,tablet,10,23.44
+1913,Aripiprazole Tablets IP 15 mg,aripiprazole:15mg,tablet,10,32.81
+1914,Aripiprazole Tablets IP 20 mg,aripiprazole:20mg,tablet,10,42.19
+1915,Aripiprazole Tablets IP 7.5 mg,aripiprazole:7.5mg,tablet,10,21.56
+1916,Aripiprazole Tablets IP 30 mg,aripiprazole:30mg,tablet,10,28.13
+1919,Bromocriptine Mesylate Tablets IP 1.25 mg,bromocriptine:1.25mg,tablet,10,32.81
+1920,Bupropion Prolonged-release Tablets IP 150 mg,bupropion:150mg:MR,tablet,10,42.19
+1921,Chlordiazepoxide Tablets IP 25 mg,chlordiazepoxide:25mg,tablet,10,23.44
+1922,Chlorpromazine Tablets IP 100 mg,chlorpromazine:100mg,tablet,10,6.19
+1923,Chlorpromazine Tablets IP 50 mg,chlorpromazine:50mg,tablet,10,5.16
+1924,Chlorpromazine Tablets IP 25 mg,chlorpromazine:25mg,tablet,10,3.38
+1927,Cinnarizine 20mg and Dimenhydrinate 40mg Tablets,cinnarizine:20mg|dimenhydrinate:40mg,tablet,10,18.75
+1928,Citalopram Tablets IP 20mg,citalopram:20mg,tablet,10,18.75
+1932,Clomipramine Hydrochloride Tablets 10mg,clomipramine:10mg,tablet,10,11.25
+1933,Clomipramine Hydrochloride Tablets 25mg,clomipramine:25mg,tablet,10,18.75
+1934,Clomipramine Hydrochloride Tablets 50mg,clomipramine:50mg,tablet,10,32.81
+1935,Clozapine Tablets IP 25 mg,clozapine:25mg,tablet,10,14.06
+1936,Clozapine Tablets IP 50 mg,clozapine:50mg,tablet,10,23.44
+1937,Clozapine Tablets IP 100 mg,clozapine:100mg,tablet,10,37.50
+1938,Diazepam Tablets IP 2 mg,diazepam:2mg,tablet,10,6.56
+1939,Diazepam Tablets IP 10 mg,diazepam:10mg,tablet,10,18.75
+1940,Doxepin Capsules IP 10mg,doxepin:10mg,capsule,10,14.06
+1941,Doxepin Capsules IP 25mg,doxepin:25mg,capsule,10,37.50
+1942,Doxepin Capsules IP 75mg,doxepin:75mg,capsule,10,56.25
+1943,Duloxetine Gastro Resistant Tablets IP 30mg,duloxetine:30mg:GR,tablet,10,28.13
+1944,Escitalopram Tablets IP 5 mg,escitalopram:5mg,tablet,10,7.50
+1945,Etizolam Tablets IP 0.25mg,etizolam:0.25mg,tablet,10,6.56
+1948,Levosulpiride Tablets 50 mg,levosulpiride:50mg,tablet,10,20.63
+1949,Levosulpiride Tablets 75 mg,levosulpiride:75mg,tablet,10,30.94
+1950,Mirtazapine Tablets IP 30 mg,mirtazapine:30mg,tablet,10,42.19
+1951,Rifaximin Tablets 200 mg,rifaximin:200mg,tablet,10,65.63
+1952,Rifaximin Tablets 550 mg,rifaximin:550mg,tablet,10,159.38
+1953,Olanzapine 5mg and Fluoxetine 20mg Tablets IP,fluoxetine:20mg|olanzapine:5mg,tablet,10,18.75
+1955,Paroxetine Extended Release 12.5mg and Clonazepam 0.25mg Tablets,clonazepam:0.25mg|paroxetine:12.5mg:MR,tablet,10,37.50
+1957,Risperidone Tablets IP 1mg,risperidone:1mg,tablet,10,7.50
+1958,Risperidone Tablets IP 2 mg,risperidone:2mg,tablet,10,9.38
+1959,Eicosapentaenoic Acid 180mg and Docosahexaenoic Acid 120mg Soft Gelatin Capsule,docosahexaenoic acid:120mg|eicosapentaenoic acid:180mg,capsule,30,112.50
+1961,Methylcobalamin Tablet 1500mcg,methylcobalamin:1500mcg,tablet,10,25.78
+1962,Methylcobalamin Tablet 500mcg,methylcobalamin:500mcg,tablet,10,15.47
+1963,N-Acetylcysteine 150Mg And Taurine 500Mg Tablets,n-acetylcysteine:150mg|taurine:500mg,tablet,10,30.94
+1966,Repaglinide Tablet IP 0.5mg,repaglinide:0.5mg,tablet,10,14.06
+1967,Repaglinide Tablet IP 1mg,repaglinide:1mg,tablet,10,23.44
+1968,Repaglinide Tablet IP 2mg,repaglinide:2mg,tablet,10,32.81
+1969,Repaglinide 1mg and Metformin Hydrochloride (Sustained-release) 500mg Tablets IP,metformin:500mg:MR|repaglinide:1mg,tablet,10,28.13
+1970,Repaglinide 2mg and Metformin Hydrochloride (Sustained-release) 500mg Tablets IP,metformin:500mg:MR|repaglinide:2mg,tablet,10,32.81
+1978,Cefdinir Capsule IP 300mg,cefdinir:300mg,capsule,10,154.69
+1979,Cefdinir Oral Suspension IP 125mg per 5ml,cefdinir:125mg/5ml,suspension,30,58.13
+1980,Tolperisone Tablet 150mg,tolperisone:150mg,tablet,10,14.06
+1982,Cefixime 100Mg And Clavulanic Acid 62.5 Mg Tablets,cefixime:100mg|clavulanic acid:62.5mg,tablet,10,65.63
+1984,Cefprozil Oral Suspension 125mg per 5ml,cefprozil:125mg/5ml,suspension,30,51.56
+1985,Cefprozil Oral Suspension 250mg per 5ml,cefprozil:250mg/5ml,suspension,30,93.75
+1986,Cefprozil Tablet 500 mg,cefprozil:500mg,tablet,6,168.75
+1987,Cefprozil Tablet 250 mg,cefprozil:250mg,tablet,10,140.63
+1991,Moxifloxacin 400mg and Cefixime 400mg Tablet,cefixime:400mg|moxifloxacin:400mg,tablet,10,159.38
+2002,Ethinylestradiol 0.035 Mg And Cyproterone 2 Mg Tablet,cyproterone:2mg|ethinylestradiol:0.035mg,tablet,21,90.00
+2003,Calcium 500mg and Vitamin D3 500IU Tablets IP,calcium:500mg|cholecalciferol:500iu,tablet,10,8.25
+2004,Ranolazine Extended Release Tablets 1000mg,ranolazine:1000mg:MR,tablet,10,70.31
+2006,Sodium Bicarbonate Tablet 500 mg,sodium bicarbonate:500mg,tablet,10,10.32
+2007,Sodium Bicarbonate Tablet 1000 mg,sodium bicarbonate:1000mg,tablet,10,15.47
+2009,Silymarin Tablet 140 mg,silymarin:140mg,tablet,10,28.13
+2014,Daclatasvir Tablets 60 mg,daclatasvir:60mg,tablet,28,959.06
+2015,Nebivolol 5mg and Telmisartan 40mg Tablets,nebivolol:5mg|telmisartan:40mg,tablet,10,46.88
+2016,Minoxidil Tablets IP 10mg,minoxidil:10mg,tablet,10,18.75
+2017,Ulipristal Acetate Tablets 5mg,ulipristal:5mg,tablet,10,445.31
+2018,Mesalazine Prolonged release Tablets IP 500mg,mesalazine:500mg:MR,tablet,10,70.31
+2022,Ropinirole Tablets IP 1 mg,ropinirole:1mg,tablet,10,18.75
+2023,Ropinirole Tablets IP 2 mg,ropinirole:2mg,tablet,10,28.13
+2026,Etoposide Capsules IP 50 mg,etoposide:50mg,capsule,8,202.50
+2027,Mesalazine Delayed release Tablets 800 mg,mesalazine:800mg:GR,tablet,10,91.41
+2028,Tacrolimus Capsule IP 2 mg,tacrolimus:2mg,capsule,10,178.13
+2029,Tacrolimus Capsule IP 1 mg,tacrolimus:1mg,capsule,10,103.13
+2030,Tacrolimus Capsule IP 0.25 mg,tacrolimus:0.25mg,capsule,10,42.19
+2032,Atazanavir 300mg and Ritonavir 100mg Tablets IP,atazanavir:300mg|ritonavir:100mg,tablet,30,845.63
+2034,Voriconazole Tablets IP 200mg,voriconazole:200mg,tablet,4,328.13
+2035,Potassium Citrate 1100 mg and Magnesium Citrate 375 mg and Pyridoxine Hydrochloride 20mg Syrup per 5ml,magnesium citrate:375mg/5ml|potassium citrate:1100mg/5ml|pyridoxine:20mg/5ml,syrup,200,60.94
+2037,Esomeprazole Gastro-Resistance Tablets IP 20mg,esomeprazole gastro-resistance:20mg,tablet,10,9.38
+2038,Pantoprazole Gastro-Resistance Tablets IP 20mg,pantoprazole gastro-resistance:20mg,tablet,10,7.22
+2040,L-Ornithine L-Aspartate 150mg and Pancreatin 100mg Tablets,l-ornithine l-aspartate:150mg|pancreatin:100mg,tablet,10,30.94
+2041,Tadalafil 10Mg And Dapoxetine 30 Mg Tablets,dapoxetine:30mg|tadalafil:10mg,tablet,4,65.63
+2044,Levonorgestrel Tablet IP 1.5 mg,levonorgestrel:1.5mg,tablet,1,20.00
+2045,"Ferrous Asparto Glycinate 100 mg, L-Methylfolate Calcium 300mcg, Methylcobalamin 500mcg Tablet",ferrous asparto glycinate:100mg|l-methylfolate:300mcg|methylcobalamin:500mcg,tablet,10,37.50
+2047,Cholecalciferol Soft Gelatin Capsule 60000 IU,cholecalciferol:60000iu,capsule,4,20.63
+2048,Methotrexate Tablets IP 2.5mg,methotrexate:2.5mg,tablet,10,15.00
+2049,Divalproex Prolonged release Tablets IP 500mg,divalproex:500mg:MR,tablet,10,60.94
+2050,Amlodipine Tablet IP 10mg,amlodipine:10mg,tablet,10,10.32
+2052,Atorvastatin 10mg And Cholecalciferol 1000 IU Tablet,atorvastatin:10mg|cholecalciferol:1000iu,tablet,10,18.75
+2053,Telmisartan 40mg and Atorvastatin 10mg Tablet,atorvastatin:10mg|telmisartan:40mg,tablet,10,14.06
+2060,Paracetamol Tablets IP 1000 Mg,paracetamol:1000mg,tablet,10,15.00
+2065,Lopinavir and Ritonavir Tablets IP (200mg + 50mg),lopinavir:200mg|ritonavir:50mg,tablet,60,890.63
+2072,"Atorvastatin 10mg, Aspirin 75mg and Clopidogrel 75mg Capsules",aspirin:75mg|atorvastatin:10mg|clopidogrel:75mg,capsule,10,35.63
+2073,Atorvastatin 20mg and Aspirin 150mg Capsules IP,aspirin:150mg|atorvastatin:20mg,capsule,10,18.75
+2074,Atorvastatin 20mg and Aspirin 75mg Capsules IP,aspirin:75mg|atorvastatin:20mg,capsule,10,17.34
+2076,Atorvastatin Tablets IP 5mg,atorvastatin:5mg,tablet,10,10.32
+2080,Bisoprolol 5mg and Hydrochlorothiazide 12.5mg Tablets,bisoprolol:5mg|hydrochlorothiazide:12.5mg,tablet,10,18.75
+2082,Calcium Dobesilate Monohydrate Capsules 500mg,calcium dobesilate:500mg,capsule,10,37.50
+2083,"Calcium Citrate Malate 250mg , Vitamin D3 100IU and Folic Acid 50mcg Tablets",calcium citrate malate:250mg|cholecalciferol:100iu|folic acid:50mcg,tablet,10,18.75
+2084,Carbamazepine Prolonged release Tablets IP 400mg,carbamazepine:400mg:MR,tablet,10,24.47
+2088,Carvedilol Phosphate Extended Release Tablets 10mg,carvedilol:10mg:MR,tablet,10,15.94
+2089,Carvedilol Phosphate Extended Release Tablets 20mg,carvedilol:20mg:MR,tablet,10,23.44
+2090,Carvedilol Tablets IP 12.5 mg,carvedilol:12.5mg,tablet,10,14.06
+2091,Cilnidipine 10mg and Chlorthalidone 12.5mg Tablets,chlorthalidone:12.5mg|cilnidipine:10mg,tablet,10,18.75
+2092,Metoprolol Succinate (extended release) 25mg and Cilnidipine 10mg Tablets,cilnidipine:10mg|metoprolol:25mg:MR,tablet,10,18.75
+2093,Metoprolol Succinate (extended release) 50mg and Cilnidipine 10mg Tablets,cilnidipine:10mg|metoprolol:50mg:MR,tablet,10,21.56
+2094,Cinnarizine 20mg and Domperidone 15mg Tablet,cinnarizine:20mg|domperidone:15mg,tablet,10,9.38
+2098,Dabigatran Etexilate Mesilate Capsules 75 mg,dabigatran etexilate:75mg,capsule,10,122.81
+2099,Dapagliflozin 10mg and Metformin Hydrochloride (Extended Release) 1000mg Tablets,dapagliflozin:10mg|metformin:1000mg:MR,tablet,10,51.56
+2100,Dapagliflozin 10mg and Metformin Hydrochloride (Extended Release) 500mg Tablets,dapagliflozin:10mg|metformin:500mg:MR,tablet,10,52.59
+2101,Dapagliflozin Tablets 5mg,dapagliflozin:5mg,tablet,10,25.78
+2102,Desloratadine Tablets 5mg,desloratadine:5mg,tablet,10,14.06
+2104,Divalproex Sodium Extended Release Tablets IP 250 mg,divalproex:250mg:MR,tablet,10,23.44
+2105,Dosulepin (Dothiepin) Tablets IP 50mg,dosulepin:50mg,tablet,10,28.13
+2106,Doxofylline (Sustained-release) 400mg and Montelukast 10mg Tablets,doxofylline:400mg:MR|montelukast:10mg,tablet,10,60.94
+2107,Etizolam 0.5mg and Propranolol Hydrochloride 20mg Tablets,etizolam:0.5mg|propranolol:20mg,tablet,10,20.63
+2109,Glucosamine Tablets USP 500mg,glucosamine:500mg,tablet,30,75.00
+2113,Lacosamide Tablets 100mg,lacosamide:100mg,tablet,10,57.75
+2114,Methotrexate Tablets IP 10mg,methotrexate:10mg,tablet,10,30.00
+2115,Methotrexate Tablets IP 5mg,methotrexate:5mg,tablet,10,20.00
+2116,Methylprednisolone Tablets IP 16mg,methylprednisolone:16mg,tablet,10,37.50
+2117,"Metoprolol Succinate (Extended-relase) 50mg, Telmisartan 40mg and Chlorthalidone 12.5mg Tablets",chlorthalidone:12.5mg|metoprolol:50mg:MR|telmisartan:40mg,tablet,10,23.44
+2118,Metoprolol Succinate Extended Release Tablets IP 12.5mg,metoprolol:12.5mg:MR,tablet,10,9.38
+2122,Mycophenolate Sodium Gastro-resistant Tablets 360mg,mycophenolate:360mg:GR,tablet,10,145.00
+2123,Metformin Hydrochloride (sustained-relase) 500mg and Myo-Inositol 600mg Tablets,metformin:500mg|myo-inositol:600mg,tablet,10,82.50
+2124,Nitroglycerin Controlled Release Tablets 6.4 mg,nitroglycerin:6.4mg:MR,tablet,30,56.72
+2125,Nortriptyline Tablets IP 10mg,nortriptyline:10mg,tablet,10,9.38
+2127,Oxcarbazepine Tablets IP 150mg,oxcarbazepine:150mg,tablet,10,36.09
+2128,Paracetamol 650mg and Caffeine 50mg Tablets IP,caffeine:50mg|paracetamol:650mg,tablet,10,17.81
+2129,Pirfenidone Tablets IP 400mg,pirfenidone:400mg,tablet,10,159.38
+2132,Pregabalin (Sustained release) 75mg and Methylcobalamin 1500mcg Tablets,methylcobalamin:1500mcg|pregabalin:75mg:MR,tablet,10,46.88
+2133,Pregabalin Tablets IP 150mg,pregabalin:150mg,tablet,10,28.13
+2134,Ribavirin Capsules USP 200mg,ribavirin:200mg,capsule,4,50.00
+2135,Spironolactone 50mg and Torasemide 20mg Tablets,spironolactone:50mg|torasemide:20mg,tablet,10,39.38
+2136,Sumatriptan 85mg and Naproxen 500mg Tablets,naproxen:500mg|sumatriptan:85mg,tablet,2,46.88
+2137,"Telmisartan 40mg, Cilnidipine 10mg and Chlorthalidone 12.5mg Tablets",chlorthalidone:12.5mg|cilnidipine:10mg|telmisartan:40mg,tablet,10,28.13
+2138,Torsemide Tablets IP 100mg,torsemide:100mg,tablet,10,46.88
+2139,Valsartan Tablets IP 40 mg,valsartan:40mg,tablet,10,18.75
+2140,Verapamil Tablets IP 40mg,verapamil:40mg,tablet,10,4.22
+2141,Warfarin Tablets IP 1mg,warfarin:1mg,tablet,10,13.23
+2142,Warfarin Tablets IP 2mg,warfarin:2mg,tablet,10,14.06
+2144,Pyridostigmine Bromide Tablets IP 60mg,pyridostigmine:60mg,tablet,10,67.50
+2147,Estradiol Tablets 2mg,estradiol:2mg,tablet,28,103.13
+2148,Atorvastatin Tablets IP 80mg,atorvastatin:80mg,tablet,10,32.81
+2155,Benidipine Hydrochloride Tablets 4mg,benidipine:4mg,tablet,10,14.06
+2156,Bilastine 20mg Montelukast 10mg Tablets,bilastine:20mg|montelukast:10mg,tablet,10,46.88
+2158,Calcium Pantothenate 100mg Tablets IP,calcium pantothenate:100mg,tablet,10,14.06
+2159,Cefpodoxime 200mg and Ofloxacin 200mg Tablets,cefpodoxime:200mg|ofloxacin:200mg,tablet,10,100.31
+2161,Diethylcarbamazine 150mg Tablets,diethylcarbamazine:150mg,tablet,10,10.00
+2163,Enalapril Maleate Tablets IP 2.5mg,enalapril:2.5mg,tablet,10,6.56
+2164,Esomeprazole Magnesium 40mg (Enteric Coated ) and Itopride Hydrochloride 150mg (Sustained Release) Capsules,esomeprazole:40mg:GR|itopride:150mg:MR,capsule,10,46.88
+2168,Fenofibrate Capsules IP 200mg,fenofibrate:200mg,capsule,10,23.44
+2169,Flupirtine Maleate Capsules 100mg,flupirtine:100mg,capsule,10,32.81
+2170,Glimepiride IP 0.5mg Tablets,glimepiride:0.5mg,tablet,10,3.28
+2173,Ibandronic Acid Tablets 150mg,ibandronic acid:150mg,tablet,1,304.69
+2174,Ilaprazole Tablets 10mg,ilaprazole:10mg,tablet,10,23.44
+2176,Labetalol IP 200mg Tablets,labetalol:200mg,tablet,10,56.25
+2177,Lornoxicam 8mg and Paracetamol 325mg Tablets,lornoxicam:8mg|paracetamol:325mg,tablet,10,23.44
+2180,Mesalamine Delayed Release Tablets 400mg,mesalamine:400mg:GR,tablet,10,37.50
+2181,Metformin Hydrchloride 500mg (Sustained-release) and Glimipride 3mg Tablet IP,glimipride:3mg|metformin hydrchloride:500mg:MR,tablet,10,28.13
+2182,Metformin Hydrchloride 500mg (Sustained-release) and Glimipride 4mg Tablet IP,glimipride:4mg|metformin hydrchloride:500mg:MR,tablet,10,32.81
+2185,Moxonidine Tablets 0.2mg,moxonidine:0.2mg,tablet,10,33.75
+2186,Oxcarbazepine Tablets IP 450mg,oxcarbazepine:450mg,tablet,10,106.88
+2187,Oxcarbazepine Tablets IP 600 mg,oxcarbazepine:600mg,tablet,10,126.84
+2188,Paroxetin Prolonged-release Tablets IP 25mg,paroxetin:25mg:MR,tablet,10,37.50
+2189,Paroxetine Prolonged-release Tablets IP 12.5mg,paroxetine:12.5mg:MR,tablet,10,23.44
+2190,Pramipexole Dihydrochloride Tablets 0.25mg,pramipexole:0.25mg,tablet,10,45.94
+2192,Ramipril Tablets IP 10mg,ramipril:10mg,tablet,10,18.75
+2197,Risperidone Tablets IP 3 mg,risperidone:3mg,tablet,10,10.31
+2198,Ropinirole Tablets IP 0.5mg,ropinirole:0.5mg,tablet,10,14.06
+2200,Selegiline Hydrochloride 5mg Tablets,selegiline:5mg,tablet,10,28.13
+2201,Sevelamer Carbonate Tablets 400mg,sevelamer carbonate:400mg,tablet,10,51.56
+2203,"Telmisartan 80mg, Amlodipine 5mg and Hydrochlorothiazide 12.5mg Tablets",amlodipine:5mg|hydrochlorothiazide:12.5mg|telmisartan:80mg,tablet,10,37.50
+2204,Tenofovir Alafenamide Tablets IP 25mg,tenofovir alafenamide:25mg,tablet,30,562.50
+2206,Vitamin E Capsules 600mg,vitamin e:600mg,capsule,10,26.25
+2207,"Metformin Hydrochloride 500mg (Sustained Release), Voglibose 0.3mg and Glimepiride 1mg and Tablets",glimepiride:1mg|metformin:500mg:MR|voglibose:0.3mg,tablet,10,23.44
+2208,"Metformin Hydrochloride 500mg (Sustained Release), Voglibose 0.3mg and Glimepiride 2mg and Tablets",glimepiride:2mg|metformin:500mg:MR|voglibose:0.3mg,tablet,10,28.13
+2209,Ziprasidone 20mg Capsules,ziprasidone:20mg,capsule,10,42.19
+2210,Perindopril Erbumine 8mg Tablets,perindopril:8mg,tablet,10,75.00
+2211,Perindopril Erbumine 4mg and Indapamide 1.25mg Tablets,indapamide:1.25mg|perindopril:4mg,tablet,10,65.63
+2212,Micronized Purified flavanoid Fraction Tablets ( MPFF Diosmin 450mg and Hesperidin 50mg Tablets),flavanoid fraction mpff diosmin:450mg|hesperidin:50mg,tablet,10,70.31
+2213,Ziprasidone 40mg Capsules,ziprasidone:40mg,capsule,10,65.63
+2216,"Guaifenesin 50mg, Terbutaline 1.25 mg and Ambroxol 30 mg Syrup per 5ml (Suger free)",ambroxol:30mg/5ml|guaifenesin:50mg/5ml|terbutaline:1.25mg/5ml,syrup,100,28.13
+2217,"Guaifenesin 100mg, Terbutaline 1.25 mg and Ambroxol 15mg Syrup per 5ml (Suger free)",ambroxol:15mg/5ml|guaifenesin:100mg/5ml|terbutaline:1.25mg/5ml,syrup,100,28.13
+2222,Allopurinol Tablets IP 300 mg,allopurinol:300mg,tablet,10,30.29
+2223,Amisulpride Tablets IP 300mg,amisulpride:300mg,tablet,10,75.00
+2224,Acarbose 50mg and Metformin Hydrochloride 500mg Tablets,acarbose:50mg|metformin:500mg,tablet,10,77.81
+2226,Alendronate Sodium Tablets USP 70mg,alendronate:70mg,tablet,4,18.75
+2227,"Amlodipine 5 mg, Losartan Potassium 50 mg & Hydrochlorothiazide 12.5 mg Tablets",amlodipine:5mg|hydrochlorothiazide:12.5mg|losartan:50mg,tablet,10,23.44
+2228,Amlodipine 5mg and Perindopril 4mg Tablets,amlodipine:5mg|perindopril:4mg,tablet,10,30.94
+2249,"Abacavir 600mg, Dolutegravir 50mg and Lamivudine 300mg Tablets",abacavir:600mg|dolutegravir:50mg|lamivudine:300mg,tablet,30,2718.75
+2250,Abacavir 600mg and Lamivudine 300mg Tablets,abacavir:600mg|lamivudine:300mg,tablet,30,953.91
+2255,Colchicine Tablets 0.5mg,colchicine:0.5mg,tablet,10,9.38
+2272,Dapagliflozin 5mg and Sitagliptin 50mg Tablets,dapagliflozin:5mg|sitagliptin:50mg,tablet,10,37.50
+2273,Dapagliflozin 10mg and Sitagliptin 100mg Tablets,dapagliflozin:10mg|sitagliptin:100mg,tablet,10,65.63
+2274,Pregabalin 75mg and Duloxetin (Delayed Release) 30mg Capsules,duloxetin:30mg:GR|pregabalin:75mg,capsule,10,51.56
+2275,Pregabalin 75mg and Duloxetin (Delayed Release) 20mg Capsules,duloxetin:20mg:GR|pregabalin:75mg,capsule,10,42.19
+2276,Pregabalin 50mg and Duloxetin (Delayed Release) 20mg Capsules,duloxetin:20mg:GR|pregabalin:50mg,capsule,10,32.81
+2277,Bempedoic Acid Tablets 180mg,bempedoic acid:180mg,tablet,10,112.50
+2283,Abiraterone Acetate Tablets 250mg,abiraterone:250mg,tablet,120,6000.00
+2284,Acamprosate Calcium Tablets 333mg,acamprosate:333mg,tablet,6,51.56
+2289,Armodafinil 150mg Tablets,armodafinil:150mg,tablet,10,121.88
+2290,Baclofen 20mg Extended Release (Gastric Retentive System) Tablets,baclofen:20mg:MR,tablet,10,30.00
+2291,Benazepril 5mg Tablets,benazepril:5mg,tablet,10,42.19
+2292,Benidipine 8mg Tablets,benidipine:8mg,tablet,10,23.44
+2293,Bosentan 62.5mg Tablets,bosentan:62.5mg,tablet,10,351.56
+2295,Brivaracetam Tablets IP 50mg,brivaracetam:50mg,tablet,10,79.69
+2296,"Calcitriol 0.25mcg, Calcium Carbonate 500mg, Vitamin K27 45mcg, Methylcobalamin 1500mcg, Zinc 7.5mg, Magnesium 50mg and L- Methylfolate 800mcg Capsules",calcitriol:0.25mcg|calcium:500mg|l- methylfolate:800mcg|magnesium:50mg|methylcobalamin:1500mcg|vitamin k27:45mcg|zinc:7.5mg,capsule,10,51.56
+2298,"Calcium Citrate 1000mg, Magnesium 100mg, Zinc 4mg and Vitamin D3 200 IU Tablets",calcium citrate:1000mg|cholecalciferol:200iu|magnesium:100mg|zinc:4mg,tablet,10,15.47
+2301,Dapoxetine Tablets IP 30mg,dapoxetine:30mg,tablet,4,14.06
+2302,Dasatinib 50mg Tablets,dasatinib:50mg,tablet,60,1031.25
+2303,Deflazacort 30mg and Tamsulosin 0.4mg Tablets,deflazacort:30mg|tamsulosin:0.4mg,tablet,10,187.50
+2304,Desvenlafaxine Extended Release 50mg and Clonazepam 0.5mg Tablets,clonazepam:0.5mg|desvenlafaxine:50mg:MR,tablet,10,30.94
+2305,Desvenlafaxine Extended Release 100mg and Clonazepam 0.5mg Tablets,clonazepam:0.5mg|desvenlafaxine:100mg:MR,tablet,10,56.25
+2306,Desvenlafaxine Extended Release Tablets 50mg,desvenlafaxine:50mg:MR,tablet,10,25.78
+2307,Desvenlafaxine Extended Release Tablets 100mg,desvenlafaxine:100mg:MR,tablet,10,42.19
+2308,Dexlansoprazole MR Capsules 60mg,dexlansoprazole:60mg:MR,capsule,10,93.75
+2310,Donepezil 5mg and Memantine 5mg Tablets,donepezil:5mg|memantine:5mg,tablet,10,18.75
+2311,Donepezil 5mg and Memantine 10mg Tablets,donepezil:5mg|memantine:10mg,tablet,10,23.44
+2313,Etizolam 0.5mg and Propranolol Hydrochloride 40mg Tablets,etizolam:0.5mg|propranolol:40mg,tablet,10,28.13
+2316,Flupentixole 0.5mg and Nortriptyline 10mg Tablets,flupentixole:0.5mg|nortriptyline:10mg,tablet,10,14.06
+2321,Lapatinib Tablets IP 250mg,lapatinib:250mg,tablet,30,2710.00
+2325,Lorazepam Tablets IP 3mg,lorazepam:3mg,tablet,10,16.88
+2328,"Methylcobalamin 1500mcg, Vitamin B6 (Pyridoxine) 5mg Benfotiamine 50mg, Alpha Lipoic Acid 200mg, Folic Acid 5mg and Biotin 5mg Capsules",alpha lipoic acid:200mg|benfotiamine:50mg|biotin:5mg|folic acid:5mg|methylcobalamin:1500mcg|vitamin b6:5mg,capsule,10,75.00
+2330,Modafinil 100mg Tablets,modafinil:100mg,tablet,10,46.88
+2332,Nicoumalone (Acenocoumarol) 2mg Tablets,acenocoumarol:2mg,tablet,10,14.06
+2333,Nintedanib Soft gelatin Capsules 150mg,nintedanib:150mg,capsule,10,399.84
+2334,Nitazoxanide 500mg Tablets,nitazoxanide:500mg,tablet,10,51.56
+2335,Obeticholic Acid 10mg Tablets,obeticholic acid:10mg,tablet,10,93.75
+2336,Obeticholic Acid 5mg Tablets,obeticholic acid:5mg,tablet,10,56.25
+2338,Oxybutynin Chloride 2.5mg Tablets,oxybutynin chloride:2.5mg,tablet,10,46.88
+2340,Pomalidomide 2mg Capsules,pomalidomide:2mg,capsule,21,703.13
+2341,Pramipexole 0.75mg Tablets,pramipexole:0.75mg,tablet,10,15.00
+2342,Pramipexole 1.5mg Tablets,pramipexole:1.5mg,tablet,10,24.38
+2344,Procyclidine 5mg Tablets,procyclidine:5mg,tablet,10,32.81
+2347,S-Adenosyl L-Methionine 200mg Tablets,s-adenosyl l-methionine:200mg,tablet,10,112.50
+2348,S-Adenosyl L- Methionine 400mg Tablets,s-adenosyl l- methionine:400mg,tablet,10,234.38
+2349,Sevelamer 800mg Tablets,sevelamer:800mg,tablet,10,75.00
+2350,Tapentadol 100mg Extended Release Tablets,tapentadol:100mg:MR,tablet,10,67.03
+2351,Tapentadol 50mg Tablets,tapentadol:50mg,tablet,10,30.00
+2352,Teneligliptin 20mg and Pioglitazone 15mg Tablets,pioglitazone:15mg|teneligliptin:20mg,tablet,10,20.63
+2353,Topiramate 100mg Tablets,topiramate:100mg,tablet,10,28.13
+2354,Topiramate 50mg Tablets,topiramate:50mg,tablet,10,18.75
+2356,Valacyclovir Tablets 500mg,valacyclovir:500mg,tablet,3,51.56
+2357,Venlafaxine Prolonged Release Capsules 37.5mg,venlafaxine:37.5mg:MR,capsule,10,18.75
+2358,Venlafaxine Prolonged Release Capsules 75mg,venlafaxine:75mg:MR,capsule,10,28.13
+2360,Vildaglipitin 100mg Extended Release Tablets,vildaglipitin:100mg:MR,tablet,10,42.19
+2361,Zonisamide 50mg Capsules,zonisamide:50mg,capsule,10,55.02
+2362,Zonisamide 100mg Capsules,zonisamide:100mg,capsule,10,103.13
+2363,Sitagliptin 100mg and Metformin 1000mg Extended Release Tablets,metformin:1000mg:MR|sitagliptin:100mg:MR,tablet,10,84.38
+2364,Sitagliptin 50mg and Metformin 500mg Extended Release Tablets,metformin:500mg:MR|sitagliptin:50mg:MR,tablet,10,51.56
+2368,Cilnidipine 10mg and Olmesartan Medoxomil 20mg Tablets,cilnidipine:10mg|olmesartan:20mg,tablet,10,23.44
+2369,Cilnidipine 10mg and Olmesartan Medoxomil 40mg Tablets,cilnidipine:10mg|olmesartan:40mg,tablet,10,28.13
+2370,Nebivolol 5mg and Cilnidipine 10mg Tablets,cilnidipine:10mg|nebivolol:5mg,tablet,10,32.81
+2371,Nebivolol 2.5mg and Cilnidipine 10mg Tablets,cilnidipine:10mg|nebivolol:2.5mg,tablet,10,23.44
+2372,Oxcarbazepine Tablets IP 300mg,oxcarbazepine:300mg,tablet,15,79.69
+2385,Apixaban Tablets 2.5mg,apixaban:2.5mg,tablet,10,18.75
+2386,Apixaban Tablets 5mg,apixaban:5mg,tablet,10,32.81
+2389,Atorvastatin 10mg + Ezetimibe 10mg Tablets,atorvastatin:10mg|ezetimibe:10mg,tablet,10,23.44
+2390,Atorvastatin 20mg + Ezetimibe 10mg Tablets,atorvastatin:20mg|ezetimibe:10mg,tablet,10,28.13
+2392,Azelnidipine Tablets IP 16mg,azelnidipine:16mg,tablet,10,46.88
+2393,Azelnidipine 8mg + Telmisartan 40mg Tablets,azelnidipine:8mg|telmisartan:40mg,tablet,10,42.19
+2394,Azelnidipine Tablets IP 8mg,azelnidipine:8mg,tablet,10,28.13
+2396,Benedipine (4mg) + Telmisartan (40mg) + Chlorthalidone (6.25mg) Tablets,benedipine:4mg|chlorthalidone:6.25mg|telmisartan:40mg,tablet,10,42.19
+2397,Bethanechol Chloride 25mg Tablets,bethanechol chloride:25mg,tablet,10,87.19
+2400,Caffeine (30mg) + Diphenhydramine (25mg) + Paracetamol (500mg) + Phenylephrine (5mg) Tablets,caffeine:30mg|diphenhydramine:25mg|paracetamol:500mg|phenylephrine:5mg,tablet,10,10.31
+2406,Clopidogrel 150mg Tablets,clopidogrel:150mg,tablet,10,33.75
+2409,Dapagliflozin 10mg+ Vildagliptin (Sustained release)100mg Tablets,dapagliflozin:10mg|vildagliptin:100mg:MR,tablet,10,56.25
+2410,Dapagliflozin 5mg+ Vildagliptin (Sustained release)100mg Tablets,dapagliflozin:5mg|vildagliptin:100mg:MR,tablet,10,46.88
+2411,Dasatinib Tablets 20mg,dasatinib:20mg,tablet,60,1204.69
+2412,Dasatinib Tablets 50mg,dasatinib:50mg,tablet,60,2217.19
+2413,Dasatinib Tablets 70mg,dasatinib:70mg,tablet,60,2811.56
+2415,Dolutegravir Tablets 50mg,dolutegravir:50mg,tablet,30,187.50
+2416,Eltrombopag Tablets 25mg,eltrombopag:25mg,tablet,7,299.06
+2417,Eltrombopag Tablets 50mg,eltrombopag:50mg,tablet,7,464.06
+2418,Ezetimibe Tablets IP 10mg,ezetimibe:10mg,tablet,10,18.75
+2420,Faropenem (200mg) + Clavulanic Acid (125mg) Tablets,clavulanic acid:125mg|faropenem:200mg,tablet,6,337.50
+2426,Leflunomide 10mg Tablets,leflunomide:10mg,tablet,10,32.81
+2427,Lenalidomide Capsules 25mg,lenalidomide:25mg,capsule,30,1387.50
+2428,Lenalidomide Capsules 5mg,lenalidomide:5mg,capsule,30,391.88
+2431,Lincomycin 250mg Capsules,lincomycin:250mg,capsule,10,27.19
+2432,Lincomycin 500mg Capsules,lincomycin:500mg,capsule,10,43.13
+2436,Mebeverine (135mg) + Chlordiazepoxide (5mg) Tablets,chlordiazepoxide:5mg|mebeverine:135mg,tablet,10,28.13
+2437,Methotrexate Tablets IP 15mg,methotrexate:15mg,tablet,10,32.81
+2438,Methotrexate Tablets IP 20mg,methotrexate:20mg,tablet,10,46.00
+2440,Metoprolol Extended Release Tablets IP 100mg,metoprolol:100mg:MR,tablet,10,23.44
+2442,Midodrine Hydrochloride Tablets 10mg,midodrine:10mg,tablet,10,150.00
+2443,Midodrine Hydrochloride Tablets 2.5mg,midodrine:2.5mg,tablet,10,51.56
+2444,Midodrine Hydrochloride Tablets 5mg,midodrine:5mg,tablet,10,93.75
+2446,Nebivolol 5mg + Amlodipine 5mg Tablets,amlodipine:5mg|nebivolol:5mg,tablet,10,26.25
+2447,Nintedanib Soft Gelatin Capsules 100mg,nintedanib:100mg,capsule,10,499.69
+2448,Olmesartan Medoxomil Tablets IP 10mg,olmesartan:10mg,tablet,10,9.38
+2452,Pazopanib Tablets 200mg,pazopanib:200mg,tablet,30,2062.50
+2453,Pazopanib Tablets 400mg,pazopanib:400mg,tablet,30,2906.25
+2457,Propranolol Tablets IP 20mg,propranolol:20mg,tablet,10,5.63
+2458,Quetiapine Tablets IP 50mg,quetiapine:50mg,tablet,10,16.88
+2459,Ramipril 2.5mg and Hydrochlorothiazide 12.5mg Tablets,hydrochlorothiazide:12.5mg|ramipril:2.5mg,tablet,10,70.31
+2463,Repaglinide 0.5mg and Voglibose 0.2mg Tablets IP,repaglinide:0.5mg|voglibose:0.2mg,tablet,10,18.75
+2464,Repaglinide 0.5mg and Voglibose 0.3mg Tablets IP,repaglinide:0.5mg|voglibose:0.3mg,tablet,10,23.44
+2465,Repaglinide 1mg and Voglibose 0.2mg Tablets IP,repaglinide:1mg|voglibose:0.2mg,tablet,10,28.13
+2466,Repaglinide 1mg and Voglibose 0.3mg Tablets IP,repaglinide:1mg|voglibose:0.3mg,tablet,10,32.81
+2468,Sorafenib Tablets 200mg,sorafenib:200mg,tablet,120,3000.00
+2469,Sunitinib Capsules 12.5mg,sunitinib:12.5mg,capsule,28,499.00
+2470,Sunitinib Capsules 25mg,sunitinib:25mg,capsule,28,910.00
+2473,Telmisartan 40mg + Metoprolol ER 25mg + Chlorthalidon 12.5mg Tablets,chlorthalidone:12.5mg|metoprolol:25mg:MR|telmisartan:40mg,tablet,10,32.81
+2474,Temozolomide Capsules IP 20mg,temozolomide:20mg,capsule,5,314.06
+2475,Teneligliptin 20mg and Dapagliflozin 10mg Tablets,dapagliflozin:10mg|teneligliptin:20mg,tablet,10,32.81
+2476,Teneligliptin 20mg and Dapagliflozin 5mg Tablets,dapagliflozin:5mg|teneligliptin:20mg,tablet,10,28.13
+2477,Thalidomide Capsules 100mg,thalidomide:100mg,capsule,10,165.00
+2478,Thalidomide Capsules 200mg,thalidomide:200mg,capsule,10,234.38
+2479,Thalidomide Capsules 50mg,thalidomide:50mg,capsule,10,92.81
+2480,Thyroxine Sodium Tablets IP 150mcg,levothyroxine:150mcg,tablet,120,93.75
+2481,Ticagrelor Tablets IP 60mg,ticagrelor:60mg,tablet,10,89.06
+2482,Topiroxostat Tablets 20mg,topiroxostat:20mg,tablet,10,46.88
+2483,Topiroxostat Tablets 40mg,topiroxostat:40mg,tablet,10,84.38
+2484,Topiroxostat Tablets 60mg,topiroxostat:60mg,tablet,10,121.88
+2485,Torasemide 10mg + Spironolactone 25mg Tablets,spironolactone:25mg|torasemide:10mg,tablet,10,19.59
+2487,Vortioxetine Tablets 10mg,vortioxetine:10mg,tablet,10,60.94
+2488,Vortioxetine Tablets 20mg,vortioxetine:20mg,tablet,10,89.06
+2489,Vortioxetine Tablets 5mg,vortioxetine:5mg,tablet,10,32.81
+2490,Amlodipine Tablets IP 2.5mg,amlodipine:2.5mg,tablet,15,3.75
+2492,Metoprolol Succinate 25mg (Extended Release) and Amlodipine Besilate 2.5mg Tablets IP,amlodipine:2.5mg|metoprolol:25mg:MR,tablet,10,11.25
+2494,Rosuvastatin 20mg and Aspirin 75mg Capsules,aspirin:75mg|rosuvastatin:20mg,capsule,10,37.50
+2495,Telmisartan 80mg and Chlorthalidone 12.5mg Tablets,chlorthalidone:12.5mg|telmisartan:80mg,tablet,10,28.13
+2497,Dapagliflozin 5mg and Metformin Hydrochloride (Extended Release) 500mg Tablets,dapagliflozin:5mg|metformin:500mg:MR,tablet,10,28.13
+2498,Clozapine tablets IP 200mg,clozapine:200mg,tablet,10,75.00
+2505,Azilsartan Medoxomil Tablets 80mg,azilsartan:80mg,tablet,10,103.13
+2521,Dapagliflozin 10mg and Sitagliptin 50mg Tablets,dapagliflozin:10mg|sitagliptin:50mg,tablet,10,28.13
+2522,"Dapagliflozin 10mg, Sitagliptin 100mg and Metformin Hydrochloride (Extended Release) 1000mg Tablets",dapagliflozin:10mg|metformin:1000mg:MR|sitagliptin:100mg,tablet,10,70.31
+2523,"Dapagliflozin 10mg, Sitagliptin 100mg and Metformin Hydrochloride (Extended Release) 500mg Tablets",dapagliflozin:10mg|metformin:500mg:MR|sitagliptin:100mg,tablet,10,67.50
+2524,Dapagliflozin 5mg and Metformin Hydrochloride (Extended Release) 1000mg Tablets,dapagliflozin:5mg|metformin:1000mg:MR,tablet,10,32.81
+2525,Dapagliflozin 5mg and Sitagliptin 100mg Tablets,dapagliflozin:5mg|sitagliptin:100mg,tablet,10,46.88
+2531,Deferiprone Capsules 250mg,deferiprone:250mg,capsule,50,137.16
+2532,Deferiprone Capsules 500mg,deferiprone:500mg,capsule,50,257.81
+2533,Deflazacort oral Suspension 6mg per 5ml,deflazacort:6mg/5ml,suspension,30,28.13
+2538,Diclofenac Sodium 50mg and Thiocolchicoside 4mg Tablets,diclofenac:50mg|thiocolchicoside:4mg,tablet,10,48.47
+2539,Diclofenac Sodium 50mg and Thiocolchicoside 8mg Tablets,diclofenac:50mg|thiocolchicoside:8mg,tablet,10,56.25
+2545,Efonidipine Hydrochloride Ethanolate 40mg Tablets,efonidipine:40mg,tablet,10,70.31
+2548,Eplerenone 50mg Tablets,eplerenone:50mg,tablet,10,234.38
+2549,Etizolam 0.5mg and Escitalopram Oxalate 10mg Tablets,escitalopram:10mg|etizolam:0.5mg,tablet,10,18.75
+2550,Etizolam 0.5mg and Escitalopram Oxalate 5mg Tablets,escitalopram:5mg|etizolam:0.5mg,tablet,10,14.06
+2552,Etoricoxib 60mg and Pregabalin 75mg (SR) Tablets,etoricoxib:60mg|pregabalin:75mg:MR,tablet,10,37.50
+2561,Gabapentin 200mg and Nortriptyline 10mg Tablets,gabapentin:200mg|nortriptyline:10mg,tablet,10,18.75
+2566,Hydroxyzine Hydrochloride Syrup 10mg per 5ml,hydroxyzine:10mg/5ml,syrup,100,23.44
+2567,Ibuprofen Oral Suspension 100mg/5ml,ibuprofen:100mg/5ml,suspension,100,11.25
+2568,Iguratimod Tablets 25mg,iguratimod:25mg,tablet,10,93.75
+2569,Ilaprazole (gastro-resistant) 10mg and Domperidone (Prolonged release) 30mg capsules,domperidone:30mg:MR|ilaprazole:10mg:GR,capsule,10,32.81
+2571,Imeglimin Hydrochloride Tablets 500mg,imeglimin:500mg,tablet,10,55.31
+2584,Levetiracetam Prolonged Release Tablets IP 1000mg,levetiracetam:1000mg:MR,tablet,10,117.19
+2585,"Levocetirizine Dihydrochloride 5mg, Montelukast 10mg and Ambroxol Hydrochloride (SR) 75mg Tablets",ambroxol:75mg:MR|levocetirizine:5mg|montelukast:10mg,tablet,10,32.81
+2586,Levocloperastine 20mg and Chlorpheniramine Maleate 4mg per 5ml Oral suspension,chlorpheniramine:4mg/5ml|levocloperastine:20mg/5ml,suspension,100,60.94
+2587,Levocloperastine Oral Suspension 20mg per 5ml,levocloperastine:20mg/5ml,suspension,100,56.25
+2597,Linagliptin 2.5mg and Metformin 850mg Tablets,linagliptin:2.5mg|metformin:850mg,tablet,10,33.75
+2598,Linagliptin 5mg and Dapagliflozin 10mg Tablets,dapagliflozin:10mg|linagliptin:5mg,tablet,10,42.19
+2601,Lobeglitazone Sulfate Tablets 0.5mg,lobeglitazone:0.5mg,tablet,10,46.88
+2606,Molnupiravir Capsules 200mg,molnupiravir:200mg,capsule,10,37.50
+2607,Montelukast Sodium 10mg and Ebastine 10mg Tablets,ebastine:10mg|montelukast:10mg,tablet,10,23.44
+2613,Nitrofurantoin 50mg Tablets,nitrofurantoin:50mg,tablet,10,13.50
+2614,Nitrofurantoin Sustained Release Tablets 100mg,nitrofurantoin:100mg:MR,tablet,15,28.13
+2615,Norethisterone Acetate Controlled Release Tablets 10mg,norethisterone:10mg:MR,tablet,10,25.31
+2616,Ofloxacin 100mg and Metronidazole 200mg per 5ml Oral Suspension,metronidazole:200mg/5ml|ofloxacin:100mg/5ml,suspension,60,32.81
+2624,Quetiapine Prolonged release Tablets IP 300mg,quetiapine:300mg:MR,tablet,10,70.31
+2627,Selexipag Tablets 200mcg,selexipag:200mcg,tablet,10,393.75
+2630,Sildenafil Tablets IP 20mg,sildenafil:20mg,tablet,10,6.56
+2631,Sirolimus Tablets 1mg,sirolimus:1mg,tablet,10,187.50
+2632,Sitagliptin 100mg and Metformin 500mg Extended Release Tablets,metformin:500mg:MR|sitagliptin:100mg:MR,tablet,10,65.63
+2635,Telmisartan 40mg and Bisoprolol Fumarate 2.5mg Tablets,bisoprolol:2.5mg|telmisartan:40mg,tablet,10,18.75
+2636,Telmisartan 40mg and Bisoprolol Fumarate 5mg Tablets,bisoprolol:5mg|telmisartan:40mg,tablet,10,23.44
+2637,"Teneligliptin 20mg, Metformin Hydrochloride 1000mg (Sustained Release) and Pioglitazone 15mg Tablets IP",metformin:1000mg:MR|pioglitazone:15mg|teneligliptin:20mg,tablet,10,70.31
+2638,"Teneligliptin 20mg, Metformin Hydrochloride 500mg (Sustained Release) and Pioglitazone 15mg Tablets IP",metformin:500mg:MR|pioglitazone:15mg|teneligliptin:20mg,tablet,10,42.19
+2643,Tofacitinib Extended Release Tablets 11mg,tofacitinib:11mg:MR,tablet,10,126.56
+2644,Tofacitinib Extended Release Tablets 22mg,tofacitinib:22mg:MR,tablet,10,225.00
+2645,Tofacitinib Tablets 10mg,tofacitinib:10mg,tablet,10,93.75
+2646,Tofacitinib Tablets 5mg,tofacitinib:5mg,tablet,10,51.56
+2647,Tolperisone Hydrochloride 150mg and Diclofenac Sodium 50mg Tablets,diclofenac:50mg|tolperisone:150mg,tablet,10,18.75
+2649,Tramadol Hydrochloride (IR) 50mg and Diclofenac Sodium (SR) 75mg Tablets,diclofenac:75mg:MR|tramadol:50mg,tablet,10,18.75
+2653,Vildagliptin 100mg and Metformin Hydrochloride (sustained release) 1000mg Tablets,metformin:1000mg:MR|vildagliptin:100mg,tablet,10,42.19
+2654,Vildagliptin 100mg and Metformin Hydrochloride (sustained release) 500mg Tablets,metformin:500mg:MR|vildagliptin:100mg,tablet,10,37.50
+2655,Vildagliptin 50mg and Metformin Hydrochloride (sustained release) 1000mg Tablets,metformin:1000mg:MR|vildagliptin:50mg,tablet,15,32.81
+2656,Vildagliptin 50mg and Metformin Hydrochloride (sustained release) 500mg Tablets,metformin:500mg:MR|vildagliptin:50mg,tablet,15,28.13
+2664,Cabozantinib Tablets 20 mg,cabozantinib:20mg,tablet,30,1453.13
+2665,Cabozantinib Tablets 40 mg,cabozantinib:40mg,tablet,30,2296.88
+2666,Cabozantinib Tablets 60 mg,cabozantinib:60mg,tablet,30,3562.50
+2667,Cariprazine Capsules 1.5 mg,cariprazine:1.5mg,capsule,10,50.63
+2668,Cariprazine Capsules 3 mg,cariprazine:3mg,capsule,10,81.56
+2676,Gliclazide 60 mg (Extended Release) and Metformin Hydrochloride 1000 mg (Extended Release) Tablets,gliclazide:60mg:MR|metformin:1000mg:MR,tablet,10,68.44
+2677,"Dapagliflozin 10mg, Vildagliptin 100mg (SR) and Metformin Hydrochloride 1000mg (SR) Tablets",dapagliflozin:10mg|metformin:1000mg:MR|vildagliptin:100mg:MR,tablet,15,65.63
+2678,"Dapagliflozin 10mg, Vildagliptin 100mg (SR) and Metformin Hydrochloride 500mg (SR) Tablets",dapagliflozin:10mg|metformin:500mg:MR|vildagliptin:100mg:MR,tablet,15,60.94
+2679,Desloratadine Tablets 10 mg,desloratadine:10mg,tablet,10,23.44
+2684,Everolimus Tablets 0.25 mg,everolimus:0.25mg,tablet,10,250.00
+2685,Everolimus Tablets 0.5 mg,everolimus:0.5mg,tablet,10,450.00
+2686,Everolimus Tablets 5 mg,everolimus:5mg,tablet,10,3600.00
+2687,Everolimus Tablets 10 mg,everolimus:10mg,tablet,10,7000.00
+2691,Hydrochlorothiazide Tablets IP 25 mg,hydrochlorothiazide:25mg,tablet,10,8.44
+2692,Hydrocortisone Tablets 10mg,hydrocortisone:10mg,tablet,10,18.75
+2693,Hydrocortisone Tablets 5mg,hydrocortisone:5mg,tablet,10,10.31
+2694,Inosine Pranobex Tablets 500 mg,inosine pranobex:500mg,tablet,10,271.88
+2695,Itraconazole Capsules 130mg,itraconazole:130mg,capsule,10,70.31
+2696,Itraconazole Capsules 65mg,itraconazole:65mg,capsule,10,42.19
+2700,Linagliptin 5mg and Metformin Hydrochloride 1000mg Tablets,linagliptin:5mg|metformin:1000mg,tablet,15,65.63
+2702,Lurasidone Hydrochloride Tablets 40 mg,lurasidone:40mg,tablet,10,86.25
+2703,Lurasidone Hydrochloride Tablets 80 mg,lurasidone:80mg,tablet,10,134.06
+2706,Metformin Hydrochloride Tablets IP 250 mg,metformin:250mg,tablet,10,3.75
+2707,Metoprolol Tartrate 50mg and Hydrochlorothiazide 12.5 mg Tablets,hydrochlorothiazide:12.5mg|metoprolol:50mg,tablet,10,14.06
+2712,Nebivolol Hydrochloride Tablets IP 10 mg,nebivolol:10mg,tablet,10,42.19
+2713,Nifedipine Extended Release Tablets IP 30 mg,nifedipine:30mg:MR,tablet,10,14.06
+2721,Olmesartan 40mg and Amlodipine 5mg Tablets,amlodipine:5mg|olmesartan:40mg,tablet,10,32.81
+2722,"Olmesartan Medoxomil 20mg, Cilnidipine 10mg and Chlorthalidone 12.5mg Tablets",chlorthalidone:12.5mg|cilnidipine:10mg|olmesartan:20mg,tablet,10,32.81
+2723,"Olmesartan Medoxomil 20mg, Cilnidipine 10mg and Chlorthalidone 6.25mg Tablets",chlorthalidone:6.25mg|cilnidipine:10mg|olmesartan:20mg,tablet,10,28.13
+2724,"Olmesartan Medoxomil 40mg, Cilnidipine 10mg and Chlorthalidone 12.5mg Tablets",chlorthalidone:12.5mg|cilnidipine:10mg|olmesartan:40mg,tablet,10,37.50
+2725,Oseltamivir Phosphate Capsules IP 30mg,oseltamivir:30mg,capsule,10,84.38
+2728,Rebamipide Tablets 100 mg,rebamipide:100mg,tablet,10,46.88
+2731,Rivaroxaban Tablet 15 mg,rivaroxaban:15mg,tablet,14,117.19
+2732,Rivaroxaban Tablet 2.5 mg,rivaroxaban:2.5mg,tablet,14,42.19
+2733,Rivastigmine Capsules 1.5mg,rivastigmine:1.5mg,capsule,10,46.88
+2746,"Sitagliptin 50mg, Glimepiride 1mg and Metformin Hydrochloride 1000mg Tablets",glimepiride:1mg|metformin:1000mg|sitagliptin:50mg,tablet,10,58.13
+2747,"Sitagliptin 50mg, Glimepiride 2mg and Metformin Hydrochloride 1000mg Tablets",glimepiride:2mg|metformin:1000mg|sitagliptin:50mg,tablet,10,60.94
+2748,Spironolactone Tablets IP 50 mg,spironolactone:50mg,tablet,15,34.22
+2749,Spironolactone Tablets IP 100mg,spironolactone:100mg,tablet,15,79.69
+2752,Tadalafil Tablets IP 2.5 mg,tadalafil:2.5mg,tablet,10,9.38
+2753,Tadalafil Tablets IP 5 mg,tadalafil:5mg,tablet,10,11.25
+2754,Tadalafil Tablets IP 10 mg,tadalafil:10mg,tablet,4,9.38
+2755,"Teneligliptin 20mg, Dapagliflozin 10mg and Metformin Hydrochloride (Sustained Release) 1000mg Tablets",dapagliflozin:10mg|metformin:1000mg:MR|teneligliptin:20mg,tablet,10,46.88
+2756,"Teneligliptin 20mg, Dapagliflozin 10mg and Metformin Hydrochloride (Sustained Release) 500mg Tablets",dapagliflozin:10mg|metformin:500mg:MR|teneligliptin:20mg,tablet,10,42.19
+2757,Thyroxine Sodium Tablets IP 62.5mcg,levothyroxine:62.5mcg,tablet,100,54.38
+2758,Torsemide 20 mg and Spironolactone 25 mg Tablets,spironolactone:25mg|torsemide:20mg,tablet,15,39.38
+2759,Torsemide 5 mg and Spironolactone 50 mg Tablets,spironolactone:50mg|torsemide:5mg,tablet,15,42.19
+2760,Trazodone Hydrochloride Tablets IP 100 mg,trazodone:100mg,tablet,10,46.88
+2761,Trazodone Hydrochloride Tablets IP 25 mg,trazodone:25mg,tablet,10,14.06
+2762,Trientine Hydrochloride Capsules 250 mg,trientine:250mg,capsule,100,10231.88
+2763,Ubidecarenone (Co-enzyme Q10) Capsules 100 mg,ubidecarenone:100mg,capsule,10,84.38
+2764,Ubidecarenone (Co-enzyme Q10) Capsules 300 mg,ubidecarenone:300mg,capsule,10,234.38
+2770,Zolpidem Tablets IP 5mg,zolpidem:5mg,tablet,10,9.38
+2771,Fluconazole Tablets IP 50 mg,fluconazole:50mg,tablet,4,7.50
+2772,Fluconazole Tablets IP 200 mg,fluconazole:200mg,tablet,4,22.50
+2773,Fluconazole Tablets IP 400 mg,fluconazole:400mg,tablet,1,9.38
+2786,Amlodipine + Enalapril Tablet (5/5 Mg),amlodipine:5mg|enalapril:5mg,tablet,10,15.00
+2806,Enzalutamide Tablet 40Mg,enzalutamide:40mg,tablet,28,2400.00
+2816,Glycopyrrolate Tablet 1Mg,glycopyrrolate:1mg,tablet,10,52.89
+2817,Glycopyrrolate Tablet 2Mg,glycopyrrolate:2mg,tablet,10,100.00
+2824,Lenvatinib Capsules IP 4Mg,lenvatinib:4mg,capsule,10,530.00
+2825,Levetiracetam Tablets IP 500 Mg XR,levetiracetam:500mg:MR,tablet,10,70.00
+2826,Losartan + Chlorthalidone Tablet (25/6.25 Mg),chlorthalidone:6.25mg|losartan:25mg,tablet,10,30.00
+2834,Metoprolol + Chlorthalidone Tablet (25/6.25 Mg),chlorthalidone:6.25mg|metoprolol:25mg,tablet,10,40.00
+2836,Metoprolol + Chlorthalidone Tablet (50/6.25 Mg),chlorthalidone:6.25mg|metoprolol:50mg,tablet,10,50.00
+2838,Naltrexone 50Mg Tablets,naltrexone:50mg,tablet,10,511.00
+2840,Olmesartan + Amlodipine + Chlorthalidone Tablet (40/5/12.5 Mg),amlodipine:5mg|chlorthalidone:12.5mg|olmesartan:40mg,tablet,10,50.00
+2841,Olmesartan + Metoprolol Tablet (20/25 Mg),metoprolol:25mg|olmesartan:20mg,tablet,10,45.00
+2845,Orlistat Capsules 60Mg,orlistat:60mg,capsule,10,90.00
+2851,Rosuvastatin + Ezetimibe Tablet (10/ 10Mg),ezetimibe:10mg|rosuvastatin:10mg,tablet,10,50.00
+2852,Rosuvastatin + Ezetimibe Tablet (20/ 10Mg),ezetimibe:10mg|rosuvastatin:20mg,tablet,10,60.00
+2855,S-Amlodipine + Hydrochlorothiazide Tablet (2.5/12.5 Mg),hydrochlorothiazide:12.5mg|s-amlodipine:2.5mg,tablet,10,52.29
+2857,S-Metoprolol + S-Amlodipine Tablet (25/2.5 Mg),s-amlodipine:2.5mg|s-metoprolol:25mg,tablet,10,72.53
+2858,S-Metoprolol + S-Amlodipine Tablet (25/5 Mg),s-amlodipine:5mg|s-metoprolol:25mg,tablet,10,76.28
+2861,Telmisartan + Rosuvastatin Tablet (40/10 Mg),rosuvastatin:10mg|telmisartan:40mg,tablet,10,40.00
+2867,Trifluoperazine + Trihexyphenidyl Tablet (5/2 Mg),trifluoperazine:5mg|trihexyphenidyl:2mg,tablet,10,16.62
+2868,Voglibose + Metformin + Gliclazide Tablet (0.2/500/80 Mg),gliclazide:80mg|metformin:500mg|voglibose:0.2mg,tablet,10,40.00
+2869,Voglibose + Metformin + Gliclazide Tablet (0.3/500/80 Mg),gliclazide:80mg|metformin:500mg|voglibose:0.3mg,tablet,15,60.00
+2874,Dolutegravir (50Mg) + Lamivudine (300Mg) + Tenofovir Disoproxil Fumarate (300Mg) Tablets,dolutegravir:50mg|lamivudine:300mg|tenofovir disoproxil:300mg,tablet,30,650.00
+2876,Lamivudine 100 Mg Tablets,lamivudine:100mg,tablet,10,50.00
+2896,Rupatadine (10Mg) + Montelukast (10Mg) Tablet,montelukast:10mg|rupatadine:10mg,tablet,10,80.00
+2897,Rupatadine 10 Mg Tablets,rupatadine:10mg,tablet,10,65.00
+2898,Sumatriptan 50 Mg Tablets,sumatriptan:50mg,tablet,10,100.00
