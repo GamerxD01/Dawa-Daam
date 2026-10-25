@@ -2,47 +2,23 @@
 // Builds src/generated/drugs.json from the hand-curated CSVs in data/src.
 // Fails loudly on bad rows: an unknown molecule, a missing price or a malformed
 // composition is a data bug, and data bugs here can mislead a patient.
-import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
+import { existsSync, readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { parseCsv } from './lib-csv.mjs';
+export { parseCsv };
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const src = (f) => join(root, 'data', 'src', f);
-
-/** Minimal RFC-4180 CSV parser (quotes, escaped quotes, commas in fields). */
-export function parseCsv(text) {
-  const rows = [];
-  let row = [], field = '', q = false;
-  for (let i = 0; i < text.length; i++) {
-    const c = text[i];
-    if (q) {
-      if (c === '"' && text[i + 1] === '"') { field += '"'; i++; }
-      else if (c === '"') q = false;
-      else field += c;
-    } else if (c === '"') q = true;
-    else if (c === ',') { row.push(field); field = ''; }
-    else if (c === '\n' || c === '\r') {
-      if (c === '\r' && text[i + 1] === '\n') i++;
-      row.push(field); field = '';
-      if (row.some((x) => x.trim() !== '')) rows.push(row);
-      row = [];
-    } else field += c;
-  }
-  row.push(field);
-  if (row.some((x) => x.trim() !== '')) rows.push(row);
-  const [head, ...body] = rows;
-  return body.map((r, i) => {
-    if (r.length !== head.length) throw new Error(`row ${i + 2}: expected ${head.length} fields, got ${r.length}`);
-    return Object.fromEntries(head.map((h, j) => [h.trim(), r[j].trim()]));
-  });
-}
+const auto = (f) => join(root, 'data', 'auto', f);
+const readOpt = (p) => (existsSync(p) ? parseCsv(readFileSync(p, 'utf8')) : []);
 
 const errors = [];
 const fail = (where, msg) => errors.push(`${where}: ${msg}`);
 const split = (s) => (s ? s.split('|').map((x) => x.trim().toLowerCase()).filter(Boolean) : []);
 
 // ---- molecules -------------------------------------------------------------
-const molecules = parseCsv(readFileSync(src('molecules.csv'), 'utf8')).map((r) => ({
+const molecules = [...parseCsv(readFileSync(src('molecules.csv'), 'utf8')), ...readOpt(auto('molecules_auto.csv'))].map((r) => ({
   name: r.canonical.toLowerCase(),
   synonyms: split(r.synonyms),
   hi: r.hindi || '',
@@ -84,8 +60,10 @@ const num = (s, where, field) => {
 
 // ---- Jan Aushadhi generics -------------------------------------------------
 const seenCodes = new Set();
-const generics = parseCsv(readFileSync(src('janaushadhi.csv'), 'utf8')).map((r, i) => {
-  const where = `janaushadhi.csv row ${i + 2} (code ${r.ja_code})`;
+const curatedJa = parseCsv(readFileSync(src('janaushadhi.csv'), 'utf8')).map((r) => ({ ...r, file: 'janaushadhi.csv' }));
+const autoJa = readOpt(auto('janaushadhi_pmbi.csv')).map((r) => ({ ...r, file: 'auto/janaushadhi_pmbi.csv' }));
+const generics = [...curatedJa, ...autoJa].map((r, i) => {
+  const where = `${r.file} (code ${r.ja_code})`;
   const code = Number(r.ja_code);
   if (seenCodes.has(code)) fail(where, 'duplicate ja_code');
   seenCodes.add(code);
@@ -101,11 +79,10 @@ const generics = parseCsv(readFileSync(src('janaushadhi.csv'), 'utf8')).map((r, 
 });
 
 // ---- curated brands --------------------------------------------------------
-const brands = parseCsv(readFileSync(src('brands.csv'), 'utf8')).map((r, i) => {
-  const where = `brands.csv row ${i + 2} (${r.brand})`;
+function readBrand(r, where, dataset) {
   if (!FORMS.has(r.form)) fail(where, `unknown form "${r.form}"`);
-  if (!/^(https?:\/\/|strip:)/.test(r.source_url)) fail(where, 'every brand price needs a source_url (a URL, or strip:<what is printed>)');
-  if (!/^\d{4}-\d{2}-\d{2}$/.test(r.captured_on)) fail(where, 'captured_on must be YYYY-MM-DD');
+  if (dataset ? !r.source_url.startsWith('dataset:') : !/^(https?:\/\/|strip:)/.test(r.source_url)) fail(where, 'every brand price needs a source_url (a URL, or strip:<what is printed>)');
+  if (!dataset && !/^\d{4}-\d{2}-\d{2}$/.test(r.captured_on)) fail(where, 'captured_on must be YYYY-MM-DD');
   if (!['y', 'n'].includes(r.verified)) fail(where, 'verified must be y or n');
   return {
     id: r.brand.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, ''),
@@ -122,6 +99,17 @@ const brands = parseCsv(readFileSync(src('brands.csv'), 'utf8')).map((r, i) => {
     verified: r.verified === 'y',
     note: r.note || '',
   };
+}
+const brands = parseCsv(readFileSync(src('brands.csv'), 'utf8')).map((r, i) => readBrand(r, `brands.csv row ${i + 2} (${r.brand})`, false));
+
+// Brands from the public dataset: every one must be EXACTLY its expected Jan Aushadhi product, or the build fails.
+const byCode = new Map(generics.map((g) => [g.code, g]));
+const compKey = (comp, form) => comp.map((c) => `${c.m}:${c.v}${c.u}${c.per ? '/' + c.per : ''}:${c.r}`).join('+') + '#' + form;
+const datasetBrands = readOpt(auto('brands_dataset.csv')).map((r, i) => {
+  const b = readBrand(r, `auto/brands_dataset.csv row ${i + 2} (${r.brand})`, true);
+  const g = byCode.get(b.expectedJa);
+  if (!g || compKey(g.comp, g.form) !== compKey(b.comp, b.form)) fail(`auto/brands_dataset.csv row ${i + 2} (${r.brand})`, `not the same composition as Jan Aushadhi ${b.expectedJa}`);
+  return b;
 });
 
 // ---- combination nicknames (e.g. "amoxyclav") ------------------------------
@@ -150,3 +138,18 @@ const dest = join(root, 'src', 'generated', 'drugs.json');
 mkdirSync(dirname(dest), { recursive: true });
 writeFileSync(dest, JSON.stringify(out));
 console.log(`✓ drugs.json: ${generics.length} Jan Aushadhi generics, ${brands.length} brands, ${molecules.length} molecules`);
+
+// Compact, separately loaded file for the dataset brands: [name, maker, ja_code, pack, mrp, dataset id].
+// The composition is not repeated: it is, by construction, the Jan Aushadhi product's composition.
+const makers = [...new Set(datasetBrands.map((b) => b.maker))].sort();
+const makerIx = new Map(makers.map((m, i) => [m, i]));
+const extraOut = {
+  version: out.version,
+  source: 'A-Z Medicine Dataset of India (Kaggle, public); prices not checked by us',
+  makers,
+  rows: datasetBrands.map((b) => [b.name, makerIx.get(b.maker), b.expectedJa, b.pack, b.mrp, b.source.split('#')[1]]),
+};
+const extraDest = join(root, 'public', 'data', 'brands.json');
+mkdirSync(dirname(extraDest), { recursive: true });
+writeFileSync(extraDest, JSON.stringify(extraOut));
+console.log(`✓ public/data/brands.json: ${datasetBrands.length} dataset brands`);

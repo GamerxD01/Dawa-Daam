@@ -10,6 +10,7 @@
     "build": "npm run data && tsc --noEmit && vite build",
     "preview": "vite preview --host",
     "data": "node scripts/build-data.mjs",
+    "data:import": "node scripts/import-big.mjs && node scripts/build-data.mjs",
     "test": "npm run data && vitest run",
     "typecheck": "tsc --noEmit",
     "gemma": "node server/gemma-bridge.mjs",
