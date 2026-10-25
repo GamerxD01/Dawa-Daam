@@ -1,3 +1,4 @@
+import { isDataset } from '../match/dataset';
 import { saving, perUnit } from '../match/equivalence';
 import type { Brand, Hit } from '../match/types';
 import { compositionText, rupees } from '../format';
@@ -53,7 +54,7 @@ export function ResultCard({ hit, ctx, inList, onToggle, onKendra }: { hit: Hit;
             <span class="vs"> ({t.brandPrice}: {rupees(round(s.brandPerUnit))} {t.perUnit} {t.unit1[b.form]})</span>
           </div>
         </div>
-        {!b.verified && <p class="warn">⚠ {t.unverified}</p>}
+        {!b.verified && <p class="warn">⚠ {isDataset(b) ? t.datasetWarn : t.unverified}</p>}
         <button class={`big ${inList ? 'secondary' : 'primary'}`} onClick={onToggle}>
           {inList ? t.added : `＋ ${t.add}`}
         </button>
@@ -102,6 +103,9 @@ export function ResultCard({ hit, ctx, inList, onToggle, onKendra }: { hit: Hit;
 }
 
 function Source({ b, ctx }: { b: Brand; ctx: Ctx }) {
+  if (isDataset(b)) {
+    return <p class="source muted">{ctx.t.indicative} · {ctx.t.source}: {ctx.t.datasetSource}, PMBI · {b.maker}</p>;
+  }
   if (b.source.startsWith('strip:')) {
     return (
       <p class="source muted">

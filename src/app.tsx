@@ -1,7 +1,8 @@
 import { useEffect, useMemo, useRef, useState } from 'preact/hooks';
 import raw from './generated/drugs.json';
 import { strings, type Lang } from './i18n';
-import { buildIndex, search } from './match/search';
+import { buildIndex, buildIndexAsync, search, type Index } from './match/search';
+import { hydrateDataset, type DatasetFile } from './match/dataset';
 import type { DrugData, Hit } from './match/types';
 import { hitId, load, save } from './store';
 import { Basket, lineFor } from './ui/Basket';
@@ -15,9 +16,19 @@ import { ResultCard } from './ui/ResultCard';
 import { Sheet } from './ui/Sheet';
 
 const data = raw as unknown as DrugData;
-const index = buildIndex(data);
+const coreIndex = buildIndex(data);
 const molecules = new Map(data.molecules.map((m) => [m.name, m]));
-const byId = new Map(index.entries.map((e) => [hitId({ ...e.hit, score: 1 } as Hit), { ...e.hit, score: 1 } as Hit]));
+const idsOf = (ix: Index) => new Map(ix.entries.map((e) => [hitId({ ...e.hit, score: 1 } as Hit), { ...e.hit, score: 1 } as Hit]));
+const coreIds = idsOf(coreIndex);
+
+/** The ~86,000 brands from the public dataset load after the first screen and join the search when ready. */
+async function loadMoreBrands(): Promise<{ index: Index; count: number }> {
+  const res = await fetch(`${import.meta.env.BASE_URL}data/brands.json?v=${data.version}`);
+  if (!res.ok) throw new Error(String(res.status));
+  const file = (await res.json()) as DatasetFile;
+  const more = hydrateDataset(data, file);
+  return { index: await buildIndexAsync({ ...data, brands: [...data.brands, ...more] }), count: more.length };
+}
 
 type View = 'search' | 'list' | 'sheet' | 'rx' | 'kendra';
 
@@ -26,11 +37,25 @@ export function App() {
   const [query, setQuery] = useState('');
   const [picked, setPicked] = useState<Hit | null>(null);
   const [view, setView] = useState<View>('search');
-  const [list, setList] = useState<string[]>(() => load<string[]>('list', []).filter((id) => byId.has(id)));
+  // saved ids are kept even if not loaded yet (a dataset brand appears once the extra brands have loaded)
+  const [list, setList] = useState<string[]>(() => load<string[]>('list', []));
+  const [index, setIndex] = useState<Index>(coreIndex);
+  const [byId, setById] = useState(coreIds);
+  const [more, setMore] = useState<'loading' | 'failed' | number>('loading');
   const [online, setOnline] = useState(typeof navigator === 'undefined' ? true : navigator.onLine);
   const input = useRef<HTMLInputElement>(null);
   const [rxPhoto, setRxPhoto] = useState<{ file: File; mode: 'printed' | 'handwritten' } | null>(null);
 
+  useEffect(() => {
+    let alive = true;
+    loadMoreBrands().then(({ index: big, count }) => {
+      if (!alive) return;
+      setIndex(big);
+      setById(idsOf(big));
+      setMore(count);
+    }).catch(() => alive && setMore('failed'));
+    return () => { alive = false; };
+  }, []);
   useEffect(() => save('lang', lang), [lang]);
   useEffect(() => save('list', list), [list]);
   useEffect(() => {
@@ -45,9 +70,9 @@ export function App() {
 
   const t = strings[lang];
   const ctx: Ctx = { t, lang, molecules, version: data.version };
-  const result = useMemo(() => search(index, query), [query]);
+  const result = useMemo(() => search(index, query), [query, index]);
   const shown: Hit | null = picked ?? (result.kind === 'match' ? result.hit : null);
-  const lines = list.map((id) => lineFor(byId.get(id)!));
+  const lines = list.filter((id) => byId.has(id)).map((id) => lineFor(byId.get(id)!));
 
   const toggle = (h: Hit) => {
     const id = hitId(h);
@@ -130,6 +155,11 @@ export function App() {
       </main>
 
       <footer class="bottom">
+        {view === 'search' && (
+          <p class="muted small more" aria-live="polite">
+            {more === 'loading' ? t.moreLoading : more === 'failed' ? t.moreFailed : t.moreLoaded(more)}
+          </p>
+        )}
         <p class="disclaimer" role="note">⚠ {t.disclaimer}</p>
         {view === 'search' && (
           <button class="big list-btn" onClick={() => setView('list')}>

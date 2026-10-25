@@ -1,6 +1,6 @@
 // DawaDaam service worker: make the whole app work with no signal.
-// The drug data is bundled into the JS, so caching the shell caches everything needed to search.
-const CACHE = 'dawa-daam-v1';
+// The core drug data is bundled into the JS; the extra brand list (data/brands.json) is cached on first load.
+const CACHE = 'dawa-daam-v2';
 const SHELL = ['./', './index.html', './manifest.webmanifest', './icons/icon.svg', './icons/icon-192.png', './icons/icon-512.png'];
 
 self.addEventListener('install', (event) => {
@@ -36,11 +36,17 @@ self.addEventListener('fetch', (event) => {
     }).catch(() => caches.match('./index.html')));
     return;
   }
-  // Static assets are content-hashed: cache first.
+  // Static assets are content-hashed, and data files carry ?v=<data version>: cache first.
   event.respondWith(caches.match(req).then((hit) => hit || fetch(req).then((res) => {
     if (res.ok) {
       const copy = res.clone();
-      caches.open(CACHE).then((c) => c.put(req, copy));
+      caches.open(CACHE).then(async (c) => {
+        // keep only the newest version of a data file (each is a few MB)
+        if (url.pathname.includes('/data/')) {
+          for (const old of await c.keys()) if (new URL(old.url).pathname === url.pathname && old.url !== req.url) await c.delete(old);
+        }
+        await c.put(req, copy);
+      });
     }
     return res;
   })));
