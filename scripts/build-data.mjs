@@ -145,7 +145,8 @@ const makers = [...new Set(datasetBrands.map((b) => b.maker))].sort();
 const makerIx = new Map(makers.map((m, i) => [m, i]));
 const extraOut = {
   version: out.version,
-  source: 'A-Z Medicine Dataset of India (Kaggle, public); prices not checked by us',
+  source: 'Adapted from the A-Z Medicine Dataset of India by Shudhanshu Singh (Kaggle), CC BY-SA 4.0; prices not checked by us',
+  license: 'CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)',
   makers,
   rows: datasetBrands.map((b) => [b.name, makerIx.get(b.maker), b.expectedJa, b.pack, b.mrp, b.source.split('#')[1]]),
 };
