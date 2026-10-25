@@ -70,7 +70,7 @@ Across our **63 hand-checked brands**, the **median saving is 80%** (range 47–
 | A clear disclaimer, and mean it | ✅ On every screen; the app never says "switch", "replace" or "use instead" |
 | ➕ Photograph the strip or box | ✅ Gemma 4 E2B, local. Measured on our own strips (below) |
 | ➕ Whole prescription with a total saving | ✅ Typed, pasted, spoken, or a photo of a **printed** prescription |
-| ➕ Nearest Jan Aushadhi Kendra | ✅ OpenStreetMap / Overpass, with a Google Maps fallback |
+| ➕ Nearest Jan Aushadhi Kendra | ✅ **Offline search of the official list** (all 4,497 Kendras in Uttar Pradesh) by PIN code, district or area, plus a "near me" map from OpenStreetMap |
 | ➕ Printable sheet for the counter | ✅ Bilingual sheet: print, save as PDF, or share on WhatsApp |
 | ➕ Pill identifier by imprint | ❌ **Deliberately not built.** There is no reliable open Indian imprint database, and a wrong pill ID is dangerous |
 | Never generate drug information with a language model | ✅ Models only **read text** and **pick from our list**. Every fact shown comes from data we ship |
@@ -172,6 +172,7 @@ Everything is bundled in the repo and shipped inside the app.
 |---|---:|---|
 | [`data/src/janaushadhi.csv`](data/src/janaushadhi.csv) | 143 | Hand-checked Jan Aushadhi products: PMBI drug code, MRP, pack, and a **structured composition** (molecule, strength and release type per ingredient) |
 | [`data/auto/janaushadhi_pmbi.csv`](data/auto/janaushadhi_pmbi.csv) | 1,047 | More Jan Aushadhi products, **read by our parser** from the [official PMBI list](data/raw/) (every skipped product and why: [`pmbi_skipped.csv`](data/auto/pmbi_skipped.csv)) |
+| [`data/auto/kendras.csv`](data/auto/kendras.csv) | 4,497 | Official Jan Aushadhi Kendra list for Uttar Pradesh: code, district, PIN, address (operators' names left out) |
 | `data/auto/brands_dataset.csv` | 86,521 | Brands from the public *A–Z Medicine Dataset of India* that exactly equal a Jan Aushadhi product; prices not checked by us |
 | [`data/src/brands.csv`](data/src/brands.csv) | 63 | Curated brands: composition, pack, **listed MRP**, **source URL and date**, expected Jan Aushadhi code |
 | [`data/src/molecules.csv`](data/src/molecules.csv) | 84 | Canonical names, synonyms (`frusemide`, `amoxycillin`, `thyroxine`), Hindi names |
@@ -210,14 +211,14 @@ docs/                  DATA.md · GEMMA.md · screenshots · sample printed pres
 - **Coverage:** brands that the public dataset lists with only two ingredients are kept **only** when the brand name itself prints both strengths (the dataset drops a third ingredient, so `Cheston Cold` could otherwise look like a 2-ingredient medicine). Dispersible, mouth-dissolving, chewable, injections, creams and drops are not compared yet. Anything else gets "not in our list yet".
 - **"Same molecule & strength" is not a medical judgement.** Bioequivalence and the decision to switch belong to the doctor and pharmacist.
 - **Gemma misreads** (see the table above), so the patient always confirms. Handwriting is only an opt-in Gemini beta and can be wrong.
-- **Kendra finder** depends on OpenStreetMap coverage, which volunteers build and is incomplete; it needs internet.
+- **Kendras:** the offline list covers Uttar Pradesh only so far (add more states by exporting them from janaushadhi.gov.in; see docs/DATA.md). It has addresses but no map points, so "nearest" by distance still uses OpenStreetMap, which is incomplete and needs internet.
 - **Salts:** most are not distinguished (as in the PMBI list). Metoprolol succinate is treated as extended-release; diclofenac sodium and potassium are kept apart, and dataset diclofenac brands are left out because the dataset doesn't say which salt.
 
 ## Roadmap
 
 - Hand-check the most-used dataset brands with pharmacists through the [add-a-medicine issue form](https://github.com/GamerxD01/Dawa-Daam/issues/new?template=add-medicine.yml)
 - NPPA ceiling prices as a third reference price
-- Bundle the official Kendra list for offline lookups
+- Official Kendra lists for every state (UP is done)
 - More Indian languages (the UI strings are already separated in `src/i18n.ts`)
 
 ## Contributing

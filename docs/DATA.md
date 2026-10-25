@@ -12,6 +12,7 @@ All data is bundled in the repo and shipped inside the app, so search works with
 | `data/auto/janaushadhi_pmbi.csv` | 1,047 | Jan Aushadhi products read from that list by `scripts/import/pmbi.mjs` (not already hand-checked) |
 | `data/auto/pmbi_skipped.csv` | 1,249 | Every product we did **not** read, with the reason |
 | `data/auto/brands_dataset.csv` | 86,521 | Brands from the public *A–Z Medicine Dataset of India* (Kaggle) that exactly equal a Jan Aushadhi product |
+| `data/auto/kendras.csv` | 4,497 | Official Kendra list (Uttar Pradesh, 25 Oct 2026): code, state, district, PIN, address |
 | `data/auto/molecules_auto.csv` | 459 | Molecules seen only in the machine-read rows (no Hindi name yet) |
 
 `npm run data` (also run by `npm test` and `npm run build`) validates everything and writes `src/generated/drugs.json` (all Jan Aushadhi products and hand-checked brands, bundled in the app) and `public/data/brands.json` (the dataset brands, loaded in the background).
@@ -67,3 +68,12 @@ Result: 86,521 brands covering 924 different Jan Aushadhi medicines.
 ## Prices are indicative
 
 MRPs change, and pharmacies discount. The app labels prices as indicative MRPs, shows the capture date and source, and never estimates a price that isn't in the data.
+
+## Kendra list
+
+From janaushadhi.gov.in → PMBJP → *Locate PMBJK Kendra* → state, *Functional* → Search → export PDF. Convert with `pdftotext -layout` into `data/raw/kendras-<state>-<date>.txt` and run `node scripts/import/kendras.mjs data/raw/kendras-*.txt`.
+
+- We keep the Kendra code, state, district, PIN code and address. The list also has each operator's personal name; the app doesn't need it, so it is **not kept** (and the raw export is not committed).
+- 11 rows have no address (the address column repeats the operator's name); they show "address not listed" with district and PIN.
+- District names cut by the PDF layout ("Sant Kabir") are restored to the full name; the result has exactly UP's 75 districts.
+- Search: a 6-digit PIN shows that PIN first, then the nearest PINs with the same first three digits; a word matches the district and the address.
