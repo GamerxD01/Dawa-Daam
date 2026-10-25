@@ -13,3 +13,5 @@ public/data/
 data/raw/kaggle-az-medicines.csv
 # local probes
 .scratch/
+# official Kendra list export: contains operators' personal names, so only the parsed CSV (no names) is committed
+data/raw/kendras-*.txt

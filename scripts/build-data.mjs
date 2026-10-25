@@ -153,3 +153,24 @@ const extraDest = join(root, 'public', 'data', 'brands.json');
 mkdirSync(dirname(extraDest), { recursive: true });
 writeFileSync(extraDest, JSON.stringify(extraOut));
 console.log(`✓ public/data/brands.json: ${datasetBrands.length} dataset brands`);
+
+// ---- official Kendra list (offline search by PIN / district) ------------------
+const kendras = readOpt(auto('kendras.csv'));
+for (const [i, k] of kendras.entries()) {
+  if (!/^PMBJK\d+$/.test(k.code) || !/^\d{6}$/.test(k.pin) || !k.district || !k.state) fail(`auto/kendras.csv row ${i + 2}`, `bad Kendra row ${JSON.stringify(k)}`);
+}
+if (errors.length) {
+  console.error(`✗ data build failed with ${errors.length} error(s):\n  ` + errors.join('\n  '));
+  process.exit(1);
+}
+const states = [...new Set(kendras.map((k) => k.state))].sort();
+const districts = [...new Set(kendras.map((k) => k.district))].sort();
+const kOut = {
+  version: out.version,
+  source: 'Jan Aushadhi Kendra list, janaushadhi.gov.in (Locate PMBJK Kendra), 25 Oct 2026',
+  states,
+  districts,
+  rows: kendras.map((k) => [k.code, states.indexOf(k.state), districts.indexOf(k.district), k.pin, k.address]),
+};
+writeFileSync(join(root, 'public', 'data', 'kendras.json'), JSON.stringify(kOut));
+console.log(`✓ public/data/kendras.json: ${kendras.length} Kendras in ${states.length} state(s), ${districts.length} districts`);
