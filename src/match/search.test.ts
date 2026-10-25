@@ -53,7 +53,7 @@ describe('data integrity', () => {
     const lyrica = data.brands.find((b) => b.name === 'Lyrica 75')!;
     const s = saving(lyrica, equivalentGroup(lyrica, groups)!);
     expect(s.brandPrice).toBe(841.87);
-    expect(s.genericPrice).toBe(30.8); // 14 capsules × ₹2.20
+    expect(s.genericPrice).toBe(31.77); // 14 capsules × ₹2.269 (PMBI list, 25 Oct 2026)
     expect(s.pct).toBe(96);
   });
 });
@@ -123,9 +123,8 @@ describe('search: exact answers', () => {
     ['amlodipin 5', 'JA 264'],
     ['thyroxin 50', 'JA 506'],
     ['azithromycine 500', 'JA 72'],
-    ['levocetrizine', 'JA 248'],
+    ['levocetrizine 5', 'JA 248'],
     ['amoxyclav 625', 'JA 39'],
-    ['metoprolol 25', 'JA 290'],
     ['डोलो ६५०'.replace('डोलो', 'dolo'), 'Dolo 650'],
   ])('%s → %s', (q, want) => {
     expect(matched(search(index, q))).toBe(want);
@@ -136,7 +135,7 @@ describe('search: real strips photographed for this project', () => {
   it('Garyfex-180 (MRP read off the strip) → Jan Aushadhi fexofenadine 180', () => {
     const r = search(index, 'Garyfex-180');
     expect(matched(r)).toBe('Garyfex 180');
-    if (r.kind === 'match' && r.hit.type === 'brand') expect(saving(r.hit.brand, r.hit.group!).genericPrice).toBe(37.4);
+    if (r.kind === 'match' && r.hit.type === 'brand') expect(saving(r.hit.brand, r.hit.group!).genericPrice).toBe(35.06);
   });
   it('Panced-DSR composition line → pantoprazole GR + domperidone PR capsule', () => {
     const r = search(index, 'Pantoprazole Sodium Gastro-Resistant and Domperidone Prolonged-Release Capsules IP');
@@ -144,10 +143,21 @@ describe('search: real strips photographed for this project', () => {
     const hits = r.kind === 'match' ? [label(r.hit)] : listed(r);
     expect(hits).toContain('JA 465');
   });
-  it('hydroxyzine 25 (Giorax-25): we only have 10 mg, so we say so', () => {
-    const r = search(index, 'hydroxyzine hydrochloride 25');
+  it('hydroxyzine 25 (Giorax-25) → Jan Aushadhi 1662 (added with the full PMBI list)', () => {
+    expect(matched(search(index, 'hydroxyzine hydrochloride 25'))).toBe('JA 1662');
+  });
+  it('a strength we do not have still says so (hydroxyzine 50)', () => {
+    const r = search(index, 'hydroxyzine 50');
     expect(r.kind).toBe('none');
     if (r.kind === 'none') expect(r.reason).toBe('strength-unavailable');
+  });
+  it('metoprolol 25 is sold plain and extended-release: asks, never picks one', () => {
+    const r = search(index, 'metoprolol 25');
+    expect(r.kind).toBe('didyoumean');
+    expect(listed(r)).toEqual(expect.arrayContaining(['JA 290', 'JA 1708']));
+  });
+  it('levocetirizine with no strength asks which strength', () => {
+    expect(search(index, 'levocetrizine').kind).toBe('strength');
   });
   it('Lactopen (lactic acid bacillus) → Jan Aushadhi 196', () => {
     expect(matched(search(index, 'lactic acid bacillus tablets'))).toBe('JA 196');
