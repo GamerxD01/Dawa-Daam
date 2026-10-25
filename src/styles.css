@@ -191,3 +191,5 @@ button:disabled { opacity: 0.5; cursor: default; }
   .card { animation: rise 0.18s ease-out; }
   @keyframes rise { from { transform: translateY(6px); opacity: 0; } to { transform: none; opacity: 1; } }
 }
+.k-sub { font-size: 18px; margin: 20px 0 4px; }
+.k-official { margin-bottom: 8px; }

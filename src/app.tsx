@@ -3,6 +3,7 @@ import raw from './generated/drugs.json';
 import { strings, type Lang } from './i18n';
 import { buildIndex, buildIndexAsync, search, type Index } from './match/search';
 import { hydrateDataset, type DatasetFile } from './match/dataset';
+import { loadKendras } from './kendraList';
 import type { DrugData, Hit } from './match/types';
 import { hitId, load, save } from './store';
 import { Basket, lineFor } from './ui/Basket';
@@ -53,7 +54,9 @@ export function App() {
       setIndex(big);
       setById(idsOf(big));
       setMore(count);
-    }).catch(() => alive && setMore('failed'));
+    }).catch(() => alive && setMore('failed'))
+      // then warm the cache with the Kendra list, so Kendra search works offline even if never opened online
+      .finally(() => loadKendras(import.meta.env.BASE_URL, data.version).catch(() => {}));
     return () => { alive = false; };
   }, []);
   useEffect(() => save('lang', lang), [lang]);

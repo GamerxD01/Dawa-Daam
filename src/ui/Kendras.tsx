@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'preact/hooks';
 import { directionsUrl, findKendras, googleMapsSearch, type Kendra } from '../kendra';
+import { loadKendras, mapsSearchUrl, searchKendras, type OfficialKendra } from '../kendraList';
 import type { Ctx } from './ctx';
 
 type State =
@@ -70,6 +71,9 @@ export function Kendras({ ctx, onBack }: { ctx: Ctx; onBack: () => void }) {
   return (
     <section class="card">
       <h2 class="card-title">📍 {t.kendra}</h2>
+      <OfficialSearch ctx={ctx} />
+
+      <h3 class="k-sub">{t.kNearMe}</h3>
       <p class="muted small">{t.kWhy}</p>
 
       {(st.s === 'idle' || st.s === 'denied' || st.s === 'error' || st.s === 'offline') && (
@@ -110,5 +114,53 @@ export function Kendras({ ctx, onBack }: { ctx: Ctx; onBack: () => void }) {
       </a>
       <button class="big secondary" onClick={onBack}>← {t.back}</button>
     </section>
+  );
+}
+
+/** Offline search of the official Kendra list by PIN code, district or place. */
+function OfficialSearch({ ctx }: { ctx: Ctx }) {
+  const { t } = ctx;
+  const [q, setQ] = useState('');
+  const [data, setData] = useState<{ list: OfficialKendra[]; states: string[]; date: string } | 'loading' | 'failed'>('loading');
+  useEffect(() => {
+    let alive = true;
+    loadKendras(import.meta.env.BASE_URL, ctx.version)
+      .then(({ list, file }) => alive && setData({ list, states: file.states, date: file.source.match(/\d{1,2} \w+ \d{4}/)?.[0] ?? '' }))
+      .catch(() => alive && setData('failed'));
+    return () => { alive = false; };
+  }, []);
+  const hits = typeof data === 'object' ? searchKendras(data.list, q) : [];
+  return (
+    <div class="k-official">
+      <label class="search">
+        <span class="search-label">{t.kOfficialLabel}</span>
+        <div class="search-row">
+          <input type="search" inputMode="text" autoComplete="postal-code" placeholder={t.kOfficialHint} value={q}
+            onInput={(e) => setQ((e.target as HTMLInputElement).value)} />
+        </div>
+      </label>
+      {data === 'loading' && <p class="muted small">{t.kOfficialLoading}</p>}
+      {data === 'failed' && <p class="warn">{t.kOfficialFailed}</p>}
+      {typeof data === 'object' && (
+        <>
+          <p class="muted small">{t.kOfficialAbout(data.list.length, data.states.join(', '), data.date)}</p>
+          {q.trim() && hits.length === 0 && <p class="warn">{t.kOfficialNone}</p>}
+          {hits.length > 0 && (
+            <ol class="kendras">
+              {hits.map((k) => (
+                <li key={k.code}>
+                  <div class="k-name"><b>{t.kendraName}</b> <span class="k-km">{k.code}</span></div>
+                  <div class="muted small">{k.address || t.kNoAddress}</div>
+                  <div class="small">{k.district} · {t.kPin} {k.pin}</div>
+                  <div class="k-actions">
+                    <a class="link" href={mapsSearchUrl(k)} target="_blank" rel="noopener noreferrer">🧭 {t.kOpenMap}</a>
+                  </div>
+                </li>
+              ))}
+            </ol>
+          )}
+        </>
+      )}
+    </div>
   );
 }
