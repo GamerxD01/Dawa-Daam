@@ -157,7 +157,7 @@ export function App() {
       <footer class="bottom">
         {view === 'search' && (
           <p class="muted small more" aria-live="polite">
-            {more === 'loading' ? t.moreLoading : more === 'failed' ? t.moreFailed : t.moreLoaded(more)}
+            {more === 'loading' ? t.moreLoading : more === 'failed' ? t.moreFailed : more > 0 ? t.moreLoaded(more) : ''}
           </p>
         )}
         <p class="disclaimer" role="note">⚠ {t.disclaimer}</p>
